@@ -19,7 +19,6 @@
     <sprite>sprites\Sp_Logo</sprite>
     <sprite>sprites\Sp_Border_Hit</sprite>
     <sprite>sprites\Sp_Template</sprite>
-    <sprite>sprites\test</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\Bg_Back</background>
