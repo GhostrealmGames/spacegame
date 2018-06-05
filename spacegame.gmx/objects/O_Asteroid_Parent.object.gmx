@@ -87,6 +87,116 @@ if (other.collided &amp;&amp; set_alarm == true)
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="O_Laser">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (instance_exists(O_Ship))
+{
+    //damage += O_Ship.shootdamage;
+    damage += other.damage;
+}
+else
+{
+    damage += 1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(instance_exists(O_Ship))
+{
+    if (global.fuel &gt; 0) // Check to see if the ship has fuel
+    {
+        motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (x &gt; view_xview[0] - sprite_width &amp;&amp; x &lt; view_xview[0] + view_wview[0] + sprite_width &amp;&amp; y &gt; view_yview[0] - sprite_width &amp;&amp; y &lt; view_yview[0] + view_hview[0] + sprite_width)
+{
+    event_inherited();
+    if (global.debug)
+    {
+        if (instance_exists(O_Planet_Parent))
+        {
+            dist = Sc_Distance(self, O_Planet_Parent);
+            if (dist &lt; lowest_dist)
+            {
+                lowest_dist = dist;
+            }
+            if (dist &gt; highest_dist)
+            {
+                highest_dist = dist;
+            }
+            draw_set_color(c_red);
+            draw_set_halign(fa_center);
+            draw_set_valign(fa_center);
+            draw_text(x, y,
+                "Num: " + string(num) +
+                "#Mass: " + string(mass) +
+                "#Dist: " + string(dist) + 
+                "#L Dist: " + string(lowest_dist) +
+                "#H Dist: " + string(highest_dist));
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
   </events>
   <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>

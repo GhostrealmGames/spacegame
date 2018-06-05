@@ -1,7 +1,7 @@
 var _x, _y, _s, _w, _h, _x1, _y1;
 //_x = argument0; // top left
-width = 4000;
-height = 4000;
+width = 10000;
+height = 10000;
 _y1 = argument1;
 _s = width/view_wview[0] * 5// * 5;
 _w = 400//room_width/_s;
@@ -63,14 +63,14 @@ with (O_Asteroid)
         draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
     }
 }
-/*with (O_Comet)
+with (O_Comet)
 {
     if (_x1 < (_x+x/_s) && _y1 < (_y+y/_s) && _x1+_w > (_x+x/_s) && _y1+_h > (_y+y/_s))
     {
         draw_set_color(c_aqua);
         draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
     }
-}*/
+}
 with (O_Planet_Parent)
 {
     if (_x1 < (_x+x/_s) && _y1 < (_y+y/_s) && _x1+_w > (_x+x/_s) && _y1+_h > (_y+y/_s))

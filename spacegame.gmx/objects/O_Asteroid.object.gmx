@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>O_Asteroid_Parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -43,6 +43,106 @@ else
 //target = instance_create(x, y, O_Target);
 //target.droid_target = id;
 event_inherited();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="O_Laser">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>event_inherited();
+/*if(damage &gt;= max_damage)
+{
+    instance_destroy();
+    //gms_ini_player_write("Asteroids_Destroyed", );
+    if (sprite_index == Sp_Asteroid)
+    {
+        score += medium_asteriod_points;
+    }
+    else
+    {
+        score += small_asteroid_points;
+    }
+    rand = random_range(8,16);
+    for(i=0;i&lt;=rand;i+=1)
+    {
+        if (random(1) &lt;= 1/5)
+        {
+            O_Precious_Metal = random(2);
+            if (round(O_Precious_Metal) == 0)
+            {
+                res = instance_create(x,y,O_Particle_Gold)
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+            else if (round(O_Precious_Metal) == 1)
+            {
+                res = instance_create(x,y,O_Particle_Platinum)
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+            else if (round(O_Precious_Metal) == 2)
+            {
+                res = instance_create(x,y,O_Particle_Titanium)
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+        }
+        else if (random(1) &lt;= 1/3)
+        {
+            O_Metal=random(2)
+            if(round(O_Metal)=0)
+            {
+                res = instance_create(x,y,O_Particle_Iron)
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+            else if(round(O_Metal)=1)
+            {
+                res = instance_create(x,y,O_Particle_Copper);
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+            else if(round(O_Metal)=2)
+            {
+                res = instance_create(x,y,O_Particle_Nickel);
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+        }
+        else
+        {
+            O_Coal = random(1)
+            if (O_Coal &lt;= 1/2)
+            {
+                res = instance_create(x,y,O_Particle_Coal);
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+            else
+            {
+                res = instance_create(x,y,O_Particle_Stone);
+                res.direction = self.direction-40+random(80);
+                res.speed = self.speed + random(3);
+            }
+        }
+    }
+}*/
 </string>
           </argument>
         </arguments>

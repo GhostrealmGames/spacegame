@@ -42,10 +42,10 @@ for (col = 0; col &lt; room_height; col += O_Border.sprite_height)
     instance_create(room_height,col,O_Border);
 }*/
 //instance_deactivate_object(O_Border);
-// Create Planets
-instance_create(3000, 3000, O_Planet_Water); //room_height/2
 // Create Ship
 instance_create(1060, 640, O_Ship); //2500
+// Create Planets
+instance_create(3000, 3000, O_Planet_Water); //room_height/2
 /*
 with (O_Ship)
 {

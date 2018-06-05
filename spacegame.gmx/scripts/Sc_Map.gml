@@ -1,6 +1,6 @@
 var _x, _y, _s, _w, _h;
-width = 4000;
-height = 4000;
+width = 20000;
+height = 20000;
 _x = argument0// + view_wview[0]/2;
 _y = argument1// + view_hview[0]/2;
 _s = width/view_wview[0] * 2;
@@ -17,6 +17,10 @@ draw_set_color(c_ltgray);
 draw_rectangle(_x, _y, _x + width/_s, _y + width/_s, false);
 draw_set_color(c_white);
 draw_rectangle(_x, _y, _x + width/_s, _y + width/_s, true);
+
+// Center on player
+_x = _x - O_Ship.x / _s + width/2/_s;
+_y = _y - O_Ship.y / _s + height/2/_s;
 
 draw_set_alpha(.8);
 // Tutorial Objects
@@ -36,11 +40,11 @@ with (O_Asteroid)
     draw_set_color(c_brown);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
 }
-/*with (O_Comet)
+with (O_Comet)
 {
     draw_set_color(c_aqua);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width)/_s, 0);
-}*/
+}
 draw_set_alpha(.6);
 with (O_Planet_Parent)
 {

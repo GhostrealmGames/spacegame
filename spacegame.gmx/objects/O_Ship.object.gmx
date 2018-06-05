@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -82,7 +82,7 @@ max_speed = speed;
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="87">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -99,7 +99,291 @@ max_speed = speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>if (global.ship_upgrade == 2)
+{
+    upgrade = 2;
+    sprite_index = Sp_ShipV2;
+    shootspeed = ship_shootspeedV2;
+    shootdamage = ship_shootdamageV2;
+    ship_accel = ship_accelV2;
+}
+if (global.ship_upgrade == 3)
+{
+    upgrade = 3;
+    sprite_index = Sp_ShipV3;
+    shootspeed = ship_shootspeedV3;
+    shootdamage = ship_shootdamageV3;
+    ship_accel = ship_accelV3;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (keyboard_check(vk_space) &amp;&amp; shooting == false)
+{
+    O_Self = collision_point(x, y, O_Ship, false, false);
+    Sc_Shoot(O_Laser, O_Self);
+    sound_play(A_Shoot);
+}
+if (global.ship_health &lt;= 0)
+{
+    instance_create(x, y, O_Explosion);
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.fuel &gt; 0) // Check to see if the ship has fuel
+{
+    image_index = 1;
+    accel = true;
+    global.fuel -= 0.01;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="68">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>spr_angle -= 2.5;       // Rotate ship
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="65">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>spr_angle += 2.5;       // Rotate ship
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (explode)    // If the object has exploded
+{
+    instance_create(x,y,O_Explosion);
+}
+else if (upgrade == 1)
+{
+    draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
+}
+else if (upgrade == 2)
+{
+    draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
+}
+else if (upgrade == 3)
+{
+    draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
+}
+if (accel)
+{
+    fire_index += 0.3;
+    if (upgrade == 1)
+    {
+        draw_sprite_ext(Sp_FireV1,floor(fire_index),x,y,1,1,spr_angle,c_white,1);
+    }
+    else if (upgrade == 2)
+    {
+        draw_sprite_ext(Sp_FireV2,floor(fire_index),x,y,1,1,spr_angle,c_white,1);
+    }
+    else if (upgrade == 3)
+    {
+        draw_sprite_ext(Sp_FireV3,floor(fire_index),x,y,1,1,spr_angle,c_white,1);
+    }
+}
+// Debug
+draw_set_color(c_red);
+draw_set_halign(fa_left);
+draw_set_valign(fa_left);
+draw_set_font(-1);
+if (instance_exists(O_Ship))
+{
+    if (global.debug)
+    {
+        if (dist &lt; lowest_dist)
+        {
+            lowest_dist = dist;
+        }
+        if (dist &gt; highest_dist)
+        {
+            highest_dist = dist;
+        }
+        draw_set_alpha(0.5);
+        draw_rectangle(x - sprite_width, y - sprite_height, x + sprite_width, y + sprite_height, false);
+        draw_set_alpha(1);
+        draw_text(x-50,y+50,
+            //"Dist_x: " + string(dist_x) + 
+            //"#Dist_y: " + string(dist_y) + 
+            "Dist: " + string(dist) + 
+            "#Angle: " + string(angle_object) + 
+            //"#OrbitV: " + string(orbitalV) +
+            //"#F: " + string(force_gravity) +
+            "#L Dist: " + string(lowest_dist) + 
+            "#H Dist: " + string(highest_dist)
+            //"#ID: " + string(id) +
+            //"#Shoot: " + string(spr_angle)
+            );
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="85">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.debug)
+{
+    if (global.ship_upgrade == 3)
+    {
+        global.ship_upgrade = 1;
+        sprite_index = Sp_ShipV1;
+        shootspeed = ship_shootspeedV1;
+        shootdamage = ship_shootdamageV1;
+        ship_accel = ship_accelV1;
+    }
+    else if (global.ship_upgrade == 1)
+    {
+        global.ship_upgrade = 2;
+        sprite_index = Sp_ShipV2;
+        shootspeed = ship_shootspeedV2;
+        shootdamage = ship_shootdamageV2;
+        ship_accel = ship_accelV2;
+    }
+    else if (global.ship_upgrade == 2)
+    {
+        global.ship_upgrade = 3;
+        sprite_index = Sp_ShipV3;
+        shootspeed = ship_shootspeedV3;
+        shootdamage = ship_shootdamageV3;
+        ship_accel = ship_accelV3;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>accel = false;
+image_index = 0;
+</string>
           </argument>
         </arguments>
       </action>
