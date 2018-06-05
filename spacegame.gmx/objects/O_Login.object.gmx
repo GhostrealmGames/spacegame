@@ -52,15 +52,15 @@ global.Inv_Draw[2*total_resource_types + craftable_items] = 0;
 
 // Smelting
 // - time for smelting resources
-global.smelt_time[0] = 1984/248;   // 1984°F    /496 or /248
-global.smelt_time[1] = 2800/248;   // 2,800°F
-global.smelt_time[2] = 2651/248;   // 2,651°F
-global.smelt_time[3] = 2400/248;   // 2,400°F
-global.smelt_time[4] = 32  /248;   // 32°F
-global.smelt_time[5] = 1948/248;   // 1,948°F
-global.smelt_time[6] = 3215/248;   // 3,215°F
-global.smelt_time[7] = 3034/248;   // 3,034°F
-global.smelt_time[8] = 0;          // To make smelter spits it out after mining
+global.smelt_time[copper]   = 1984/248;   // 1984°F    /496 or /248
+global.smelt_time[iron]     = 2800/248;   // 2,800°F
+global.smelt_time[nickel]   = 2651/248;   // 2,651°F
+global.smelt_time[stone]    = 2400/248;   // 2,400°F
+global.smelt_time[ice]      = 32  /248;   // 32°F
+global.smelt_time[gold]     = 1948/248;   // 1,948°F
+global.smelt_time[platinum] = 3215/248;   // 3,215°F
+global.smelt_time[titanium] = 3034/248;   // 3,034°F
+global.smelt_time[coal]     = 0;          // To make smelter spit it out after mining
 
 /// Crafting
 global.Craft_Slots[craftable_items] = 0;
@@ -578,7 +578,7 @@ else
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_red);
-draw_set_font(fnt_update);
+//draw_set_font(fnt_update);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 if (check_for_updates)
