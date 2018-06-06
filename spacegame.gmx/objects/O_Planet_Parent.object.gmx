@@ -31,10 +31,11 @@ boss_spawned = false;
 boss_spawn_score = 500;
 alarm[0] = spawn_rate*room_speed;
 nearest = instance_nearest(x, y, O_Ship);
-/*if (instance_exists(O_Ship))
+// Setup Player Oribal Velocity
+if (instance_exists(O_Ship))
 {
     ship_orbitalV = Sc_ShipOrbitalVelocity(self, nearest);
-}*/
+}
 </string>
           </argument>
         </arguments>
@@ -57,14 +58,15 @@ nearest = instance_nearest(x, y, O_Ship);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (instance_exists(self))
+            <string>// Player Gravity
+if (instance_exists(self))
 {
     nearest = instance_nearest(x, y, O_Ship);
     if (instance_exists(nearest))
     {
         ship_gravity = Sc_ShipGravity(self, nearest);
     }
-}*/
+}
 </string>
           </argument>
         </arguments>

@@ -71,23 +71,23 @@ for (i=0; i &lt; num_comets; i += 1)
 }
 event_inherited();
 
-// Setup Player orbit
-/*
+// Setup Player orbital velocity
+
 angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
-for (i = 0; i &lt; num_asteroids; i += 1)
-{
-    with(global.Asteroids[i])
+//for (i = 0; i &lt; num_asteroids; i += 1)
+//{
+    with(O_Asteroid)
     {
-        motion_set(other.angle_object + 90, other.ship_orbitalvelocity);
+        motion_add(other.angle_object + 90, other.ship_orbitalV);
     }
-}
-for (i = 0; i &lt; num_comets; i += 1)
-{
-    with(global.Comets[i])
+//}
+//for (i = 0; i &lt; num_comets; i += 1)
+//{
+    with(O_Comet)
     {
-        motion_set(other.angle_object + 90, other.ship_orbitalvelocity);
+        motion_add(other.angle_object + 90, other.ship_orbitalV);
     }
-}*/
+//}
 </string>
           </argument>
         </arguments>
@@ -111,24 +111,19 @@ for (i = 0; i &lt; num_comets; i += 1)
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-/*if(instance_exists(O_Ship))
+// Player gravity
+if(instance_exists(O_Ship))
 {
     angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
-    for (i = 0; i &lt; num_asteroids; i += 1)
+    with(O_Asteroid)
     {
-        with(global.Asteroids[i])
-        {
-            motion_set(other.angle_object, other.ship_gravity);
-        }
+        motion_add(other.angle_object, other.ship_gravity);
     }
-    for (i = 0; i &lt; num_comets; i += 1)
+    with(O_Comet)
     {
-        with(global.Comets[i])
-        {
-            motion_set(other.angle_object, other.ship_gravity);
-        }
+        motion_add(other.angle_object, other.ship_gravity);
     }
-}*/
+}
 </string>
           </argument>
         </arguments>

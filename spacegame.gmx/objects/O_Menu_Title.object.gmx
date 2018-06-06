@@ -85,7 +85,7 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 if (global.debug)
 {
-    draw_text(10, room_height - 10, "version " + string(version_string));
+    draw_text(10, 10, "version " + string(version_string));
 }
 </string>
           </argument>

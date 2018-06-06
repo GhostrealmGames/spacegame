@@ -9,5 +9,5 @@ angle_object = point_direction(argument0.x, argument0.y, argument1.x, argument1.
 
 // Add Gravity
 force_gravity = (Gravitational_Constant * argument0.mass * argument1.mass)/power(dist, 2);
-motion_add(angle_object - 180, force_gravity);
+motion_add(angle_object, force_gravity);
 return force_gravity;

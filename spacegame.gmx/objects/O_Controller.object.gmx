@@ -64,6 +64,10 @@ draw_map = false;
 {
     deactivate = true;
 }
+else
+{
+    deactivate = false;
+}
 </string>
           </argument>
         </arguments>
