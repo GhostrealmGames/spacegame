@@ -14,17 +14,9 @@
   <sprites name="sprites">
     <sprite>sprites\Sp_Target</sprite>
     <sprite>sprites\Sp_Cursor</sprite>
-    <sprites name="Asteroid">
-      <sprite>sprites\Sp_Asteroid</sprite>
-      <sprite>sprites\Sp_Asteroid_1</sprite>
-    </sprites>
-    <sprites name="Ship">
-      <sprite>sprites\Sp_ShipV1</sprite>
-      <sprite>sprites\Sp_FireV1</sprite>
-      <sprite>sprites\Sp_ShipV2</sprite>
-      <sprite>sprites\Sp_FireV2</sprite>
-      <sprite>sprites\Sp_ShipV3</sprite>
-      <sprite>sprites\Sp_FireV3</sprite>
+    <sprites name="Border">
+      <sprite>sprites\Sp_Border</sprite>
+      <sprite>sprites\Sp_Border_Hit</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\Sp_Title</sprite>
@@ -39,16 +31,55 @@
       <sprite>sprites\Sp_Button_Load</sprite>
       <sprite>sprites\Sp_Button_Restart</sprite>
     </sprites>
-    <sprite>sprites\Sp_Border</sprite>
-    <sprite>sprites\Sp_Logo</sprite>
-    <sprite>sprites\Sp_Border_Hit</sprite>
-    <sprite>sprites\Sp_Planet_Water</sprite>
-    <sprite>sprites\Sp_HUD</sprite>
-    <sprite>sprites\Sp_Game_Over</sprite>
+    <sprites name="Projectiles">
+      <sprite>sprites\Sp_Laser</sprite>
+      <sprite>sprites\Sp_Laser_ROY</sprite>
+      <sprite>sprites\Sp_Laser_ROYGBIV</sprite>
+    </sprites>
+    <sprites name="Asteroids">
+      <sprite>sprites\Sp_Asteroid</sprite>
+      <sprite>sprites\Sp_Asteroid_1</sprite>
+      <sprite>sprites\Sp_Comet</sprite>
+    </sprites>
+    <sprites name="Particles">
+      <sprites name="Ores">
+        <sprite>sprites\Sp_Particle_Copper</sprite>
+        <sprite>sprites\Sp_Particle_Iron</sprite>
+        <sprite>sprites\Sp_Particle_Nickel</sprite>
+        <sprite>sprites\Sp_Particle_Stone</sprite>
+        <sprite>sprites\Sp_Particle_Ice</sprite>
+        <sprite>sprites\Sp_Particle_Gold</sprite>
+        <sprite>sprites\Sp_Particle_Platinum</sprite>
+        <sprite>sprites\Sp_Particle_Titanium</sprite>
+        <sprite>sprites\Sp_Particle_Coal</sprite>
+      </sprites>
+      <sprites name="Refined Resources">
+        <sprite>sprites\Sp_Refined_Copper</sprite>
+        <sprite>sprites\Sp_Refined_Iron</sprite>
+        <sprite>sprites\Sp_Refined_Nickel</sprite>
+        <sprite>sprites\Sp_Refined_Stone</sprite>
+        <sprite>sprites\Sp_Refined_Ice</sprite>
+        <sprite>sprites\Sp_Refined_Gold</sprite>
+        <sprite>sprites\Sp_Refined_Platinum</sprite>
+        <sprite>sprites\Sp_Refined_Titanium</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Ship">
+      <sprite>sprites\Sp_ShipV1</sprite>
+      <sprite>sprites\Sp_FireV1</sprite>
+      <sprite>sprites\Sp_ShipV2</sprite>
+      <sprite>sprites\Sp_FireV2</sprite>
+      <sprite>sprites\Sp_ShipV3</sprite>
+      <sprite>sprites\Sp_FireV3</sprite>
+    </sprites>
+    <sprites name="Planets">
+      <sprite>sprites\Sp_Planet_Water</sprite>
+      <sprite>sprites\Sp_Star_Sun</sprite>
+    </sprites>
     <sprite>sprites\Sp_Explosion</sprite>
-    <sprite>sprites\Sp_Laser</sprite>
-    <sprite>sprites\Sp_Comet</sprite>
-    <sprite>sprites\Sp_Star_Sun</sprite>
+    <sprite>sprites\Sp_Game_Over</sprite>
+    <sprite>sprites\Sp_HUD</sprite>
+    <sprite>sprites\Sp_Logo</sprite>
     <sprite>sprites\Sp_Trail</sprite>
   </sprites>
   <backgrounds name="background">
@@ -85,6 +116,13 @@
     <object>objects\O_Gravity</object>
     <object>objects\O_Ship</object>
     <object>objects\O_Explosion</object>
+    <object>objects\O_center</object>
+    <object>objects\O_Trail</object>
+    <objects name="GMS">
+      <object>objects\GMS</object>
+      <object>objects\O_Login</object>
+      <object>objects\O_Update</object>
+    </objects>
     <objects name="Menu">
       <object>objects\O_Main</object>
       <object>objects\O_Menu_Title</object>
@@ -100,12 +138,17 @@
         <object>objects\O_Title_Load</object>
       </objects>
     </objects>
-    <object>objects\O_center</object>
-    <object>objects\O_Trail</object>
+    <objects name="Projectiles">
+      <object>objects\O_Projectile</object>
+      <object>objects\O_Laser</object>
+    </objects>
     <objects name="Asteroid">
       <object>objects\O_Asteroid_Parent</object>
       <object>objects\O_Asteroid</object>
       <object>objects\O_Comet</object>
+    </objects>
+    <objects name="Particles">
+      <object>objects\O_Particle_Parent</object>
     </objects>
     <objects name="Planet">
       <object>objects\O_Planet_Parent</object>
@@ -113,14 +156,9 @@
       <object>objects\O_Star_Parent</object>
       <object>objects\O_Star_Sun</object>
     </objects>
-    <objects name="Projectiles">
-      <object>objects\O_Projectile</object>
-      <object>objects\O_Laser</object>
-    </objects>
-    <objects name="GMS">
-      <object>objects\GMS</object>
-      <object>objects\O_Login</object>
-      <object>objects\O_Update</object>
+    <objects name="Droids">
+      <object>objects\O_Particle_Target</object>
+      <object>objects\O_Target</object>
     </objects>
     <object>objects\O_other_player</object>
   </objects>
