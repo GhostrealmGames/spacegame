@@ -3,9 +3,13 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\GameMaker Server+(All)</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\A_Shoot</sound>
+    <sound>sound\A_Click</sound>
+    <sound>sound\A_Explosion</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\Sp_Target</sprite>
@@ -44,6 +48,8 @@
     <sprite>sprites\Sp_Explosion</sprite>
     <sprite>sprites\Sp_Laser</sprite>
     <sprite>sprites\Sp_Comet</sprite>
+    <sprite>sprites\Sp_Star_Sun</sprite>
+    <sprite>sprites\Sp_Trail</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\Bg_Back</background>
@@ -66,13 +72,14 @@
     <script>scripts\Sc_Restart.gml</script>
     <script>scripts\Sc_Distance.gml</script>
     <script>scripts\Sc_Angle.gml</script>
+    <script>scripts\Sc_String_Decipher.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
+    <font>fonts\fnt_update</font>
   </fonts>
   <objects name="objects">
     <object>objects\O_Border</object>
-    <object>objects\O_Login</object>
     <object>objects\O_Controller</object>
     <object>objects\O_Newgame</object>
     <object>objects\O_Gravity</object>
@@ -94,6 +101,7 @@
       </objects>
     </objects>
     <object>objects\O_center</object>
+    <object>objects\O_Trail</object>
     <objects name="Asteroid">
       <object>objects\O_Asteroid_Parent</object>
       <object>objects\O_Asteroid</object>
@@ -102,23 +110,33 @@
     <objects name="Planet">
       <object>objects\O_Planet_Parent</object>
       <object>objects\O_Planet_Water</object>
+      <object>objects\O_Star_Parent</object>
+      <object>objects\O_Star_Sun</object>
     </objects>
     <objects name="Projectiles">
       <object>objects\O_Projectile</object>
       <object>objects\O_Laser</object>
     </objects>
+    <objects name="GMS">
+      <object>objects\GMS</object>
+      <object>objects\O_Login</object>
+      <object>objects\O_Update</object>
+    </objects>
+    <object>objects\O_other_player</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\R_init</room>
     <room>rooms\R_login</room>
+    <room>rooms\R_update</room>
     <room>rooms\R_Title</room>
     <room>rooms\R_Newgame</room>
     <room>rooms\R_Main</room>
     <room>rooms\R_NewTutorial</room>
     <room>rooms\R_Tutorial</room>
   </rooms>
-  <constants number="83">
-    <constant name="version_string">"0.10.0"</constant>
-    <constant name="Gravitational_Constant">0.0000000000667</constant>
+  <constants number="86">
+    <constant name="version_string">"0.10.2"</constant>
+    <constant name="Gravitational_Constant">0.0000000000667408</constant>
     <constant name="G">0.000000001</constant>
     <constant name="c_health">make_color_rgb(64,255,64)</constant>
     <constant name="c_fuel">make_color_rgb(255,255,0)</constant>
@@ -134,7 +152,10 @@
     <constant name="ship_accelV2">0.05</constant>
     <constant name="ship_accelV3">0.075</constant>
     <constant name="mass_Moon_real">73476730900000000000000</constant>
-    <constant name="mass_Moon">10000000000</constant>
+    <constant name="mass_Moon">100000000000</constant>
+    <constant name="mass_Sun_real">1989000000000000000000000000000</constant>
+    <constant name="mass_Sun_scaled">270697940000000000</constant>
+    <constant name="mass_Sun">2706979400000</constant>
     <constant name="stack_size">50</constant>
     <constant name="c_brown">make_color_rgb(79, 52, 0)</constant>
     <constant name="inventory_text_color">c_yellow</constant>

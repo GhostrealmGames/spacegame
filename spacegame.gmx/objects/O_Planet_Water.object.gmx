@@ -34,10 +34,13 @@ max_create = 150; // 150
 mass = mass_Moon;
 num_asteroids = 0;
 num_comets = 0;
-/*if (instance_exists(O_Planet_BlackHole))
+/*if (instance_exists(O_Star_Sun))
 {
-    Sc_OrbitalVelocity(self, O_Planet_BlackHole);
+    Sc_OrbitalVelocity(self, O_Star_Sun);
 }*/
+
+event_inherited();
+
 // Create Asteroids
 num_asteroids = round(random_range(min_create, max_create));
 for (i = 0; i &lt; num_asteroids; i += 1)
@@ -51,8 +54,8 @@ for (i = 0; i &lt; num_asteroids; i += 1)
         dist = sprite_width/2 + random_range(inner_radius, outer_radius);
         dir = random(360);
     }
-    global.Asteroids[i] = instance_create(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), O_Asteroid);
-    global.Asteroids[i].num = i;
+    Asteroids[i] = instance_create(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), O_Asteroid);
+    Asteroids[i].num = i;
 }
 // Create Comets
 num_comets = round(random_range(min_create/5,max_create/5));
@@ -66,13 +69,11 @@ for (i=0; i &lt; num_comets; i += 1)
         dist = sprite_width/2 + random_range(inner_radius, outer_radius);
         dir = random(360);
     }
-    global.Comets[i] = instance_create(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), O_Comet);
-    global.Comets[i].num = i;
+    Comets[i] = instance_create(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), O_Comet);
+    Comets[i].num = i;
 }
-event_inherited();
 
 // Setup Player orbital velocity
-
 angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
 //for (i = 0; i &lt; num_asteroids; i += 1)
 //{
@@ -110,8 +111,8 @@ angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-// Player gravity
+            <string>/// Player gravity
+event_inherited();
 if(instance_exists(O_Ship))
 {
     angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);

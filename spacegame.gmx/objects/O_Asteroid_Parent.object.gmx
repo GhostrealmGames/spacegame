@@ -54,6 +54,7 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>collided = false;
+event_inherited();
 </string>
           </argument>
         </arguments>

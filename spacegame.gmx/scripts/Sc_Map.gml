@@ -1,6 +1,14 @@
 var _x, _y, _s, _w, _h;
-width = 20000;
-height = 20000;
+if(instance_exists(O_Main))
+{
+    width = O_Main.map_size; //20000
+    height = O_Main.map_size; //20000
+}
+else
+{
+    width = 20000;
+    height = 20000;
+}
 _x = argument0// + view_wview[0]/2;
 _y = argument1// + view_hview[0]/2;
 _s = width/view_wview[0] * 2;
@@ -18,9 +26,23 @@ draw_rectangle(_x, _y, _x + width/_s, _y + width/_s, false);
 draw_set_color(c_white);
 draw_rectangle(_x, _y, _x + width/_s, _y + width/_s, true);
 
+// Center on nearest Planet
+nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Planet_Parent);
+if(instance_exists(nearest))
+{
+    _x = _x - nearest.x / _s + width/2/_s;
+    _y = _y - nearest.y / _s + height/2/_s;
+}
+else
+{
+    // Center on player
+    _x = _x - O_Ship.x / _s + width/2/_s;
+    _y = _y - O_Ship.y / _s + height/2/_s;
+}
+
 // Center on player
-_x = _x - O_Ship.x / _s + width/2/_s;
-_y = _y - O_Ship.y / _s + height/2/_s;
+//_x = _x - O_Ship.x / _s + width/2/_s;
+//_y = _y - O_Ship.y / _s + height/2/_s;
 
 draw_set_alpha(.8);
 // Tutorial Objects
@@ -49,6 +71,11 @@ draw_set_alpha(.6);
 with (O_Planet_Parent)
 {
     draw_set_color(c_ltgray);
+    draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
+}
+with (O_Star_Parent)
+{
+    draw_set_color(c_orange);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
 }
 /*
@@ -89,4 +116,12 @@ with (O_Ship)
     draw_set_color(c_orange);
     //draw_circle(_x+x/_s, _y+y/_s, (sprite_height/2)/_s, 0);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_get_height(Sp_ShipV2)/2)/_s, 0);
+}
+if(global.debug)
+{
+    with (O_Trail)
+    {
+        draw_set_color(c_red);
+        draw_circle(_x+x/_s, _y+y/_s, (sprite_get_height(Sp_Asteroid)/4)/_s, 0);
+    }
 }

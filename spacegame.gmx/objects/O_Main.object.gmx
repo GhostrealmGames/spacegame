@@ -26,6 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>draw_fps = false;
+map_size = 20000;
+zoom_rate = 1000;
+zout_max = 500000;
+zin_min = 10000;
 
 // Create Border
 rnum = 0;
@@ -43,9 +47,11 @@ for (col = 0; col &lt; room_height; col += O_Border.sprite_height)
 }*/
 //instance_deactivate_object(O_Border);
 // Create Ship
-instance_create(1060, 640, O_Ship); //2500
+instance_create(1060, 640, O_Ship); // creates a ship in the center of the screen
 // Create Planets
 instance_create(3000, 3000, O_Planet_Water); //room_height/2
+// Create Star
+//instance_create(10000, 10000, O_Star_Sun);
 /*
 with (O_Ship)
 {
@@ -99,6 +105,66 @@ Sc_Render();
         </arguments>
       </action>
     </event>
+    <event eventtype="6" enumb="61">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(map_size &gt; zin_min)
+{
+    map_size -= zoom_rate;
+}
+else
+{
+    map_size = zin_min;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="60">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(map_size &lt; zout_max)
+{
+    map_size += zoom_rate;
+}
+else
+{
+    map_size = zout_max;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -132,6 +198,36 @@ if (global.debug)
 {
     draw_set_color(c_red);
     draw_text(mouse_x - 32, mouse_y - 32, string(global.mouse_type));
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="70">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (draw_fps)
+{
+    draw_fps = false;
+}
+else
+{
+    draw_fps = true;
 }
 </string>
           </argument>
