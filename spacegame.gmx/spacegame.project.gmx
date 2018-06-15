@@ -149,6 +149,23 @@
     </objects>
     <objects name="Particles">
       <object>objects\O_Particle_Parent</object>
+      <object>objects\O_Particle_Copper</object>
+      <object>objects\O_Particle_Iron</object>
+      <object>objects\O_Particle_Nickel</object>
+      <object>objects\O_Particle_Stone</object>
+      <object>objects\O_Particle_Ice</object>
+      <object>objects\O_Particle_Gold</object>
+      <object>objects\O_Particle_Platinum</object>
+      <object>objects\O_Particle_Titanium</object>
+      <object>objects\O_Particle_Coal</object>
+      <object>objects\O_Refined_Copper</object>
+      <object>objects\O_Refined_Iron</object>
+      <object>objects\O_Refined_Nickel</object>
+      <object>objects\O_Refined_Stone</object>
+      <object>objects\O_Refined_Ice</object>
+      <object>objects\O_Refined_Gold</object>
+      <object>objects\O_Refined_Platinum</object>
+      <object>objects\O_Refined_Titanium</object>
     </objects>
     <objects name="Planet">
       <object>objects\O_Planet_Parent</object>
