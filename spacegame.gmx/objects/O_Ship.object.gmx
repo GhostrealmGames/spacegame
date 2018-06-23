@@ -167,6 +167,97 @@ if (instance_exists(O_Planet_Parent))
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="O_Gravity">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (other.Type == -1)
+{
+    if (other.collided == false)
+    {
+        event_inherited();
+        global.ship_health -= 1 * other.speed;
+        sound_play(A_Collision_Asteroid);
+        other.collided = true;
+        other.set_alarm = true;
+    }
+}
+///Needs some adjustment
+/*
+// Bounce off of asteroid
+with(other)
+{
+    dist_x = self.x - other.x;
+    dist_y = self.y - other.y;
+    dist2 = sqr(dist_x * dist_x + dist_y * dist_y);
+    
+    acceleration_x = dist_x / dist2;
+    acceleration_y = dist_y / dist2;
+    acceleration2 = point_distance(0, 0, acceleration_x, acceleration_y);
+    pdir2 = point_direction(0, 0, acceleration_x, acceleration_y);
+}
+with(O_Gravity)
+{
+    if(instance_exists(O_Ship))
+    {
+        //pdir = point_direction(other.x, other.y, x, y);
+        dist_x = O_Ship.x - x;
+        dist_y = O_Ship.y - y;
+        dist2 = sqr(dist_x * dist_x + dist_y * dist_y);
+    
+        acceleration_x = dist_x / dist2;
+        acceleration_y = dist_y / dist2;
+        acceleration = point_distance(0, 0, acceleration_x, acceleration_y);
+        pdir = point_direction(0, 0, acceleration_x, acceleration_y);
+    
+        force = mass * acceleration;
+        motion_add(-pdir, force*100);//other.speed/other.mass*200);
+    }
+}
+with(O_Planet_Parent)
+{
+    if(instance_exists(O_Ship))
+    {
+        //pdir = point_direction(other.x, other.y, x, y);
+        dist_x = O_Ship.x - x;
+        dist_y = O_Ship.y - y;
+        dist2 = sqr(dist_x * dist_x + dist_y * dist_y);
+    
+        acceleration_x = dist_x / dist2;
+        acceleration_y = dist_y / dist2;
+        acceleration = point_distance(0, 0, acceleration_x, acceleration_y);
+        pdir = point_direction(0, 0, acceleration_x, acceleration_y);
+    
+        force = mass * acceleration;
+        motion_add(-pdir, force*100);
+    }
+}
+with(other)
+{
+    if(instance_exists(O_Ship))
+    {
+        force = O_Ship.mass * acceleration;
+        motion_add(pdir2, force*100);
+    }
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="5" enumb="87">
       <action>
         <libid>1</libid>

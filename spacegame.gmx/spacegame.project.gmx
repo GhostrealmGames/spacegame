@@ -10,6 +10,7 @@
     <sound>sound\A_Shoot</sound>
     <sound>sound\A_Click</sound>
     <sound>sound\A_Explosion</sound>
+    <sound>sound\A_Collision_Asteroid</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\Sp_Target</sprite>
@@ -132,6 +133,7 @@
         <object>objects\O_Title_Play</object>
         <object>objects\O_Title_Tutorial</object>
         <object>objects\O_Title_Highscores</object>
+        <object>objects\O_Title_Achievements</object>
         <object>objects\O_Title_Controls</object>
         <object>objects\O_Title_Credits</object>
         <object>objects\O_Title_Exit</object>

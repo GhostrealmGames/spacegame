@@ -78,13 +78,13 @@ with (O_Star_Parent)
     draw_set_color(c_orange);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
 }
-/*
 draw_set_alpha(.8);
 with (O_Particle_Parent)
 {
     draw_set_color(c_lime);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
 }
+/*
 with (O_Droid_Parent)
 {
     draw_set_color(c_fuchsia);
