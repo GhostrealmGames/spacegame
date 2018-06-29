@@ -84,22 +84,7 @@ with (O_Asteroid_Parent)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.newgame)
-{
-    /*O_Controller.deactivate = false;
-    with (O_Planet_Parent)
-    {
-        instance_destroy();
-    }
-    with (O_Asteroid_Parent)
-    {
-        instance_destroy();
-    }
-    instance_create(O_Planet_Water);*/
-    global.newgame = false;
-    room_restart();
-}
-Sc_Render();
+            <string>Sc_Render();
 </string>
           </argument>
         </arguments>
@@ -159,6 +144,39 @@ else
 else
 {
     map_size = zout_max;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (global.newgame)
+{
+    global.newgame = false;
+    room_persistent = false;
+    room_restart();
+    room_goto(R_Newgame);
+}
+else
+{
+    room_persistent = true;
 }
 </string>
           </argument>

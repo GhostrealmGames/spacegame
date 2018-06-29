@@ -15,6 +15,7 @@
   <sprites name="sprites">
     <sprite>sprites\Sp_Target</sprite>
     <sprite>sprites\Sp_Cursor</sprite>
+    <sprite>sprites\Sp_Empty</sprite>
     <sprites name="Border">
       <sprite>sprites\Sp_Border</sprite>
       <sprite>sprites\Sp_Border_Hit</sprite>
@@ -92,19 +93,20 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\Sc_Shoot.gml</script>
-    <script>scripts\Sc_OrbitalVelocity.gml</script>
-    <script>scripts\Sc_ShipOrbitalVelocity.gml</script>
-    <script>scripts\Sc_Gravity.gml</script>
-    <script>scripts\Sc_ShipGravity.gml</script>
-    <script>scripts\Sc_Minimap.gml</script>
-    <script>scripts\Sc_Render.gml</script>
-    <script>scripts\Sc_HUD.gml</script>
-    <script>scripts\Sc_Map.gml</script>
-    <script>scripts\Sc_Minimap_experimental.gml</script>
-    <script>scripts\Sc_Restart.gml</script>
     <script>scripts\Sc_Distance.gml</script>
     <script>scripts\Sc_Angle.gml</script>
+    <script>scripts\Sc_Gravity.gml</script>
+    <script>scripts\Sc_OrbitalVelocity.gml</script>
+    <script>scripts\Sc_ShipGravity.gml</script>
+    <script>scripts\Sc_ShipOrbitalVelocity.gml</script>
+    <script>scripts\Sc_HUD.gml</script>
+    <script>scripts\Sc_Minimap.gml</script>
+    <script>scripts\Sc_Minimap_experimental.gml</script>
+    <script>scripts\Sc_Map.gml</script>
     <script>scripts\Sc_String_Decipher.gml</script>
+    <script>scripts\Sc_Render.gml</script>
+    <script>scripts\Sc_Restart.gml</script>
+    <script>scripts\Sc_Restart_Main.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
@@ -127,6 +129,8 @@
     <objects name="Menu">
       <object>objects\O_Main</object>
       <object>objects\O_Menu_Title</object>
+      <object>objects\O_Menu_Pause</object>
+      <object>objects\O_Menu_Inventory</object>
       <object>objects\O_Button</object>
       <objects name="Title">
         <object>objects\O_Title_Parent</object>
@@ -138,6 +142,12 @@
         <object>objects\O_Title_Credits</object>
         <object>objects\O_Title_Exit</object>
         <object>objects\O_Title_Load</object>
+      </objects>
+      <objects name="Pause">
+        <object>objects\O_Pause_Parent</object>
+        <object>objects\O_Pause_Play</object>
+        <object>objects\O_Pause_Restart</object>
+        <object>objects\O_Pause_Exit</object>
       </objects>
     </objects>
     <objects name="Projectiles">
@@ -186,10 +196,12 @@
     <room>rooms\R_login</room>
     <room>rooms\R_update</room>
     <room>rooms\R_Title</room>
-    <room>rooms\R_Newgame</room>
-    <room>rooms\R_Main</room>
     <room>rooms\R_NewTutorial</room>
     <room>rooms\R_Tutorial</room>
+    <room>rooms\R_Newgame</room>
+    <room>rooms\R_Main</room>
+    <room>rooms\R_Menu_Pause</room>
+    <room>rooms\R_Command</room>
   </rooms>
   <constants number="86">
     <constant name="version_string">"0.10.2"</constant>

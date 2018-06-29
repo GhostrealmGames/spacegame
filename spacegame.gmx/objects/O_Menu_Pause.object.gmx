@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -25,35 +25,51 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Asteroids/Comets
+            <string>///Create buttons
+instance_create(room_width/2, room_height/2 - sprite_get_height(Sp_Button_Play)/2, O_Pause_Play);
+instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2, O_Pause_Restart);
+instance_create(room_width/2, room_height/2 + 1.5*sprite_get_height(Sp_Button_Play), O_Pause_Exit);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="106">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// Show Highscore table
+//highscore_set_font(fnt_highscore, 12, 0);
+//highscore_set_colors(c_black, c_aqua, c_red);
+//highscore_show(score);
+// Asteroids/Comets
 global.Asteroids[0] = 0;
 global.Comets[0] = 0;
 // Ship
 global.fuel = 100;
 global.ship_health = 100;
-global.ship_upgrade = 1;
 // Inventory
 global.Slots[0] = 0;
 global.Inventory[2*total_resource_types + craftable_items] = 0;
 global.Inv_Draw[2*total_resource_types + craftable_items] = 0;
-inv_slots_full = false;
-inv_full[2*total_resource_types + craftable_items] = false;
-filled_slots = 0;
+inv_full = false;
+game_over = false;
 score = 0;
-
-//global.newgame = true;
-/*if (!gms_achievement_isreached("Start your first game."))
-{
-    gms_achievement_reach("Start your first game.");
-}*/
-if (room == R_NewTutorial)
-{
-    room_goto(R_Tutorial);
-}
-else
-{
-    room_goto(R_Main);
-}
+// Restart Game
+game_restart();
 </string>
           </argument>
         </arguments>

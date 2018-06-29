@@ -3,9 +3,9 @@
   <spriteName>Sp_Button_Play</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>100</depth>
   <persistent>0</persistent>
-  <parentName>O_Title_Parent</parentName>
+  <parentName>O_Pause_Parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="6" enumb="4">
@@ -26,10 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control)
+//O_Ship.shooting = true;
+//alarm[1] = 10;
+if (room == R_Menu_Pause)
 {
-    //global.newgame = false;
-    room = R_Newgame;
+    room = R_Main;
+}
+else
+{
+    room = R_Tutorial;
 }
 </string>
           </argument>

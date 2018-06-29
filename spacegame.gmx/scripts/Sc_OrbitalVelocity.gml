@@ -1,5 +1,5 @@
 var dist_x, dist_y, dist, angle_object, orbitalvelocity;
-offset = .90
+offset = random_range(0.9, 1.1);  // changes eccentricity of the orbit
 // Distance
 dist_x = argument0.x - argument1.x;
 dist_y = argument0.y - argument1.y;

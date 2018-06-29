@@ -179,9 +179,64 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(room != R_Title)
+            <string>/*if(!deactivate)
 {
-    room = R_Title;
+    if(room != R_Title)
+    {
+        room = R_Title;
+    }
+}*/
+if(!deactivate)
+{
+    cursor_sprite = Sp_Empty;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (room != R_Title)
+{
+    if (room == R_Main)
+    {
+        screen_save("Pause.png");
+        global.B_Pause = background_add("Pause.png", false, true)
+        room_set_background(R_Menu_Pause, 2, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
+        cursor_sprite = Sp_Cursor;
+        room = R_Menu_Pause;
+    }
+    else if (room == R_Menu_Pause)
+    {
+        cursor_sprite = Sp_Cursor;
+        room = R_Main;
+    }
+    else if (room == R_Command)
+    {
+        cursor_sprite = Sp_Cursor;
+        room = R_Menu_Pause;
+    }
+    else
+    {
+        cursor_sprite = Sp_Cursor;
+        room = R_Menu_Pause;
+    }
 }
 </string>
           </argument>
