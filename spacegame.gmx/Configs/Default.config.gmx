@@ -56,7 +56,7 @@
     <option_android_orient_portrait_flipped>True</option_android_orient_portrait_flipped>
     <option_android_orientation>2</option_android_orientation>
     <option_android_ouya_icon>Configs\Default\android\icons\ouyaIcon.png</option_android_ouya_icon>
-    <option_android_package_company>companyname</option_android_package_company>
+    <option_android_package_company>ghostrealmgames</option_android_package_company>
     <option_android_package_domain>com</option_android_package_domain>
     <option_android_package_product>spacegame</option_android_package_product>
     <option_android_permission_flags>8</option_android_permission_flags>
@@ -211,7 +211,7 @@
     <option_changeresolution>false</option_changeresolution>
     <option_closeesc>true</option_closeesc>
     <option_colordepth>0</option_colordepth>
-    <option_display_name>GameMaker: Studio</option_display_name>
+    <option_display_name>Earth's Last Hope</option_display_name>
     <option_displayerrors>True</option_displayerrors>
     <option_ecma>0</option_ecma>
     <option_facebook_app_display_name></option_facebook_app_display_name>
@@ -496,7 +496,7 @@
     <option_version_major>0</option_version_major>
     <option_version_minor>10</option_version_minor>
     <option_version_product></option_version_product>
-    <option_version_release>0</option_version_release>
+    <option_version_release>2</option_version_release>
     <option_win8_advertising_appid></option_win8_advertising_appid>
     <option_win8_advertising_enable>0</option_win8_advertising_enable>
     <option_win8_advertising_key></option_win8_advertising_key>
@@ -581,7 +581,7 @@
     <option_windows_major_version>0</option_windows_major_version>
     <option_windows_nsis_file>Configs\Default\windows\RunnerInstaller.nsi</option_windows_nsis_file>
     <option_windows_product_info></option_windows_product_info>
-    <option_windows_release_version>0</option_windows_release_version>
+    <option_windows_release_version>2</option_windows_release_version>
     <option_windows_runner_finished>Configs\Default\windows\Runner_finish.bmp</option_windows_runner_finished>
     <option_windows_runner_header>Configs\Default\windows\Runner_header.bmp</option_windows_runner_header>
     <option_windows_save_location>0</option_windows_save_location>

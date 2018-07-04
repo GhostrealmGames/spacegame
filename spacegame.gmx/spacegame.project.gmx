@@ -3,24 +3,22 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\GameMaker Server+(All)</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\A_Shoot</sound>
+    <sound>sound\A_Click</sound>
+    <sound>sound\A_Explosion</sound>
+    <sound>sound\A_Collision_Asteroid</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\Sp_Target</sprite>
     <sprite>sprites\Sp_Cursor</sprite>
-    <sprites name="Asteroid">
-      <sprite>sprites\Sp_Asteroid</sprite>
-      <sprite>sprites\Sp_Asteroid_1</sprite>
-    </sprites>
-    <sprites name="Ship">
-      <sprite>sprites\Sp_ShipV1</sprite>
-      <sprite>sprites\Sp_FireV1</sprite>
-      <sprite>sprites\Sp_ShipV2</sprite>
-      <sprite>sprites\Sp_FireV2</sprite>
-      <sprite>sprites\Sp_ShipV3</sprite>
-      <sprite>sprites\Sp_FireV3</sprite>
+    <sprite>sprites\Sp_Empty</sprite>
+    <sprites name="Border">
+      <sprite>sprites\Sp_Border</sprite>
+      <sprite>sprites\Sp_Border_Hit</sprite>
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\Sp_Title</sprite>
@@ -34,16 +32,90 @@
       <sprite>sprites\Sp_Button_Exit</sprite>
       <sprite>sprites\Sp_Button_Load</sprite>
       <sprite>sprites\Sp_Button_Restart</sprite>
+      <sprites name="Inventory">
+        <sprite>sprites\Sp_Inv_Slot</sprite>
+        <sprite>sprites\Sp_Inv_Trashcan</sprite>
+        <sprite>sprites\Sp_Inv_Background</sprite>
+      </sprites>
     </sprites>
-    <sprite>sprites\Sp_Border</sprite>
-    <sprite>sprites\Sp_Logo</sprite>
-    <sprite>sprites\Sp_Border_Hit</sprite>
-    <sprite>sprites\Sp_Planet_Water</sprite>
-    <sprite>sprites\Sp_HUD</sprite>
-    <sprite>sprites\Sp_Game_Over</sprite>
+    <sprites name="Projectiles">
+      <sprite>sprites\Sp_Laser</sprite>
+      <sprite>sprites\Sp_Laser_ROY</sprite>
+      <sprite>sprites\Sp_Laser_ROYGBIV</sprite>
+    </sprites>
+    <sprites name="Asteroids">
+      <sprite>sprites\Sp_Asteroid</sprite>
+      <sprite>sprites\Sp_Asteroid_1</sprite>
+      <sprite>sprites\Sp_Comet</sprite>
+    </sprites>
+    <sprites name="Particles">
+      <sprites name="Ores">
+        <sprite>sprites\Sp_Particle_Copper</sprite>
+        <sprite>sprites\Sp_Particle_Iron</sprite>
+        <sprite>sprites\Sp_Particle_Nickel</sprite>
+        <sprite>sprites\Sp_Particle_Stone</sprite>
+        <sprite>sprites\Sp_Particle_Ice</sprite>
+        <sprite>sprites\Sp_Particle_Gold</sprite>
+        <sprite>sprites\Sp_Particle_Platinum</sprite>
+        <sprite>sprites\Sp_Particle_Titanium</sprite>
+        <sprite>sprites\Sp_Particle_Coal</sprite>
+      </sprites>
+      <sprites name="Refined Resources">
+        <sprite>sprites\Sp_Refined_Copper</sprite>
+        <sprite>sprites\Sp_Refined_Iron</sprite>
+        <sprite>sprites\Sp_Refined_Nickel</sprite>
+        <sprite>sprites\Sp_Refined_Stone</sprite>
+        <sprite>sprites\Sp_Refined_Ice</sprite>
+        <sprite>sprites\Sp_Refined_Gold</sprite>
+        <sprite>sprites\Sp_Refined_Platinum</sprite>
+        <sprite>sprites\Sp_Refined_Titanium</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="Ship">
+      <sprite>sprites\Sp_ShipV1</sprite>
+      <sprite>sprites\Sp_FireV1</sprite>
+      <sprite>sprites\Sp_ShipV2</sprite>
+      <sprite>sprites\Sp_FireV2</sprite>
+      <sprite>sprites\Sp_ShipV3</sprite>
+      <sprite>sprites\Sp_FireV3</sprite>
+    </sprites>
+    <sprites name="Droids">
+      <sprite>sprites\Sp_Droid_Collector</sprite>
+      <sprite>sprites\Sp_Droid_Miner</sprite>
+      <sprite>sprites\Sp_Droid_Smelter</sprite>
+      <sprite>sprites\Sp_Droid_Extra1</sprite>
+      <sprite>sprites\Sp_Droid_Extra2</sprite>
+      <sprite>sprites\Sp_Droid_Extra3</sprite>
+      <sprite>sprites\Sp_Droid_Extra4</sprite>
+      <sprite>sprites\Sp_Droid_Fire0</sprite>
+      <sprite>sprites\Sp_Droid_Fire</sprite>
+    </sprites>
+    <sprites name="Planets">
+      <sprite>sprites\Sp_Planet_Water</sprite>
+      <sprite>sprites\Sp_Star_Sun</sprite>
+    </sprites>
+    <sprites name="Crafting">
+      <sprite>sprites\Sp_Repair_Pack</sprite>
+      <sprite>sprites\Sp_Copper_Wire</sprite>
+      <sprite>sprites\Sp_Gold_Wire</sprite>
+      <sprite>sprites\Sp_Collector_Claw</sprite>
+      <sprite>sprites\Sp_Mining_Drill</sprite>
+      <sprite>sprites\Sp_Crucible</sprite>
+      <sprite>sprites\Sp_Coolant_Cell</sprite>
+      <sprite>sprites\Sp_ShipV2_Wings</sprite>
+      <sprite>sprites\Sp_ShipV2_Body</sprite>
+      <sprite>sprites\Sp_ShipV2_Thruster</sprite>
+      <sprite>sprites\Sp_ShipV2_Upgrade</sprite>
+      <sprite>sprites\Sp_ShipV3_Wings</sprite>
+      <sprite>sprites\Sp_ShipV3_Body</sprite>
+      <sprite>sprites\Sp_ShipV3_Thruster</sprite>
+      <sprite>sprites\Sp_ShipV3_Upgrade</sprite>
+    </sprites>
     <sprite>sprites\Sp_Explosion</sprite>
-    <sprite>sprites\Sp_Laser</sprite>
-    <sprite>sprites\Sp_Comet</sprite>
+    <sprite>sprites\Sp_Game_Over</sprite>
+    <sprite>sprites\Sp_HUD</sprite>
+    <sprite>sprites\Sp_Logo</sprite>
+    <sprite>sprites\Sp_Trail</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\Bg_Back</background>
@@ -54,71 +126,143 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\Sc_Shoot.gml</script>
-    <script>scripts\Sc_OrbitalVelocity.gml</script>
-    <script>scripts\Sc_ShipOrbitalVelocity.gml</script>
-    <script>scripts\Sc_Gravity.gml</script>
-    <script>scripts\Sc_ShipGravity.gml</script>
-    <script>scripts\Sc_Minimap.gml</script>
-    <script>scripts\Sc_Render.gml</script>
-    <script>scripts\Sc_HUD.gml</script>
-    <script>scripts\Sc_Map.gml</script>
-    <script>scripts\Sc_Minimap_experimental.gml</script>
-    <script>scripts\Sc_Restart.gml</script>
     <script>scripts\Sc_Distance.gml</script>
     <script>scripts\Sc_Angle.gml</script>
+    <script>scripts\Sc_Gravity.gml</script>
+    <script>scripts\Sc_OrbitalVelocity.gml</script>
+    <script>scripts\Sc_ShipGravity.gml</script>
+    <script>scripts\Sc_ShipOrbitalVelocity.gml</script>
+    <script>scripts\Sc_HUD.gml</script>
+    <script>scripts\Sc_Minimap.gml</script>
+    <script>scripts\Sc_Minimap_experimental.gml</script>
+    <script>scripts\Sc_Map.gml</script>
+    <script>scripts\Sc_String_Decipher.gml</script>
+    <script>scripts\Sc_Render.gml</script>
+    <script>scripts\Sc_Restart.gml</script>
+    <script>scripts\Sc_Restart_Main.gml</script>
+    <script>scripts\Sc_Inventory_Create.gml</script>
+    <script>scripts\Sc_Inventory_Assign.gml</script>
+    <script>scripts\Sc_Inventory_Draw.gml</script>
+    <script>scripts\Sc_Smelt_Create.gml</script>
+    <script>scripts\Sc_Craft_Create.gml</script>
+    <script>scripts\Sc_Craft_Assign.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
+    <font>fonts\fnt_update</font>
   </fonts>
   <objects name="objects">
     <object>objects\O_Border</object>
-    <object>objects\O_Login</object>
     <object>objects\O_Controller</object>
     <object>objects\O_Newgame</object>
     <object>objects\O_Gravity</object>
     <object>objects\O_Ship</object>
     <object>objects\O_Explosion</object>
+    <object>objects\O_center</object>
+    <object>objects\O_Trail</object>
+    <objects name="Tutorial">
+      <object>objects\O_Tutorial</object>
+      <objects name="Inventory">
+        <object>objects\O_Tutorial_Slot</object>
+      </objects>
+    </objects>
+    <objects name="GMS">
+      <object>objects\GMS</object>
+      <object>objects\O_Login</object>
+      <object>objects\O_Update</object>
+    </objects>
     <objects name="Menu">
       <object>objects\O_Main</object>
       <object>objects\O_Menu_Title</object>
+      <object>objects\O_Menu_Pause</object>
+      <object>objects\O_Menu_Inventory</object>
       <object>objects\O_Button</object>
       <objects name="Title">
         <object>objects\O_Title_Parent</object>
         <object>objects\O_Title_Play</object>
         <object>objects\O_Title_Tutorial</object>
         <object>objects\O_Title_Highscores</object>
+        <object>objects\O_Title_Achievements</object>
         <object>objects\O_Title_Controls</object>
         <object>objects\O_Title_Credits</object>
         <object>objects\O_Title_Exit</object>
         <object>objects\O_Title_Load</object>
       </objects>
-    </objects>
-    <object>objects\O_center</object>
-    <objects name="Asteroid">
-      <object>objects\O_Asteroid_Parent</object>
-      <object>objects\O_Asteroid</object>
-      <object>objects\O_Comet</object>
-    </objects>
-    <objects name="Planet">
-      <object>objects\O_Planet_Parent</object>
-      <object>objects\O_Planet_Water</object>
+      <objects name="Pause">
+        <object>objects\O_Pause_Parent</object>
+        <object>objects\O_Pause_Play</object>
+        <object>objects\O_Pause_Restart</object>
+        <object>objects\O_Pause_Exit</object>
+      </objects>
+      <objects name="Inventory">
+        <object>objects\O_Inv_Parent</object>
+        <object>objects\O_Inv_Background</object>
+        <object>objects\O_Inv_Slot</object>
+        <object>objects\O_Inv_Trash</object>
+        <object>objects\O_Smelt_Parent</object>
+        <object>objects\O_Smelt_Input</object>
+        <object>objects\O_Smelt_Output</object>
+        <object>objects\O_Craft_Parent</object>
+        <object>objects\O_Craft_Slot</object>
+      </objects>
     </objects>
     <objects name="Projectiles">
       <object>objects\O_Projectile</object>
       <object>objects\O_Laser</object>
     </objects>
+    <objects name="Asteroid">
+      <object>objects\O_Asteroid_Parent</object>
+      <object>objects\O_Asteroid</object>
+      <object>objects\O_Comet</object>
+    </objects>
+    <objects name="Particles">
+      <object>objects\O_Particle_Parent</object>
+      <object>objects\O_Particle_Copper</object>
+      <object>objects\O_Particle_Iron</object>
+      <object>objects\O_Particle_Nickel</object>
+      <object>objects\O_Particle_Stone</object>
+      <object>objects\O_Particle_Ice</object>
+      <object>objects\O_Particle_Gold</object>
+      <object>objects\O_Particle_Platinum</object>
+      <object>objects\O_Particle_Titanium</object>
+      <object>objects\O_Particle_Coal</object>
+      <object>objects\O_Refined_Copper</object>
+      <object>objects\O_Refined_Iron</object>
+      <object>objects\O_Refined_Nickel</object>
+      <object>objects\O_Refined_Stone</object>
+      <object>objects\O_Refined_Ice</object>
+      <object>objects\O_Refined_Gold</object>
+      <object>objects\O_Refined_Platinum</object>
+      <object>objects\O_Refined_Titanium</object>
+    </objects>
+    <objects name="Planet">
+      <object>objects\O_Planet_Parent</object>
+      <object>objects\O_Planet_Water</object>
+      <object>objects\O_Star_Parent</object>
+      <object>objects\O_Star_Sun</object>
+    </objects>
+    <objects name="Droids">
+      <object>objects\O_Particle_Target</object>
+      <object>objects\O_Target</object>
+    </objects>
+    <object>objects\O_other_player</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\R_init</room>
     <room>rooms\R_login</room>
+    <room>rooms\R_update</room>
     <room>rooms\R_Title</room>
-    <room>rooms\R_Newgame</room>
-    <room>rooms\R_Main</room>
     <room>rooms\R_NewTutorial</room>
     <room>rooms\R_Tutorial</room>
+    <room>rooms\R_Newgame</room>
+    <room>rooms\R_Main</room>
+    <room>rooms\R_Menu_Pause</room>
+    <room>rooms\R_Menu_Inventory</room>
+    <room>rooms\R_Command</room>
   </rooms>
-  <constants number="83">
-    <constant name="version_string">"0.10.0"</constant>
-    <constant name="Gravitational_Constant">0.0000000000667</constant>
+  <constants number="86">
+    <constant name="version_string">"0.10.2"</constant>
+    <constant name="Gravitational_Constant">0.0000000000667408</constant>
     <constant name="G">0.000000001</constant>
     <constant name="c_health">make_color_rgb(64,255,64)</constant>
     <constant name="c_fuel">make_color_rgb(255,255,0)</constant>
@@ -134,7 +278,10 @@
     <constant name="ship_accelV2">0.05</constant>
     <constant name="ship_accelV3">0.075</constant>
     <constant name="mass_Moon_real">73476730900000000000000</constant>
-    <constant name="mass_Moon">10000000000</constant>
+    <constant name="mass_Moon">100000000000</constant>
+    <constant name="mass_Sun_real">1989000000000000000000000000000</constant>
+    <constant name="mass_Sun_scaled">270697940000000000</constant>
+    <constant name="mass_Sun">2706979400000</constant>
     <constant name="stack_size">50</constant>
     <constant name="c_brown">make_color_rgb(79, 52, 0)</constant>
     <constant name="inventory_text_color">c_yellow</constant>

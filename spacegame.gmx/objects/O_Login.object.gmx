@@ -521,17 +521,46 @@ global.Craft[shipV3,shipV3_thruster+total_resource_types] = 1;
             <kind>1</kind>
             <string>cursor_sprite = Sp_Cursor;
 check_for_updates = false;
-room_goto(R_Title);
+//room_goto(R_Title);
 // Uses GMS plugin
-/*if (gms_update_check())
+if (gms_update_check())
 {
     room_goto(R_update);
 }
 else
 {
     gms_show_login();
-}*/
+}
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (check_for_updates)
+{
+    if (gms_update_check())
+    {
+        room_goto(R_update);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -560,6 +589,29 @@ else
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="24">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>game_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -578,7 +630,7 @@ else
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_red);
-//draw_set_font(fnt_update);
+draw_set_font(fnt_update);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 if (check_for_updates)
