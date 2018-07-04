@@ -32,6 +32,11 @@
       <sprite>sprites\Sp_Button_Exit</sprite>
       <sprite>sprites\Sp_Button_Load</sprite>
       <sprite>sprites\Sp_Button_Restart</sprite>
+      <sprites name="Inventory">
+        <sprite>sprites\Sp_Inv_Slot</sprite>
+        <sprite>sprites\Sp_Inv_Trashcan</sprite>
+        <sprite>sprites\Sp_Inv_Background</sprite>
+      </sprites>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\Sp_Laser</sprite>
@@ -74,9 +79,37 @@
       <sprite>sprites\Sp_ShipV3</sprite>
       <sprite>sprites\Sp_FireV3</sprite>
     </sprites>
+    <sprites name="Droids">
+      <sprite>sprites\Sp_Droid_Collector</sprite>
+      <sprite>sprites\Sp_Droid_Miner</sprite>
+      <sprite>sprites\Sp_Droid_Smelter</sprite>
+      <sprite>sprites\Sp_Droid_Extra1</sprite>
+      <sprite>sprites\Sp_Droid_Extra2</sprite>
+      <sprite>sprites\Sp_Droid_Extra3</sprite>
+      <sprite>sprites\Sp_Droid_Extra4</sprite>
+      <sprite>sprites\Sp_Droid_Fire0</sprite>
+      <sprite>sprites\Sp_Droid_Fire</sprite>
+    </sprites>
     <sprites name="Planets">
       <sprite>sprites\Sp_Planet_Water</sprite>
       <sprite>sprites\Sp_Star_Sun</sprite>
+    </sprites>
+    <sprites name="Crafting">
+      <sprite>sprites\Sp_Repair_Pack</sprite>
+      <sprite>sprites\Sp_Copper_Wire</sprite>
+      <sprite>sprites\Sp_Gold_Wire</sprite>
+      <sprite>sprites\Sp_Collector_Claw</sprite>
+      <sprite>sprites\Sp_Mining_Drill</sprite>
+      <sprite>sprites\Sp_Crucible</sprite>
+      <sprite>sprites\Sp_Coolant_Cell</sprite>
+      <sprite>sprites\Sp_ShipV2_Wings</sprite>
+      <sprite>sprites\Sp_ShipV2_Body</sprite>
+      <sprite>sprites\Sp_ShipV2_Thruster</sprite>
+      <sprite>sprites\Sp_ShipV2_Upgrade</sprite>
+      <sprite>sprites\Sp_ShipV3_Wings</sprite>
+      <sprite>sprites\Sp_ShipV3_Body</sprite>
+      <sprite>sprites\Sp_ShipV3_Thruster</sprite>
+      <sprite>sprites\Sp_ShipV3_Upgrade</sprite>
     </sprites>
     <sprite>sprites\Sp_Explosion</sprite>
     <sprite>sprites\Sp_Game_Over</sprite>
@@ -107,6 +140,12 @@
     <script>scripts\Sc_Render.gml</script>
     <script>scripts\Sc_Restart.gml</script>
     <script>scripts\Sc_Restart_Main.gml</script>
+    <script>scripts\Sc_Inventory_Create.gml</script>
+    <script>scripts\Sc_Inventory_Assign.gml</script>
+    <script>scripts\Sc_Inventory_Draw.gml</script>
+    <script>scripts\Sc_Smelt_Create.gml</script>
+    <script>scripts\Sc_Craft_Create.gml</script>
+    <script>scripts\Sc_Craft_Assign.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
@@ -121,6 +160,12 @@
     <object>objects\O_Explosion</object>
     <object>objects\O_center</object>
     <object>objects\O_Trail</object>
+    <objects name="Tutorial">
+      <object>objects\O_Tutorial</object>
+      <objects name="Inventory">
+        <object>objects\O_Tutorial_Slot</object>
+      </objects>
+    </objects>
     <objects name="GMS">
       <object>objects\GMS</object>
       <object>objects\O_Login</object>
@@ -148,6 +193,17 @@
         <object>objects\O_Pause_Play</object>
         <object>objects\O_Pause_Restart</object>
         <object>objects\O_Pause_Exit</object>
+      </objects>
+      <objects name="Inventory">
+        <object>objects\O_Inv_Parent</object>
+        <object>objects\O_Inv_Background</object>
+        <object>objects\O_Inv_Slot</object>
+        <object>objects\O_Inv_Trash</object>
+        <object>objects\O_Smelt_Parent</object>
+        <object>objects\O_Smelt_Input</object>
+        <object>objects\O_Smelt_Output</object>
+        <object>objects\O_Craft_Parent</object>
+        <object>objects\O_Craft_Slot</object>
       </objects>
     </objects>
     <objects name="Projectiles">
@@ -201,6 +257,7 @@
     <room>rooms\R_Newgame</room>
     <room>rooms\R_Main</room>
     <room>rooms\R_Menu_Pause</room>
+    <room>rooms\R_Menu_Inventory</room>
     <room>rooms\R_Command</room>
   </rooms>
   <constants number="86">
