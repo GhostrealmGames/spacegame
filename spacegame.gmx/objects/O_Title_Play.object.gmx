@@ -28,7 +28,6 @@
             <string>event_inherited();
 if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control)
 {
-    //global.newgame = false;
     room = R_Newgame;
 }
 </string>

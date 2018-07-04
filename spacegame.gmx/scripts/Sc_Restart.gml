@@ -9,6 +9,5 @@ draw_highscore(600, 600, 1000, 1000);
 game_over = false;
 score = 0;
 // Restart Game
-global.newgame = true;
 room_restart();
 room_goto(R_Title);

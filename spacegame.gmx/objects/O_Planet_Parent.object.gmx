@@ -25,66 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize Variables
-vspeed = 0;
+            <string>vspeed = 0;
 hspeed = 0;
 boss_spawned = false;
 boss_spawn_score = 500;
 alarm[0] = spawn_rate*room_speed;
-orbitalV = 0;
-G_force = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Setup Player Oribal Velocity
 nearest = instance_nearest(x, y, O_Ship);
+// Setup Player Oribal Velocity
 if (instance_exists(O_Ship))
 {
     ship_orbitalV = Sc_ShipOrbitalVelocity(self, nearest);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Star Orbital Velocity
-nearest = instance_nearest(x, y, O_Star_Parent);
-if(instance_exists(nearest))
-{
-    angle_object = point_direction(x, y, nearest.x, nearest.y);
-    orbitalV = Sc_OrbitalVelocity(self, nearest);
 }
 </string>
           </argument>
@@ -108,45 +58,13 @@ if(instance_exists(nearest))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Player Gravity
+            <string>// Player Gravity
 if (instance_exists(self))
 {
     nearest = instance_nearest(x, y, O_Ship);
     if (instance_exists(nearest))
     {
         ship_gravity = Sc_ShipGravity(self, nearest);
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Star Gravity
-if (instance_exists(self))
-{
-    nearest = instance_nearest(x, y, O_Star_Parent);
-    if (instance_exists(nearest))
-    {
-        angle_object = point_direction(x, y, nearest.x, nearest.y);
-        G_force = Sc_Gravity(self, nearest);
     }
 }
 </string>
@@ -171,8 +89,7 @@ if (instance_exists(self))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Destroy collided object
-explosion = instance_create(other.x, other.y, O_Explosion);
+            <string>explosion = instance_create(other.x, other.y, O_Explosion);
 explosion.direction = Sc_Angle(explosion, self);
 with (other)
 {
@@ -200,8 +117,7 @@ with (other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Simulate Player movement
-if(instance_exists(O_Ship))
+            <string>if(instance_exists(O_Ship))
 {
     if (global.fuel &gt; 0) // Check to see if the ship has fuel
     {
@@ -230,8 +146,7 @@ if(instance_exists(O_Ship))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw sprite if in view
-if (x &gt; view_xview[0] - sprite_width &amp;&amp; x &lt; view_xview[0] + view_wview[0] + sprite_width &amp;&amp; y &gt; view_yview[0] - sprite_width &amp;&amp; y &lt; view_yview[0] + view_hview[0] + sprite_width)
+            <string>if (x &gt; view_xview[0] - sprite_width &amp;&amp; x &lt; view_xview[0] + view_wview[0] + sprite_width &amp;&amp; y &gt; view_yview[0] - sprite_width &amp;&amp; y &lt; view_yview[0] + view_hview[0] + sprite_width)
 {
     draw_sprite(sprite_index, image_index, x, y);
 }

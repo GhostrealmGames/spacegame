@@ -41,7 +41,7 @@ inv_full[2*total_resource_types + craftable_items] = false;
 filled_slots = 0;
 score = 0;
 
-//global.newgame = true;
+global.newgame = true;
 /*if (!gms_achievement_isreached("Start your first game."))
 {
     gms_achievement_reach("Start your first game.");

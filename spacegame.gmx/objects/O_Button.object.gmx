@@ -95,7 +95,7 @@ image_index = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(A_Click, 10, false);
+            <string>//sound_play(A_Click);
 </string>
           </argument>
         </arguments>
