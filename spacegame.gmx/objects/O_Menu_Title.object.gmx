@@ -82,7 +82,7 @@ highscore_add("HighScore", -1);
             <string>draw_sprite(Sp_Title, 0, room_width/2, room_height/4);
 draw_set_color(c_red);
 draw_set_halign(fa_left);
-draw_set_valign(fa_bottom);
+draw_set_valign(fa_top);
 if (global.debug)
 {
     draw_text(10, 10, "version " + string(version_string));
