@@ -97,6 +97,7 @@ instance_destroy();
           <argument>
             <kind>1</kind>
             <string>effect_create_above(ef_smoke, x, y, 1, c_gray);
+other.damage += damage;
 instance_destroy();
 </string>
           </argument>

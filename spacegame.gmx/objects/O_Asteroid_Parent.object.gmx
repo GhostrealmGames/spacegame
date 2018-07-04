@@ -54,6 +54,7 @@ event_inherited();
           <argument>
             <kind>1</kind>
             <string>collided = false;
+event_inherited();
 </string>
           </argument>
         </arguments>
@@ -81,37 +82,6 @@ if (other.collided &amp;&amp; set_alarm == true)
 {
     alarm[0] = 30;
     set_alarm = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="O_Laser">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (instance_exists(O_Ship))
-{
-    //damage += O_Ship.shootdamage;
-    damage += other.damage;
-}
-else
-{
-    damage += 1;
 }
 </string>
           </argument>

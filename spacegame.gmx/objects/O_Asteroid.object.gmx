@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10</depth>
   <persistent>0</persistent>
   <parentName>O_Asteroid_Parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -40,8 +40,8 @@ else
     mass = 1500;
     max_damage = 15;
 }
-//target = instance_create(x, y, O_Target);
-//target.droid_target = id;
+target = instance_create(x, y, O_Target);
+target.droid_target = id;
 event_inherited();
 </string>
           </argument>
@@ -65,8 +65,7 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-/*if(damage &gt;= max_damage)
+            <string>if(damage &gt;= max_damage)
 {
     instance_destroy();
     //gms_ini_player_write("Asteroids_Destroyed", );
@@ -142,7 +141,7 @@ event_inherited();
             }
         }
     }
-}*/
+}
 </string>
           </argument>
         </arguments>

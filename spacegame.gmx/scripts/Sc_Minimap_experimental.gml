@@ -79,7 +79,6 @@ with (O_Planet_Parent)
         draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
     }
 }
-/*
 with (O_Particle_Parent)
 {
     if (_x1 < (_x+x/_s) && _y1 < (_y+y/_s) && _x1+_w > (_x+x/_s) && _y1+_h > (_y+y/_s))
@@ -88,6 +87,7 @@ with (O_Particle_Parent)
         draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
     }
 }
+/*
 with (O_Droid_Parent)
 {
     if (_x1 < (_x+x/_s) && _y1 < (_y+y/_s) && _x1+_w > (_x+x/_s) && _y1+_h > (_y+y/_s))

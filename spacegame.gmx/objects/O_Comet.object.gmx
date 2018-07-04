@@ -50,8 +50,7 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited();
-/*if(damage &gt;= max_damage)
+            <string>if(damage &gt;= max_damage)
 {
     instance_destroy();
     score += comet_points;
@@ -71,7 +70,7 @@ event_inherited();
             res.speed = self.speed + random(3);
         }
     }
-}*/
+}
 </string>
           </argument>
         </arguments>
