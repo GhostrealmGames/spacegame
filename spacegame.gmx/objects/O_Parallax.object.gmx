@@ -25,13 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>parallax_x[0] = 0;
-parallax_y[0] = 0;
+            <string>parallax_x[0] = 0.0;
+parallax_y[0] = 0.0;
+nearest = noone;
 
 for(i = 0; background_visible[i]; i += 1)
 {
     parallax_x[i] = background_x[i] / 100;
     parallax_y[i] = background_y[i] / 100;
+}
+
+if(instance_exists(O_Ship))
+{
+    nearest = O_Ship;
+    if(instance_exists(O_Star_Parent))
+    {
+        nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Star_Parent);
+    }
+    else if(instance_exists(O_Planet_Parent))
+    {
+        nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Planet_Parent);
+    }
 }
 </string>
           </argument>
@@ -55,12 +69,23 @@ for(i = 0; background_visible[i]; i += 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>if(instance_exists(O_Ship))
+{
+    nearest = O_Ship;
+    if(instance_exists(O_Star_Parent))
+    {
+        nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Star_Parent);
+    }
+    else if(instance_exists(O_Planet_Parent))
+    {
+        nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Planet_Parent);
+    }
+}
 
 for(i = 0; background_visible[i]; i += 1)
 {
-    background_x[i] = parallax_x[i] * keyboard_check(vk_right) - keyboard_check(vk_left);//view_xview[0];
-    background_y[i] = parallax_y[i] * keyboard_check(vk_up) - keyboard_check(vk_down);//view_yview[0];
+    background_x[i] = 1920/10000 * nearest.x;//parallax_x[i] * nearest.x;//view_xview[0];
+    background_y[i] = 1080/10000 * nearest.y;//parallax_y[i] * nearest.y;//view_yview[0];
 }
 </string>
           </argument>
