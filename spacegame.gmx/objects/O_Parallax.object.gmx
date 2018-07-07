@@ -84,8 +84,8 @@ if(instance_exists(O_Ship))
 
 for(i = 0; background_visible[i]; i += 1)
 {
-    background_x[i] = 1920/10000 * nearest.x;//parallax_x[i] * nearest.x;//view_xview[0];
-    background_y[i] = 1080/10000 * nearest.y;//parallax_y[i] * nearest.y;//view_yview[0];
+    background_x[i] = /*1920/10000 * nearest.x;*/parallax_x[i] * (nearest.x/2);//view_xview[0];
+    background_y[i] = /*1080/10000 * nearest.y;*/parallax_y[i] * (nearest.y/2);//view_yview[0];
 }
 </string>
           </argument>
