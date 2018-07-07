@@ -132,6 +132,12 @@
     <script>scripts\Sc_OrbitalVelocity.gml</script>
     <script>scripts\Sc_ShipGravity.gml</script>
     <script>scripts\Sc_ShipOrbitalVelocity.gml</script>
+    <script>scripts\Sc_Inventory_Create.gml</script>
+    <script>scripts\Sc_Inventory_Assign.gml</script>
+    <script>scripts\Sc_Inventory_Draw.gml</script>
+    <script>scripts\Sc_Smelt_Create.gml</script>
+    <script>scripts\Sc_Craft_Create.gml</script>
+    <script>scripts\Sc_Craft_Assign.gml</script>
     <script>scripts\Sc_HUD.gml</script>
     <script>scripts\Sc_Minimap.gml</script>
     <script>scripts\Sc_Minimap_experimental.gml</script>
@@ -140,12 +146,6 @@
     <script>scripts\Sc_Render.gml</script>
     <script>scripts\Sc_Restart.gml</script>
     <script>scripts\Sc_Restart_Main.gml</script>
-    <script>scripts\Sc_Inventory_Create.gml</script>
-    <script>scripts\Sc_Inventory_Assign.gml</script>
-    <script>scripts\Sc_Inventory_Draw.gml</script>
-    <script>scripts\Sc_Smelt_Create.gml</script>
-    <script>scripts\Sc_Craft_Create.gml</script>
-    <script>scripts\Sc_Craft_Assign.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>

@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>instance_create(room_width/2, room_height/2 - sprite_get_height(Sp_Button_Play)/2 - 1*(sprite_get_height(Sp_Button_Play)), O_Title_Play);
 //instance_create(room_width/2, room_height/2 - sprite_get_height(Sp_Button_Play)/2, O_Title_Tutorial);
-//instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2, O_Title_Highscores);
+instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2, O_Title_Highscores);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 1*(sprite_get_height(Sp_Button_Play)), O_Title_Achievements);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 2*sprite_get_height(Sp_Button_Play), O_Title_Controls);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 3*sprite_get_height(Sp_Button_Play), O_Title_Credits);

@@ -28,7 +28,7 @@
             <string>if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control)
 {
     event_inherited();
-    gms_show_highscore(1381);
+    gms_show_highscore(1528);
 }
 </string>
           </argument>

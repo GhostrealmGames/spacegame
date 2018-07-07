@@ -150,7 +150,7 @@ if (global.ship_health &lt;= 0)
     instance_create(x, y, O_Explosion);
     instance_destroy();
 }
-if (instance_exists(O_Planet_Parent))
+if (instance_exists(O_Ship) &amp;&amp; instance_exists(O_Planet_Parent))
 {
     dist = Sc_Distance(self, O_Planet_Parent);
     if (dist &lt; lowest_dist)
