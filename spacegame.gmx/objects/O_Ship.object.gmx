@@ -38,7 +38,6 @@ shooting = false;
 mass = 1000;        // normal = 1000;
 collided = false;
 force_gravity = 0;
-explode = false;
 dist_x = 0;
 dist_y = 0;
 dist = 0;
@@ -349,22 +348,7 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (explode)    // If the object has exploded
-{
-    instance_create(x,y,O_Explosion);
-}
-else// if (upgrade == 1)
-{
-    draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
-}
-/*else if (upgrade == 2)
-{
-    draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
-}
-else if (upgrade == 3)
-{
-    draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
-}*/
+            <string>draw_sprite_ext(sprite_index,image_index,x,y,1,1,spr_angle,c_white,1);
 if (accel)
 {
     fire_index += 0.3;
@@ -386,34 +370,31 @@ draw_set_color(c_red);
 draw_set_halign(fa_left);
 draw_set_valign(fa_left);
 draw_set_font(-1);
-if (instance_exists(O_Ship))
+if (global.debug)
 {
-    if (global.debug)
+    if (dist &lt; lowest_dist)
     {
-        if (dist &lt; lowest_dist)
-        {
-            lowest_dist = dist;
-        }
-        if (dist &gt; highest_dist)
-        {
-            highest_dist = dist;
-        }
-        //draw_set_alpha(0.5);
-        //draw_rectangle(x - sprite_width, y - sprite_height, x + sprite_width, y + sprite_height, false);
-        draw_set_alpha(1);
-        draw_text(x-50,y+50,
-            //"Dist_x: " + string(dist_x) + 
-            //"#Dist_y: " + string(dist_y) + 
-            "Dist: " + string(dist) + 
-            "#Angle: " + string(angle_object) + 
-            //"#OrbitV: " + string(orbitalV) +
-            //"#F: " + string(force_gravity) +
-            "#L Dist: " + string(lowest_dist) + 
-            "#H Dist: " + string(highest_dist)
-            //"#ID: " + string(id) +
-            //"#Shoot: " + string(spr_angle)
-            );
+        lowest_dist = dist;
     }
+    if (dist &gt; highest_dist)
+    {
+        highest_dist = dist;
+    }
+    //draw_set_alpha(0.5);
+    //draw_rectangle(x - sprite_width, y - sprite_height, x + sprite_width, y + sprite_height, false);
+    draw_set_alpha(1);
+    draw_text(x-50,y+50,
+        //"Dist_x: " + string(dist_x) + 
+        //"#Dist_y: " + string(dist_y) + 
+        "Dist: " + string(dist) + 
+        "#Angle: " + string(angle_object) + 
+        //"#OrbitV: " + string(orbitalV) +
+        //"#F: " + string(force_gravity) +
+        "#L Dist: " + string(lowest_dist) + 
+        "#H Dist: " + string(highest_dist)
+        //"#ID: " + string(id) +
+        //"#Shoot: " + string(spr_angle)
+        );
 }
 </string>
           </argument>

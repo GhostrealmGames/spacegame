@@ -33,6 +33,7 @@ boss_spawn_score = 500;
 alarm[0] = spawn_rate*room_speed;
 orbitalV = 0;
 G_force = 0;
+gravityon = true;
 </string>
           </argument>
         </arguments>

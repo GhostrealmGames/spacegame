@@ -27,17 +27,35 @@ draw_set_color(c_white);
 draw_rectangle(_x, _y, _x + width/_s, _y + width/_s, true);
 
 // Center on nearest Planet
-nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Planet_Parent);
-if(instance_exists(nearest))
+if(instance_exists(O_Ship))
 {
-    _x = _x - nearest.x / _s + width/2/_s;
-    _y = _y - nearest.y / _s + height/2/_s;
+    nearest = instance_nearest(O_Ship.x, O_Ship.y, O_Planet_Parent);
+    if(instance_exists(nearest))
+    {
+        _x = _x - nearest.x / _s + width/2/_s;
+        _y = _y - nearest.y / _s + height/2/_s;
+    }
+    else
+    {
+        // Center on player
+        _x = _x - O_Ship.x / _s + width/2/_s;
+        _y = _y - O_Ship.y / _s + height/2/_s;
+    }
 }
 else
 {
-    // Center on player
-    _x = _x - O_Ship.x / _s + width/2/_s;
-    _y = _y - O_Ship.y / _s + height/2/_s;
+    nearest = instance_nearest(1920/2, 1080/2, O_Planet_Parent);
+    if(instance_exists(nearest))
+    {
+        _x = _x - nearest.x / _s + width/2/_s;
+        _y = _y - nearest.y / _s + height/2/_s;
+    }
+    else
+    {
+        // Center on player
+        _x = _x - 1920/2 / _s + width/2/_s;
+        _y = _y - 1080/2 / _s + height/2/_s;
+    }
 }
 
 // Center on player

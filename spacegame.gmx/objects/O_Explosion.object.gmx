@@ -35,6 +35,33 @@ game_over = false;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(!gms_show_isopen(wt_highscores))
+{
+    room_goto(R_Title);
+}
+alarm[11] = 10;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
@@ -78,8 +105,21 @@ game_over = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(O_Ship) == false)
+            <string>if (!instance_exists(O_Ship))
 {
+    nearest = instance_nearest(x, y, O_Planet_Parent);
+    if (instance_exists(nearest))
+    {
+        with(nearest)
+        {
+            speed = 0;
+        }
+        with(O_Gravity)
+        {
+            speed = 0;
+            gravityon = false;
+        }
+    }
     // Play Explosion Sound
     sound_play(A_Explosion);
     game_over = true;

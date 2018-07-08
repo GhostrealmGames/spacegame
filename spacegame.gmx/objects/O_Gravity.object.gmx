@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>spawn_delay = 2 * room_speed;
+gravityon = false;
 //alarm[0] = 30;
 if (instance_exists(O_Planet_Parent))
 {
@@ -92,24 +93,21 @@ highest_dist = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_exists(self))
+            <string>nearest = instance_nearest(x, y, O_Planet_Parent);
+if (instance_exists(nearest) &amp;&amp; gravityon)
 {
-    nearest = instance_nearest(x, y, O_Planet_Parent);
-    if (instance_exists(nearest))
-    {
-        Sc_Gravity(self, nearest);
-    }
-    /*if(nearest.G_force &gt; 0)
-    {
-        motion_add(nearest.angle_object, nearest.G_force);
-    }
-    */
-    /*nearest = instance_nearest(x, y, O_Star_Parent);
-    if (instance_exists(nearest))
-    {
-        Sc_Gravity(self, nearest);
-    }*/
+    Sc_Gravity(self, nearest);
 }
+/*if(nearest.G_force &gt; 0)
+{
+    motion_add(nearest.angle_object, nearest.G_force);
+}
+*/
+/*nearest = instance_nearest(x, y, O_Star_Parent);
+if (instance_exists(nearest))
+{
+    Sc_Gravity(self, nearest);
+}*/
 </string>
           </argument>
         </arguments>
