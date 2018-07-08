@@ -59,6 +59,68 @@ alarm[0] = 5*60*room_speed;
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="O_Droid_Collector">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>droid_collector = instance_nearest(x, y, O_Droid_Collector);
+if (droid_collector.collected_num &lt; collector_maxnumV1)
+{
+    // Add to Droid Inventory
+    droid_collector.Inventory[Type] += 1;
+    droid_collector.locked_on = false;
+    droid_collector.collected_num += 1;
+    
+    // Add to Player Score
+    if (Type == 3 || Type == 4 || Type == 8)
+    {
+        score += stone_points;
+    }
+    else if (Type &gt;= 0 &amp;&amp; Type &lt;= 2)
+    {
+        score += metal_points;
+    }
+    else if (Type &gt;= 5 &amp;&amp; Type &lt;= 7)
+    {
+        score += precious_metal_points;
+    }
+    else if (Type == 3 + total_resource_types || Type == 4 + total_resource_types || Type == 8 + total_resource_types)
+    {
+        score += stone_points;
+    }
+    else if (Type &gt;= 0 + total_resource_types &amp;&amp; Type &lt;= 2 + total_resource_types)
+    {
+        score += metal_points;
+    }
+    else if (Type &gt;= 5 + total_resource_types &amp;&amp; Type &lt;= 7 + total_resource_types)
+    {
+        score += precious_metal_points;
+    }
+    // Destroy target and self
+    with (target)
+    {
+        instance_destroy();
+    }
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="O_Star_Parent">
       <action>
         <libid>1</libid>

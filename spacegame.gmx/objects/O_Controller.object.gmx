@@ -390,7 +390,7 @@ if (room != R_Main &amp;&amp; global.debug)
     draw_set_color(c_red);
     draw_set_halign(fa_left);
     draw_set_valign(fa_left);
-    draw_sprite(sprite_index, 0, x, y);
+    //draw_sprite(sprite_index, 0, x, y);
     draw_text(view_xview[0] + 10, view_yview[0] + 10, 
         "Smelting: " + string(smelting) +
         "#Time: " + string(processed_time/60) +
