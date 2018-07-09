@@ -26,47 +26,33 @@
           <argument>
             <kind>1</kind>
             <string>draw_fps = false;
+draw_welcome = true;
 map_size = 20000;
 zoom_rate = 1000;
 zout_max = 500000;
 zin_min = 10000;
-
-//temp
-global.Inventory[collector_droid + 2*total_resource_types] += 1;
-global.Inventory[miner_droid + 2*total_resource_types] += 1;
-global.Inventory[smelter_droid + 2*total_resource_types] += 1;
+inner_radius = 2000;
+outer_radius = 5000;
 
 // Create Border
-rnum = 0;
-// Top and Bottom
-/*for (row = 0; row &lt; room_width; row += O_Border.sprite_width)
+/*rnum = 0;
+for (row = 0; row &lt; room_width; row += O_Border.sprite_width)
 {
     instance_create(row,0,O_Border);
-    instance_create(row,room_width,O_Border);
+    instance_create(row,room_height,O_Border);
 }
-// Left and Right
 for (col = 0; col &lt; room_height; col += O_Border.sprite_height)
 {
     instance_create(0,col,O_Border);
     instance_create(room_height,col,O_Border);
 }*/
-//instance_deactivate_object(O_Border);
 // Create Ship
-instance_create(1920/2, 1080/2, O_Ship); // creates a ship in the center of the screen
-// Create Planets
-instance_create(3000, 3000, O_Planet_Water); //room_height/2
-// Create Star
-//instance_create(10000, 10000, O_Star_Sun);
-/*
-with (O_Ship)
-{
-    //instance_deactivate_region(view_xview[0], view_yview[0], view_xview[0] + view_wview[0], view_yview[0] + view_hview[0], false, true);
-}
-with (O_Asteroid_Parent)
-{
-    instance_activate_region(x - sprite_width, y - sprite_height, x + sprite_width, y + sprite_height, true);
-}
-*/
+instance_create(1920/2, 1080/2, O_Ship); //2500
+// Create Target
+// random distance and direction
+dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
+dir = random(360);
+instance_create(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), O_Tutorial_Target);
 </string>
           </argument>
         </arguments>
@@ -198,7 +184,7 @@ if (global.mouse_slot &lt;= 0)
     global.newgame = false;
     room_persistent = false;
     room_restart();
-    room_goto(R_Newgame);
+    room_goto(R_NewTutorial);
 }
 else
 {
@@ -226,10 +212,23 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Sc_HUD(view_xview[0], view_yview[0], O_Controller);
+            <string>Sc_HUD(view_xview[0], view_yview[0], O_Tutorial);
+draw_set_font(fnt_update);
+draw_set_color(c_red);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+// Draw initial text for the tutorial
+/*if (draw_welcome)
+{
+    draw_text(view_xview[0] + view_wview[0]/2, view_yview[0] + view_hview[0]/2,
+        "Use A &amp; D to turn and W to move forward#Hover over the targets to move on");
+}*/
+
+draw_set_font(-1);
 draw_set_color(c_red);
 draw_set_halign(fa_right);
 draw_set_valign(fa_top);
+// Draw the fps counter
 if (draw_fps)
 {
     draw_text(view_xview[0] + view_wview[0] - 10, view_yview[0], 
@@ -238,6 +237,8 @@ if (draw_fps)
         "#Spawn Rate: " + string(((-1/100)*score+initial_spawn_rate))
         );
 }
+
+// Draw the debug variables for the mouse
 if (global.debug)
 {
     draw_set_color(c_red);
@@ -273,6 +274,29 @@ else
 {
     draw_fps = true;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_welcome = false;
 </string>
           </argument>
         </arguments>

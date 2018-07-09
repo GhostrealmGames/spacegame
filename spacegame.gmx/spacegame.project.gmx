@@ -116,6 +116,9 @@
     <sprite>sprites\Sp_HUD</sprite>
     <sprite>sprites\Sp_Logo</sprite>
     <sprite>sprites\Sp_Trail</sprite>
+    <sprite>sprites\Sp_Tutorial_Target_lg</sprite>
+    <sprite>sprites\Sp_Tutorial_Target_med</sprite>
+    <sprite>sprites\Sp_Tutorial_Target_sm</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\Bg_Back</background>
@@ -142,10 +145,10 @@
     <script>scripts\Sc_Minimap.gml</script>
     <script>scripts\Sc_Minimap_experimental.gml</script>
     <script>scripts\Sc_Map.gml</script>
+    <script>scripts\Sc_Tutorial.gml</script>
     <script>scripts\Sc_String_Decipher.gml</script>
     <script>scripts\Sc_Render.gml</script>
     <script>scripts\Sc_Restart.gml</script>
-    <script>scripts\Sc_Restart_Main.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
@@ -162,8 +165,14 @@
     <object>objects\O_Trail</object>
     <objects name="Tutorial">
       <object>objects\O_Tutorial</object>
+      <object>objects\O_Tutorial_Main</object>
+      <object>objects\O_Tutorial_Target</object>
+      <object>objects\O_Tutorial_Asteroid_Parent</object>
+      <object>objects\O_Tutorial_Asteroid</object>
       <objects name="Inventory">
         <object>objects\O_Tutorial_Slot</object>
+        <object>objects\O_Tutorial_Input</object>
+        <object>objects\O_Tutorial_Output</object>
       </objects>
     </objects>
     <objects name="GMS">
@@ -259,6 +268,8 @@
     <room>rooms\R_Title</room>
     <room>rooms\R_NewTutorial</room>
     <room>rooms\R_Tutorial</room>
+    <room>rooms\R_Tutorial_Inventory</room>
+    <room>rooms\R_Tutorial_Pause</room>
     <room>rooms\R_Newgame</room>
     <room>rooms\R_Main</room>
     <room>rooms\R_Menu_Pause</room>

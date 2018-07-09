@@ -64,7 +64,7 @@ else
 
 draw_set_alpha(.8);
 // Tutorial Objects
-/*with (O_Tutorial_Target)
+with (O_Tutorial_Target)
 {
     draw_set_color(c_fuchsia);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
@@ -73,7 +73,7 @@ with (O_Tutorial_Asteroid)
 {
     draw_set_color(c_brown);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
-}*/
+}
 // Main Objects
 with (O_Asteroid)
 {
