@@ -56,48 +56,48 @@ event_inherited();
 {
     if (target.mine_number &gt; 0)
     {
-    switch (resource_type)
-    {
-        case copper:
-            res = instance_create(x, y, O_Refined_Copper);
-            break;
-        case iron:
-            res = instance_create(x, y, O_Refined_Iron);
-            break;
-        case nickel:
-            res = instance_create(x, y, O_Refined_Nickel);
-            break;
-        case stone:
-            res = instance_create(x, y, O_Refined_Stone);
-            break;
-        case ice:
-            res = instance_create(x, y, O_Refined_Ice);
-            break;
-        case gold:
-            res = instance_create(x, y, O_Refined_Gold);
-            break
-        case platinum:
-            res = instance_create(x, y, O_Refined_Platinum);
-            break;
-        case titanium:
-            res = instance_create(x, y, O_Refined_Titanium);
-            break;
-        case coal:
-            res = instance_create(x, y, O_Particle_Coal);
-            break;
-    }
-    res.direction = spr_angle + random_range(-5, 5);
-    res.speed = self.speed + random(2);
-    target.mine_number -= 1;
-    if (target.mine_number &lt;= 0)
-    {
-        with(target)
+        switch (resource_type)
         {
-            instance_destroy();
-            attached = false;
+            case copper:
+                res = instance_create(x, y, O_Refined_Copper);
+                break;
+            case iron:
+                res = instance_create(x, y, O_Refined_Iron);
+                break;
+            case nickel:
+                res = instance_create(x, y, O_Refined_Nickel);
+                break;
+            case stone:
+                res = instance_create(x, y, O_Refined_Stone);
+                break;
+            case ice:
+                res = instance_create(x, y, O_Refined_Ice);
+                break;
+            case gold:
+                res = instance_create(x, y, O_Refined_Gold);
+                break
+            case platinum:
+                res = instance_create(x, y, O_Refined_Platinum);
+                break;
+            case titanium:
+                res = instance_create(x, y, O_Refined_Titanium);
+                break;
+            case coal:
+                res = instance_create(x, y, O_Particle_Coal);
+                break;
         }
-        locked_on = false;
-    }
+        res.direction = spr_angle + random_range(-5, 5);
+        res.speed = self.speed + random(2);
+        target.mine_number -= 1;
+        if (target.mine_number &lt;= 0)
+        {
+            with(target)
+            {
+                instance_destroy();
+                attached = false;
+            }
+            locked_on = false;
+        }
     }
 }
 attached = true;

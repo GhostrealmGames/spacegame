@@ -98,19 +98,23 @@ else
         else if (dist &lt; 100)
         {
             mp_potential_step(O_Ship.x, O_Ship.y, -accel_rate, true);
+            spr_angle = -angle;
+            fire_speed += 0.1;
+            accel = true;
         }
         else
         {
             if (collected_num &gt; 0)
             {
-                if (O_Controller.inv_full == false)
+                if (O_Controller.inv_slots_full == false)
                 {
                     collected_num = 0;
                     for (i = 0; i &lt; 2*total_resource_types; i += 1)
                     {
-                        if (O_Controller.inv_full == false)
+                        if (O_Controller.inv_full[i] == false)
                         {
                             global.Inventory[i] += Inventory[i];
+                            Inventory[i] = 0;
                         }
                     }
                 }
@@ -187,7 +191,9 @@ imagespeed += 1;
 if (global.debug)
 {
     draw_set_color(c_red);
-    draw_text(x, y, "Locked on: " + string(locked_on));
+    draw_text(x, y, "Locked on: " + string(locked_on) +
+                    "#Collected: " + string(collected_num) +
+                    "#Stone: " + string(Inventory[stone]));
 }
 </string>
           </argument>

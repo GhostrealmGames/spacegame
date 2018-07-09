@@ -32,9 +32,9 @@ zout_max = 500000;
 zin_min = 10000;
 
 //temp
-//global.Inventory[collector_droid + 2*total_resource_types] += 1;
-//global.Inventory[miner_droid + 2*total_resource_types] += 1;
-//global.Inventory[smelter_droid + 2*total_resource_types] += 1;
+global.Inventory[collector_droid + 2*total_resource_types] += 1;
+global.Inventory[miner_droid + 2*total_resource_types] += 1;
+global.Inventory[smelter_droid + 2*total_resource_types] += 1;
 
 // Create Border
 rnum = 0;

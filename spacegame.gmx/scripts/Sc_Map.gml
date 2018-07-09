@@ -102,12 +102,13 @@ with (O_Particle_Parent)
     draw_set_color(c_lime);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
 }
-/*
+
 with (O_Droid_Parent)
 {
     draw_set_color(c_fuchsia);
     draw_circle(_x+x/_s, _y+y/_s, (sprite_width/2)/_s, 0);
 }
+/*
 with (O_EnemyBlueSimple)
 {
     draw_set_color(c_red);

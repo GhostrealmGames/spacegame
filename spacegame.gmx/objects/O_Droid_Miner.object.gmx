@@ -98,7 +98,7 @@ event_inherited();
         }
         else
         {
-            res = instance_create(x,y,O_Particle_Stone1);
+            res = instance_create(x,y,O_Particle_Stone);
         }
     }
     res.direction = spr_angle + random_range(-5, 5);

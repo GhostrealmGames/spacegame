@@ -34,10 +34,16 @@ global.ship_health = 100;
 global.ship_upgrade = 1;
 // Inventory
 global.Slots[0] = 0;
-global.Inventory[2*total_resource_types + craftable_items] = 0;
-global.Inv_Draw[2*total_resource_types + craftable_items] = 0;
+for(i = 0; i &lt; 2*total_resource_types + craftable_items - 1; i+=1)
+{
+    global.Inventory[i] = 0;
+    global.Inv_Draw[i] = 0;
+    //inv_full[i] = false;
+}
+//global.Inventory[2*total_resource_types + craftable_items] = 0;
+//global.Inv_Draw[2*total_resource_types + craftable_items] = 0;
 inv_slots_full = false;
-inv_full[2*total_resource_types + craftable_items] = false;
+//inv_full[2*total_resource_types + craftable_items] = false;
 filled_slots = 0;
 score = 0;
 
