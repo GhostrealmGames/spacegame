@@ -31,8 +31,8 @@ map_size = 20000;
 zoom_rate = 1000;
 zout_max = 500000;
 zin_min = 10000;
-inner_radius = 2000;
-outer_radius = 5000;
+inner_radius = 1500;
+outer_radius = 3000;
 
 // Create Border
 /*rnum = 0;
@@ -179,9 +179,12 @@ if (global.mouse_slot &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.newgame)
+            <string>if (global.newtutorial)
 {
-    global.newgame = false;
+    O_Tutorial.num_completed = 0;
+    O_Tutorial.total = 0;
+    O_Tutorial.tutorial_text = 0;
+    global.newtutorial = false;
     room_persistent = false;
     room_restart();
     room_goto(R_NewTutorial);

@@ -35,7 +35,7 @@ outer_radius = O_Tutorial_Main.outer_radius;
 do {
     dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
     dir = random(360);
-} until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) != noone)
+} until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
 x = 960 + lengthdir_x(dist, dir);
 y = 640 + lengthdir_y(dist, dir);
 /*
@@ -89,7 +89,7 @@ if (destroy_timer &lt; 0)
     do {
         dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
         dir = random(360);
-    } until (collision_circle(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) != noone)
+    } until (collision_circle(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
     x = 960 + lengthdir_x(dist, dir);
     y = 640 + lengthdir_y(dist, dir);
     /*do

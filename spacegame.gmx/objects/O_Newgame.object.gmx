@@ -47,16 +47,16 @@ inv_slots_full = false;
 filled_slots = 0;
 score = 0;
 
-/*if (!gms_achievement_isreached("Start your first game."))
-{
-    gms_achievement_reach("Start your first game.");
-}*/
 if (room == R_NewTutorial)
 {
     room_goto(R_Tutorial);
 }
 else
 {
+    /*if (!gms_achievement_isreached("Start your first game."))
+    {
+        gms_achievement_reach("Start your first game.");
+    }*/
     room_goto(R_Main);
 }
 </string>

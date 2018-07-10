@@ -255,6 +255,10 @@ num_flashes = num_flash_initial;
 {
     deactivate = true;
 }
+else
+{
+    deactivate = false;
+}
 </string>
           </argument>
         </arguments>
@@ -285,110 +289,110 @@ num_flashes = num_flash_initial;
     draw_set_valign(fa_center);
     if (room == R_Tutorial || room == R_Tutorial_Inventory)
     {
-    if (global.mouse_type &gt;= 0)
-    {
-        draw_text(mouse_x - 8, mouse_y - 8, global.mouse_slot);
-    }
-    switch(global.mouse_type)
-    {
-        case copper:
-            draw_sprite(Sp_Particle_Copper, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case iron:
-            draw_sprite(Sp_Particle_Iron, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case nickel:
-            draw_sprite(Sp_Particle_Nickel, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case stone:
-            draw_sprite(Sp_Particle_Stone, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case ice:
-            draw_sprite(Sp_Particle_Ice, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case gold:
-            draw_sprite(Sp_Particle_Gold, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case platinum:
-            draw_sprite(Sp_Particle_Platinum, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case titanium:
-            draw_sprite(Sp_Particle_Titanium, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case coal:
-            draw_sprite(Sp_Particle_Coal, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case copper + total_resource_types:
-            draw_sprite(Sp_Refined_Copper, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case iron + total_resource_types:
-            draw_sprite(Sp_Refined_Iron, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case nickel + total_resource_types:
-            draw_sprite(Sp_Refined_Nickel, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case stone + total_resource_types:
-            draw_sprite(Sp_Refined_Stone, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case ice + total_resource_types:
-            draw_sprite(Sp_Refined_Ice, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case gold + total_resource_types:
-            draw_sprite(Sp_Refined_Gold, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case platinum + total_resource_types:
-            draw_sprite(Sp_Refined_Platinum, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case titanium + total_resource_types:
-            draw_sprite(Sp_Refined_Titanium, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case copper_wire + 2*total_resource_types:
-            draw_sprite(Sp_Copper_Wire, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case gold_wire + 2*total_resource_types:
-            draw_sprite(Sp_Gold_Wire, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case collector_claw + 2*total_resource_types:
-            draw_sprite(Sp_Collector_Claw, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case mining_drill + 2*total_resource_types:
-            draw_sprite(Sp_Mining_Drill, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case crucible + 2*total_resource_types:
-            draw_sprite(Sp_Crucible, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case coolant_cell + 2*total_resource_types:
-            draw_sprite(Sp_Coolant_Cell, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case collector_droid + 2*total_resource_types:
-            draw_sprite(Sp_Droid_Collector, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case miner_droid + 2*total_resource_types:
-            draw_sprite(Sp_Droid_Miner, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case smelter_droid + 2*total_resource_types:
-            draw_sprite(Sp_Droid_Smelter, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case shipV2_wings + 2*total_resource_types:
-            draw_sprite(Sp_ShipV2_Wings, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case shipV2_body + 2*total_resource_types:
-            draw_sprite(Sp_ShipV2_Body, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case shipV2_thruster + 2*total_resource_types:
-            draw_sprite(Sp_ShipV2_Thruster, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case shipV3_wings + 2*total_resource_types:
-            draw_sprite(Sp_ShipV3_Wings, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case shipV3_body + 2*total_resource_types:
-            draw_sprite(Sp_ShipV3_Body, 0, mouse_x + 16, mouse_y + 16);
-            break;
-        case shipV3_thruster + 2*total_resource_types:
-            draw_sprite(Sp_ShipV3_Thruster, 0, mouse_x + 16, mouse_y + 16);
-            break;
-    }
-    Sc_Tutorial(view_xview[0], view_yview[0]);
+        if (global.mouse_type &gt;= 0)
+        {
+            draw_text(mouse_x - 8, mouse_y - 8, global.mouse_slot);
+        }
+        switch(global.mouse_type)
+        {
+            case copper:
+                draw_sprite(Sp_Particle_Copper, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case iron:
+                draw_sprite(Sp_Particle_Iron, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case nickel:
+                draw_sprite(Sp_Particle_Nickel, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case stone:
+                draw_sprite(Sp_Particle_Stone, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case ice:
+                draw_sprite(Sp_Particle_Ice, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case gold:
+                draw_sprite(Sp_Particle_Gold, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case platinum:
+                draw_sprite(Sp_Particle_Platinum, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case titanium:
+                draw_sprite(Sp_Particle_Titanium, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case coal:
+                draw_sprite(Sp_Particle_Coal, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case copper + total_resource_types:
+                draw_sprite(Sp_Refined_Copper, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case iron + total_resource_types:
+                draw_sprite(Sp_Refined_Iron, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case nickel + total_resource_types:
+                draw_sprite(Sp_Refined_Nickel, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case stone + total_resource_types:
+                draw_sprite(Sp_Refined_Stone, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case ice + total_resource_types:
+                draw_sprite(Sp_Refined_Ice, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case gold + total_resource_types:
+                draw_sprite(Sp_Refined_Gold, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case platinum + total_resource_types:
+                draw_sprite(Sp_Refined_Platinum, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case titanium + total_resource_types:
+                draw_sprite(Sp_Refined_Titanium, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case copper_wire + 2*total_resource_types:
+                draw_sprite(Sp_Copper_Wire, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case gold_wire + 2*total_resource_types:
+                draw_sprite(Sp_Gold_Wire, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case collector_claw + 2*total_resource_types:
+                draw_sprite(Sp_Collector_Claw, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case mining_drill + 2*total_resource_types:
+                draw_sprite(Sp_Mining_Drill, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case crucible + 2*total_resource_types:
+                draw_sprite(Sp_Crucible, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case coolant_cell + 2*total_resource_types:
+                draw_sprite(Sp_Coolant_Cell, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case collector_droid + 2*total_resource_types:
+                draw_sprite(Sp_Droid_Collector, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case miner_droid + 2*total_resource_types:
+                draw_sprite(Sp_Droid_Miner, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case smelter_droid + 2*total_resource_types:
+                draw_sprite(Sp_Droid_Smelter, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case shipV2_wings + 2*total_resource_types:
+                draw_sprite(Sp_ShipV2_Wings, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case shipV2_body + 2*total_resource_types:
+                draw_sprite(Sp_ShipV2_Body, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case shipV2_thruster + 2*total_resource_types:
+                draw_sprite(Sp_ShipV2_Thruster, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case shipV3_wings + 2*total_resource_types:
+                draw_sprite(Sp_ShipV3_Wings, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case shipV3_body + 2*total_resource_types:
+                draw_sprite(Sp_ShipV3_Body, 0, mouse_x + 16, mouse_y + 16);
+                break;
+            case shipV3_thruster + 2*total_resource_types:
+                draw_sprite(Sp_ShipV3_Thruster, 0, mouse_x + 16, mouse_y + 16);
+                break;
+        }
+        Sc_Tutorial(view_xview[0], view_yview[0]);
     }
     // Debug
     if (room != R_Tutorial &amp;&amp; global.debug)

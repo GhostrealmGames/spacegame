@@ -259,6 +259,7 @@
       <object>objects\O_Particle_Target</object>
     </objects>
     <object>objects\O_Parallax</object>
+    <object>objects\O_Tutorial_Parallax</object>
     <object>objects\O_other_player</object>
   </objects>
   <rooms name="rooms">

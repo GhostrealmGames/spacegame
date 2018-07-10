@@ -58,12 +58,11 @@ if (total != 0)
         {
             for (i = 0; i < 10; i+=1)
             {
-                do
-                {
-                    rand_x = random_range(sprite_get_width(Sp_Tutorial_Target_lg), room_width - sprite_get_width(Sp_Tutorial_Target_lg));
-                    rand_y = random_range(sprite_get_height(Sp_Tutorial_Target_lg), room_height - sprite_get_height(Sp_Tutorial_Target_lg));
-                } until (!collision_circle(rand_x, rand_y, sprite_width/2 - O_Ship.sprite_width/2, O_Ship, true, false));
-                instance_create(rand_x, rand_y, O_Tutorial_Asteroid);
+                do {
+                    dist = sprite_get_width(Sp_ShipV1)/2 + random_range(O_Tutorial_Main.inner_radius, O_Tutorial_Main.outer_radius);
+                    dir = random(360);
+                } until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone && collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Tutorial_Asteroid, true, true) == noone)
+                instance_create(960 + lengthdir_x(dist, dir), 640 + lengthdir_y(dist, dir), O_Tutorial_Asteroid);
             }
         }
     }
@@ -101,7 +100,8 @@ draw_text(_x + _w/2, _y + _h/2, tutorial_hint);
 
 if (tutorial_complete)
 {
-    room = R_Title;
+    global.newtutorial = true;
+    room_goto(R_Title);
 }
 
 // Debug
