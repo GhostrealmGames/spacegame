@@ -8,6 +8,48 @@
   <parentName>O_Smelt_Parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="6" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.smelt_type] == false)
+{
+    global.Inventory[O_Controller.smelt_type] += round(O_Controller.smelt_num/2 + 0.1);
+    O_Controller.smelt_num -= round(O_Controller.smelt_num/2 + 0.1);
+    Sc_Inventory_Assign();
+}
+else if (!keyboard_check(vk_shift) &amp;&amp; (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type)))
+{
+    global.mouse_slot += round(O_Controller.smelt_num/2 + 0.1);
+    global.mouse_type = O_Controller.smelt_type;
+    O_Controller.smelt_num -= round(O_Controller.smelt_num/2 + 0.1);
+}
+if (O_Controller.smelt_num == 0)
+{
+    O_Controller.smelt_type = -1;
+}
+if (O_Controller.input_num == 0)
+{
+    smelt_type = -1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="6" enumb="4">
       <action>
         <libid>1</libid>
@@ -25,22 +67,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type))
+            <string>if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.smelt_type] == false)
 {
-    if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.smelt_type] == false)
-    {
-        global.Inventory[O_Controller.smelt_type] += O_Controller.smelt_num;
-        O_Controller.smelt_num = 0;
-        O_Controller.smelt_type = -1;
-        Sc_Inventory_Assign();
-    }
-    else
-    {
-        global.mouse_slot += O_Controller.smelt_num;
-        global.mouse_type = O_Controller.smelt_type;
-        O_Controller.smelt_num = 0;
-        O_Controller.smelt_type = -1;
-    }
+    global.Inventory[O_Controller.smelt_type] += O_Controller.smelt_num;
+    O_Controller.smelt_num = 0;
+    O_Controller.smelt_type = -1;
+    Sc_Inventory_Assign();
+}
+else if (!keyboard_check(vk_shift) &amp;&amp; (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type)))
+{
+    global.mouse_slot += O_Controller.smelt_num;
+    global.mouse_type = O_Controller.smelt_type;
+    O_Controller.smelt_num = 0;
+    O_Controller.smelt_type = -1;
 }
 if (O_Controller.input_num == 0)
 {

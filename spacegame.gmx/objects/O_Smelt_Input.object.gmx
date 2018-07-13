@@ -42,13 +42,13 @@ else
 {
     if (O_Controller.in_type &gt;= 0)
     {
-        if (keyboard_check(vk_shift))
+        if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.in_type] == false)
         {
             global.Inventory[O_Controller.in_type] += round(O_Controller.input_num/2 + 0.1);
             O_Controller.input_num -= round(O_Controller.input_num/2 + 0.1);
             Sc_Inventory_Assign();
         }
-        else
+        else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Controller.in_type == global.mouse_type))
         {
             if (O_Controller.input_num &gt;= 50)
             {
@@ -89,7 +89,7 @@ else
             <kind>1</kind>
             <string>if (global.mouse_type &gt;= 0 &amp;&amp; global.mouse_type &lt; total_resource_types &amp;&amp; (O_Controller.in_type == -1 || O_Controller.in_type == global.mouse_type))
 {
-    if ((global.mouse_type == (O_Controller.smelt_type - total_resource_types) &amp;&amp; global.mouse_type == O_Controller.in_type) || (O_Controller.smelt_type == -1 &amp;&amp; O_Controller.in_type == -1))
+    if ((global.mouse_type == (O_Controller.smelt_type - total_resource_types) &amp;&amp; global.mouse_type == O_Controller.in_type) || (O_Controller.smelt_type == -1 &amp;&amp; global.mouse_type == O_Controller.in_type) || (O_Controller.smelt_type == -1 &amp;&amp; O_Controller.in_type == -1))
     {
         O_Controller.input_num += global.mouse_slot;
         O_Controller.in_type = global.mouse_type;
@@ -99,14 +99,14 @@ else
 }
 else
 {
-    if (O_Controller.in_type &gt;= 0 &amp;&amp; keyboard_check(vk_shift))
+    if (keyboard_check(vk_shift) &amp;&amp; O_Controller.in_type &gt;= 0 &amp;&amp; O_Controller.inv_full[O_Controller.in_type] == false)
     {
         global.Inventory[O_Controller.in_type] += O_Controller.input_num;
         O_Controller.input_num = 0;
         O_Controller.in_type = -1;
         Sc_Inventory_Assign();
     }
-    else
+    else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Controller.in_type == global.mouse_type))
     {
         if (O_Controller.input_num &gt;= 50)
         {
