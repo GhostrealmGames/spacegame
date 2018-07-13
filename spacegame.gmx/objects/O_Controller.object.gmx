@@ -60,8 +60,7 @@ draw_map = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Reactivate command room
-if(!deactivate)
+            <string>if(!deactivate)
 {
     if (input_num &gt; 0)
     {
@@ -121,21 +120,21 @@ if(!deactivate)
     {
         global.debug = true;
     }
+    // Toggle Command Line: ~
+    if (keyboard_check_pressed(192))
+    {
+        if (room == R_Main &amp;&amp; global.debug == true)
+        {
+            room = R_Command;
+        }
+        else if (room == R_Command)
+        {
+            room = R_Main;
+        }
+    }
     // Give inventory items if debug mode is on.
     if (global.debug)
     {
-        // Toggle Command Line: ~
-        if (keyboard_check_pressed(192))
-        {
-            if (room == R_Main)
-            {
-                //room = R_Command;
-            }
-            else
-            {
-                room = R_Main;
-            }
-        }
         if (room == R_Menu_Inventory)
         {
             // Copper

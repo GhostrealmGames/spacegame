@@ -153,6 +153,7 @@
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
     <font>fonts\fnt_update</font>
+    <font>fonts\fnt_command</font>
   </fonts>
   <objects name="objects">
     <object>objects\O_Border</object>
@@ -185,6 +186,7 @@
       <object>objects\O_Menu_Title</object>
       <object>objects\O_Menu_Pause</object>
       <object>objects\O_Menu_Inventory</object>
+      <object>objects\O_Menu_Command</object>
       <object>objects\O_Button</object>
       <objects name="Title">
         <object>objects\O_Title_Parent</object>

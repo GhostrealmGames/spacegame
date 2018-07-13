@@ -40,6 +40,7 @@ processed_time = 0;
 num_completed = 0;
 total = 0;
 draw_map = false;
+// Tutorial
 tutorial_text = 0;
 tutorial_complete = false;
 falsh_timer_initial = 0.5;

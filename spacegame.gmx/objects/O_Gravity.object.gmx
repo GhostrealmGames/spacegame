@@ -66,11 +66,11 @@ highest_dist = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.debug)
+            <string>/*if(global.debug)
 {
     instance_create(x, y, O_Trail);
     alarm[0] = spawn_delay;
-}
+}*/
 </string>
           </argument>
         </arguments>

@@ -344,7 +344,7 @@
     <option_lastchanged></option_lastchanged>
     <option_linux_display_name>spacegame</option_linux_display_name>
     <option_linux_enable_steam>0</option_linux_enable_steam>
-    <option_linux_fullscreen>0</option_linux_fullscreen>
+    <option_linux_fullscreen>-1</option_linux_fullscreen>
     <option_linux_homepage>http://www.spacegame.com</option_linux_homepage>
     <option_linux_icon>Configs\Default\linux\icon64.png</option_linux_icon>
     <option_linux_interpolate>-1</option_linux_interpolate>
