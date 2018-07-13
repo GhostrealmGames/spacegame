@@ -116,14 +116,18 @@ event_inherited();
 if(instance_exists(O_Ship))
 {
     angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
-    with(O_Asteroid)
+    with(O_Gravity)
+    {
+        motion_add(other.angle_object, other.ship_gravity);
+    }
+    /*with(O_Asteroid)
     {
         motion_add(other.angle_object, other.ship_gravity);
     }
     with(O_Comet)
     {
         motion_add(other.angle_object, other.ship_gravity);
-    }
+    }*/
 }
 </string>
           </argument>

@@ -92,6 +92,53 @@ if(instance_exists(nearest))
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if (random(1) &lt; 1/2)
+{
+    dist = sprite_width/2 + 200;
+    dir = random(360);
+    // Repeat until there is no overlap when the Enemy is created
+    while (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_Enemy1), O_EnemyBlueSimple, true, true) != noone)
+    {
+        dir = random(360);
+    }
+    if (score &gt;= boss_spawn_score &amp;&amp; boss_spawned == false)
+    {
+        instance_create(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), O_Boss);
+        boss_spawned = true;
+    }
+    else
+    {
+        instance_create(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), O_EnemyBlueSimple);
+    }
+}
+enemy_spawn_rate = ((-1/100)*score+initial_spawn_rate)+1
+if (enemy_spawn_rate &lt; 0.1)
+{
+    enemy_spawn_rate = 0.1;
+}
+alarm[0] = enemy_spawn_rate*room_speed;*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>

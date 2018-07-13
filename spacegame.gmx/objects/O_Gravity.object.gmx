@@ -93,7 +93,8 @@ highest_dist = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>nearest = instance_nearest(x, y, O_Planet_Parent);
+            <string>///Gravity
+nearest = instance_nearest(x, y, O_Planet_Parent);
 if (instance_exists(nearest) &amp;&amp; gravityon)
 {
     Sc_Gravity(self, nearest);
@@ -158,6 +159,35 @@ with(other)
 {
     force = other.mass * other.acceleration;
     motion_add(pdir2, force*100);//other.speed/other.mass*200);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(instance_exists(O_Ship))
+{
+    if (global.fuel &gt; 0) // Check to see if the ship has fuel
+    {
+        motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
+    }
 }
 </string>
           </argument>

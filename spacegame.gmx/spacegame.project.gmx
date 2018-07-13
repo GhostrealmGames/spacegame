@@ -14,24 +14,34 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\Sp_Target</sprite>
+    <sprite>sprites\Sp_Trail</sprite>
     <sprite>sprites\Sp_Cursor</sprite>
     <sprite>sprites\Sp_Empty</sprite>
     <sprites name="Border">
       <sprite>sprites\Sp_Border</sprite>
       <sprite>sprites\Sp_Border_Hit</sprite>
     </sprites>
+    <sprites name="Tutorial">
+      <sprite>sprites\Sp_Tutorial_Target_lg</sprite>
+      <sprite>sprites\Sp_Tutorial_Target_med</sprite>
+      <sprite>sprites\Sp_Tutorial_Target_sm</sprite>
+    </sprites>
     <sprites name="Menu">
+      <sprite>sprites\Sp_Logo</sprite>
       <sprite>sprites\Sp_Title</sprite>
-      <sprite>sprites\Sp_Button_Template</sprite>
-      <sprite>sprites\Sp_Button_Play</sprite>
-      <sprite>sprites\Sp_Button_Tutorial</sprite>
-      <sprite>sprites\Sp_Button_Highscores</sprite>
-      <sprite>sprites\Sp_Button_Achievements</sprite>
-      <sprite>sprites\Sp_Button_Credits</sprite>
-      <sprite>sprites\Sp_Button_Controls</sprite>
-      <sprite>sprites\Sp_Button_Exit</sprite>
-      <sprite>sprites\Sp_Button_Load</sprite>
-      <sprite>sprites\Sp_Button_Restart</sprite>
+      <sprite>sprites\Sp_Game_Over</sprite>
+      <sprites name="Buttons">
+        <sprite>sprites\Sp_Button_Template</sprite>
+        <sprite>sprites\Sp_Button_Play</sprite>
+        <sprite>sprites\Sp_Button_Tutorial</sprite>
+        <sprite>sprites\Sp_Button_Highscores</sprite>
+        <sprite>sprites\Sp_Button_Achievements</sprite>
+        <sprite>sprites\Sp_Button_Credits</sprite>
+        <sprite>sprites\Sp_Button_Controls</sprite>
+        <sprite>sprites\Sp_Button_Exit</sprite>
+        <sprite>sprites\Sp_Button_Load</sprite>
+        <sprite>sprites\Sp_Button_Restart</sprite>
+      </sprites>
       <sprites name="Inventory">
         <sprite>sprites\Sp_Inv_Slot</sprite>
         <sprite>sprites\Sp_Inv_Trashcan</sprite>
@@ -79,6 +89,16 @@
       <sprite>sprites\Sp_ShipV3</sprite>
       <sprite>sprites\Sp_FireV3</sprite>
     </sprites>
+    <sprites name="Enemies">
+      <sprite>sprites\Sp_Enemy1</sprite>
+      <sprite>sprites\Sp_Enemy2</sprite>
+      <sprites name="Boss">
+        <sprite>sprites\Sp_BossBottom</sprite>
+        <sprite>sprites\Sp_BossTop</sprite>
+        <sprite>sprites\Sp_BossMaster</sprite>
+        <sprite>sprites\Sp_BossMissile</sprite>
+      </sprites>
+    </sprites>
     <sprites name="Droids">
       <sprite>sprites\Sp_Droid_Collector</sprite>
       <sprite>sprites\Sp_Droid_Miner</sprite>
@@ -112,13 +132,7 @@
       <sprite>sprites\Sp_ShipV3_Upgrade</sprite>
     </sprites>
     <sprite>sprites\Sp_Explosion</sprite>
-    <sprite>sprites\Sp_Game_Over</sprite>
     <sprite>sprites\Sp_HUD</sprite>
-    <sprite>sprites\Sp_Logo</sprite>
-    <sprite>sprites\Sp_Trail</sprite>
-    <sprite>sprites\Sp_Tutorial_Target_lg</sprite>
-    <sprite>sprites\Sp_Tutorial_Target_med</sprite>
-    <sprite>sprites\Sp_Tutorial_Target_sm</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\Bg_Back</background>
@@ -220,6 +234,7 @@
     <objects name="Projectiles">
       <object>objects\O_Projectile</object>
       <object>objects\O_Laser</object>
+      <object>objects\O_Enemies_Laser</object>
     </objects>
     <objects name="Asteroid">
       <object>objects\O_Asteroid_Parent</object>
@@ -263,6 +278,16 @@
     <object>objects\O_Parallax</object>
     <object>objects\O_Tutorial_Parallax</object>
     <object>objects\O_other_player</object>
+    <objects name="Enemies">
+      <object>objects\O_EnemyBlueSimple</object>
+      <objects name="Boss">
+        <object>objects\O_Boss</object>
+        <object>objects\O_BossMissle</object>
+        <object>objects\O_Explosion_Missle</object>
+        <object>objects\O_BossTop</object>
+        <object>objects\O_BossBottom</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\R_init</room>
