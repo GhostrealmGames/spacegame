@@ -28,6 +28,8 @@
             <string>check_for_updates = true;
 alarm[0] = 3*room_speed;
 dots = 0;
+update_x = room_width/2;
+update_y = room_height/1.25;
 
 /// Initialize Game Variables
 globalvar B_Pause;
@@ -635,31 +637,31 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 if (check_for_updates)
 {
+    draw_sprite(Sp_Logo, 0, room_width/2, room_height/2);
     if (round(dots) == 0)
     {
-        draw_text(room_width/2, room_height/2, "Checking for Updates   ");
+        draw_text(update_x, update_y, "Checking for Updates   ");
     }
     else if (round(dots) == 1)
     {
-        draw_text(room_width/2, room_height/2, "Checking for Updates.  ");
+        draw_text(update_x, update_y, "Checking for Updates.  ");
     }
     else if (round(dots) == 2)
     {
-        draw_text(room_width/2, room_height/2, "Checking for Updates.. ");
+        draw_text(update_x, update_y, "Checking for Updates.. ");
     }
     else if (round(dots) == 3)
     {
-        draw_text(room_width/2, room_height/2, "Checking for Updates...");
+        draw_text(update_x, update_y, "Checking for Updates...");
     }
     else
     {
-        draw_text(room_width/2, room_height/2, "Checking for Updates...");
+        draw_text(update_x, update_y, "Checking for Updates...");
     }
     if (dots &gt;= 4)
     {
         dots = 0;
     }
-    draw_sprite(Sp_Logo, 0, room_width/2, room_height/2);
     dots += .1;
 }
 </string>

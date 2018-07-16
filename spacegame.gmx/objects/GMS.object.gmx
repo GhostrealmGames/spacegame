@@ -125,7 +125,7 @@ major = real(Sc_String_Decipher(1, '.', version_string));
 minor = real(Sc_String_Decipher(1, '.', Sc_String_Decipher(2, '.', version_string)));
 patch = real(Sc_String_Decipher(1, '.', Sc_String_Decipher(2, '.', Sc_String_Decipher(2, '.', version_string))));
 version = major + 0.01*minor + 0.0001*patch;
-gms_settings(true, version, O_Ship, O_other_player);
+gms_settings(true, version, O_Ship, -1);
 room_goto_next();
 </string>
           </argument>

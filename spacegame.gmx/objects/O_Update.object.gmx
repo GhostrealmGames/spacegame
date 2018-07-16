@@ -25,15 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Start Downloading the update
-if (gms_update_check())
+            <string>_x = 500;
+_y = room_height/2;
+gms_update_start();
+// Start Downloading the update
+/*if (gms_update_check())
 {
     gms_update_start();
 }
 else
 {
     //room_goto(R_Title);
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -83,9 +86,7 @@ if(gms_update_isfinished())
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>_x = 500;
-_y = room_height/2;
-draw_set_color(c_red);
+            <string>draw_set_color(c_red);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 draw_text(_x, _y - 10, "Update Download Progress");
