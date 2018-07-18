@@ -27,22 +27,18 @@
             <kind>1</kind>
             <string>_x = 500;
 _y = room_height/2;
-gms_update_start();
-// Start Downloading the update
-/*if (gms_update_check())
-{
-    gms_update_start();
-}
-else
-{
-    //room_goto(R_Title);
-}*/
+download_path = "http://gamemakerserver.com/en/games/4365/download/";
+des = get_save_filename("Zip File (*.zip)|*.zip", "spacegame.zip");
+file = http_get_file(download_path, des);
+str_update = "";
+update_percent = 0;
+update_complete = false;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -59,10 +55,54 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Apply update when the download is completed
-if(gms_update_isfinished())
+            <string>game_end();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="62">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (ds_map_find_value(async_load, "id") == file)
 {
-    gms_update_apply();
+    var status = ds_map_find_value(async_load, "status");
+    /*if (status &lt; 0) // error
+    {
+        str_update = "Error while updating#Result: " + ds_map_find_value(async_load, "result") + "#http_status: " + string(ds_map_find_value(async_load, "http_status"));
+        update_percent = 0;
+    }*/
+    if (status == 1) // download in progress
+    {
+        str_update = "Download in progress"
+        update_percent = ds_map_find_value(async_load, "sizeDownloaded")/ds_map_find_value(async_load, "contentLength");
+    }
+    else if (status == 0)   // download complete
+    {
+        str_update = "Download complete";
+        update_percent = 1;
+        update_complete = true;
+        alarm[0] = 5 * room_speed;
+    }
+    else
+    {
+        str_update = "Error while downloading";
+        alarm[0] = 5 * room_speed;
+    }
 }
 </string>
           </argument>
@@ -90,9 +130,30 @@ if(gms_update_isfinished())
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
 draw_text(_x, _y - 10, "Update Download Progress");
-update_percent = gms_update_progress(); // returns a number between 0 and 1
-draw_rectangle(_x, _y - 10, _x + (room_width - 2*_x) * update_percent, _y + 10, true);
+//update_percent = gms_update_progress(); // returns a number between 0 and 1
+/*if(ds_map_find_value(async_load, "status") == 1)
+{
+    update_percent = ds_map_find_value(async_load, "sizeDownloaded")/ds_map_find_value(async_load, "contentLength");
+}
+else if(ds_map_find_value(async_load, "status") == 0)
+{
+    update_percent = 1;
+}*/
+if(update_percent &gt; 0)
+{
+    draw_rectangle(_x, _y - 10, _x + (room_width - 2*_x) * update_percent, _y + 10, false);
+}
 draw_rectangle(_x, _y - 10, _x + room_width - 2*_x, _y + 10, true);
+draw_set_valign(fa_top);
+draw_text(_x, _y + 10, str_update);
+draw_set_halign(fa_center);
+draw_set_valign(fa_middle);
+draw_set_font(fnt_update);
+if(update_complete)
+{
+    draw_text(room_width/2, room_height/4 + 10, "Unzip files to game folder");
+}
+
 </string>
           </argument>
         </arguments>

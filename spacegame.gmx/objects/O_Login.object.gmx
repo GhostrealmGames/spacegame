@@ -533,7 +533,6 @@ else
 {
     gms_show_login();
 }
-
 </string>
           </argument>
         </arguments>
