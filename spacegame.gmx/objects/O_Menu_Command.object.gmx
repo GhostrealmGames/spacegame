@@ -34,6 +34,7 @@ txt = "";
 alarm[0] = room_speed;
 old_commands[40] = "";
 alpha = 1;
+keyboard_string = "";
 </string>
           </argument>
         </arguments>
