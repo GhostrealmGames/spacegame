@@ -28,7 +28,8 @@
             <string>_x = 500;
 _y = room_height/2;
 download_path = "http://gamemakerserver.com/en/games/4365/download/";
-des = get_save_filename("Zip File (*.zip)|*.zip", "spacegame.zip");
+//des = get_save_filename("Zip File (*.zip)|*.zip", "spacegame.zip");
+des = working_directory + "spacegame.exe";
 file = http_get_file(download_path, des);
 str_update = "";
 update_percent = 0;
@@ -129,16 +130,7 @@ update_complete = false;
             <string>draw_set_color(c_red);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
-draw_text(_x, _y - 10, "Update Download Progress");
-//update_percent = gms_update_progress(); // returns a number between 0 and 1
-/*if(ds_map_find_value(async_load, "status") == 1)
-{
-    update_percent = ds_map_find_value(async_load, "sizeDownloaded")/ds_map_find_value(async_load, "contentLength");
-}
-else if(ds_map_find_value(async_load, "status") == 0)
-{
-    update_percent = 1;
-}*/
+draw_text(_x, _y - 10, "Update Download Progress"); 
 if(update_percent &gt; 0)
 {
     draw_rectangle(_x, _y - 10, _x + (room_width - 2*_x) * update_percent, _y + 10, false);
@@ -151,7 +143,7 @@ draw_set_valign(fa_middle);
 draw_set_font(fnt_update);
 if(update_complete)
 {
-    draw_text(room_width/2, room_height/4 + 10, "Unzip files to game folder");
+    //draw_text(room_width/2, room_height/4 + 10, "Unzip files to game folder");
 }
 
 </string>
