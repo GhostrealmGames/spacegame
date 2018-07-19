@@ -275,9 +275,6 @@
       <object>objects\O_Target</object>
       <object>objects\O_Particle_Target</object>
     </objects>
-    <object>objects\O_Parallax</object>
-    <object>objects\O_Tutorial_Parallax</object>
-    <object>objects\O_other_player</object>
     <objects name="Enemies">
       <object>objects\O_EnemyBlueSimple</object>
       <objects name="Boss">
@@ -288,6 +285,7 @@
         <object>objects\O_BossBottom</object>
       </objects>
     </objects>
+    <object>objects\O_Parallax</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\R_init</room>

@@ -53,7 +53,7 @@
   <instances>
     <instance objName="O_Tutorial" x="0" y="0" name="inst_A36F2459" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="O_Tutorial_Main" x="32" y="0" name="inst_7FB324C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="O_Tutorial_Parallax" x="0" y="32" name="inst_723AF26C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="O_Parallax" x="0" y="32" name="inst_723AF26C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
