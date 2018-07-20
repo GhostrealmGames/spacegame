@@ -3,8 +3,79 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="4" name="datafiles">
+    <datafile>
+      <name>ExecuteShell.dll</name>
+      <exists>-1</exists>
+      <size>97280</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>ExecuteShell.dll</filename>
+    </datafile>
+    <datafile>
+      <name>example.txt</name>
+      <exists>-1</exists>
+      <size>12</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>example.txt</filename>
+    </datafile>
+    <datafile>
+      <name>ExecuteShell.dylib</name>
+      <exists>-1</exists>
+      <size>8464</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>ExecuteShell.dylib</filename>
+    </datafile>
+    <datafile>
+      <name>ExecuteShell.so</name>
+      <exists>-1</exists>
+      <size>5380</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>ExecuteShell.so</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions>
     <extension index="0">extensions\GameMaker Server+(All)</extension>
+    <extension index="1">extensions\Execute Shell</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\A_Shoot</sound>
@@ -163,6 +234,7 @@
     <script>scripts\Sc_String_Decipher.gml</script>
     <script>scripts\Sc_Render.gml</script>
     <script>scripts\Sc_Restart.gml</script>
+    <script>scripts\ExecuteShell.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
@@ -286,6 +358,7 @@
       </objects>
     </objects>
     <object>objects\O_Parallax</object>
+    <object>objects\obj_example</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\R_init</room>
