@@ -358,7 +358,6 @@
       </objects>
     </objects>
     <object>objects\O_Parallax</object>
-    <object>objects\obj_example</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\R_init</room>
