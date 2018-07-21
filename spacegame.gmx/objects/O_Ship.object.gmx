@@ -195,9 +195,8 @@ if (instance_exists(O_Ship) &amp;&amp; instance_exists(O_Planet_Parent))
     }
 }
 ///Needs some adjustment
-/*
 // Bounce off of asteroid
-with(other)
+/*with(other)
 {
     dist_x = self.x - other.x;
     dist_y = self.y - other.y;
@@ -223,7 +222,7 @@ with(O_Gravity)
         pdir = point_direction(0, 0, acceleration_x, acceleration_y);
     
         force = mass * acceleration;
-        motion_add(-pdir, force*100);//other.speed/other.mass*200);
+        motion_add(pdir, force*100);//other.speed/other.mass*200);
     }
 }
 with(O_Planet_Parent)
@@ -241,14 +240,14 @@ with(O_Planet_Parent)
         pdir = point_direction(0, 0, acceleration_x, acceleration_y);
     
         force = mass * acceleration;
-        motion_add(-pdir, force*100);
+        motion_add(pdir, force*100);
     }
 }
 with(other)
 {
     if(instance_exists(O_Ship))
     {
-        force = O_Ship.mass * acceleration;
+        force = O_Ship.mass * acceleration2;
         motion_add(pdir2, force*100);
     }
 }*/

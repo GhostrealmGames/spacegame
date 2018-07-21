@@ -311,6 +311,8 @@
     <objects name="Asteroid">
       <object>objects\O_Asteroid_Parent</object>
       <object>objects\O_Asteroid</object>
+      <object>objects\O_Test1</object>
+      <object>objects\O_Test2</object>
       <object>objects\O_Comet</object>
     </objects>
     <objects name="Particles">
@@ -371,6 +373,7 @@
     <room>rooms\R_Menu_Pause</room>
     <room>rooms\R_Menu_Inventory</room>
     <room>rooms\R_Command</room>
+    <room>rooms\R_test</room>
   </rooms>
   <constants number="86">
     <constant name="version_string">"0.10.3"</constant>

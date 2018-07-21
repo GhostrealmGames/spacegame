@@ -27,6 +27,17 @@
             <kind>1</kind>
             <string>spawn_delay = 2 * room_speed;
 gravityon = true;
+rVel = 0;
+rDir = 0;
+rVel_x = 0;
+rVel_y = 0;
+collided = false;
+// restitution = e
+// e = 0 inelastic collision - no energy is converted to motion
+// 0 &lt; e &lt; 1 inelastic collision - some energy is converted to motion
+// e = 1 elastic collision - all energy is converted to motion
+restitution = 1;
+
 //alarm[0] = 30;
 if (instance_exists(O_Planet_Parent))
 {
@@ -132,6 +143,38 @@ if (instance_exists(nearest))
           <argument>
             <kind>1</kind>
             <string>/// Collision with O_Gravity
+
+// Attempt #1
+// works well on its own but not with player movement
+/*if(collided = false)
+{
+    collided = true;
+    alarm[0] = 30;
+    with(other)
+    {
+        // Calculate Relative Velocity
+        rVel_x = (self.hspeed - other.hspeed)/2;
+        rVel_y = (self.vspeed - other.vspeed)/2;
+        rVel = point_distance(0, 0, rVel_x, rVel_y);
+        rDir = point_direction(0, 0, rVel_x, rVel_y);
+    }
+    // Calculate Relative Velocity
+    rVel_x = (self.hspeed - other.hspeed)/2;
+    rVel_y = (self.vspeed - other.vspeed)/2;
+    rVel = point_distance(0, 0, rVel_x, rVel_y);
+    rDir = point_direction(0, 0, rVel_x, rVel_y);
+    contact_angle = arctan((y - other.y)/(x - other.x));
+    
+    // x
+    fVel_x = (rVel * cos(rDir - contact_angle) * (mass - other.mass) + 2*other.mass*other.rVel*cos(other.rDir - contact_angle)) / (mass + other.mass) * cos(contact_angle) + rVel*sin(rDir - contact_angle)*cos(contact_angle + pi/2);
+    // y
+    fVel_y = (rVel * cos(rDir - contact_angle) * (mass - other.mass) + 2*other.mass*other.rVel*cos(other.rDir - contact_angle)) / (mass + other.mass) * sin(contact_angle) + rVel*sin(rDir - contact_angle)*sin(contact_angle + pi/2);
+    
+    hspeed = fVel_x;
+    vspeed = fVel_y;
+}*/
+
+// Original
 with(other)
 {
     dist_x = self.x - other.x;
@@ -154,11 +197,11 @@ acceleration = point_distance(0, 0, acceleration_x, acceleration_y);
 pdir = point_direction(0, 0, acceleration_x, acceleration_y);
 
 force = other.mass * other.acceleration;
-motion_add(pdir, force*100);//other.speed/other.mass*200);
+motion_add(pdir, force*80);//other.speed/other.mass*200);
 with(other)
 {
     force = other.mass * other.acceleration;
-    motion_add(pdir2, force*100);//other.speed/other.mass*200);
+    motion_add(pdir2, force*80);//other.speed/other.mass*200);
 }
 </string>
           </argument>
@@ -220,6 +263,11 @@ with(other)
             if (y &lt; view_yview[0] + view_hview[0] + sprite_width)
             {
                 draw_sprite(sprite_index, image_index, x, y);
+                draw_set_color(c_red);
+                if (rVel &gt; 0)
+                {
+                    draw_line_width(x, y, x + rVel_x*100, y + rVel_y*100, 2);
+                }
             }
         }
     }
