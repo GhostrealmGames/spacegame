@@ -247,7 +247,7 @@ draw_map = false;
 {
     deactivate = true;
 }
-else
+else if (room == R_Main)
 {
     deactivate = false;
 }

@@ -52,13 +52,13 @@ if (instance_exists(O_Ship))
             draw_rectangle(_x, _y - 54, _x + 280/100*percent_complete, _y - 18, false);
         }
     }
-    else
+    else if (instance_exists(O_Tutorial))
     {
-        /*if (O_Tutorial.processed_time > 0)
+        if (O_Tutorial.processed_time > 0)
         {
             percent_complete = ((O_Tutorial.processed_time/room_speed)/(global.smelt_time[O_Tutorial.in_type]))*100;
             draw_rectangle(_x, _y - 54, _x + 280/100*percent_complete, _y - 18, false);
-        }*/
+        }
     }
     // Draw HUD Sprite
     draw_sprite(Sp_HUD, 0, view_xview[0], view_yview[0] + view_hview[0]);

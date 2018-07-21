@@ -27,9 +27,9 @@
             <kind>1</kind>
             <string>draw_fps = false;
 draw_welcome = true;
-map_size = 20000;
+map_size = 10000;
 zoom_rate = 1000;
-zout_max = 500000;
+zout_max = 50000;
 zin_min = 10000;
 inner_radius = 1500;
 outer_radius = 3000;

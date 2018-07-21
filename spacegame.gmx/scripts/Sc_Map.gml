@@ -4,6 +4,11 @@ if(instance_exists(O_Main))
     width = O_Main.map_size; //20000
     height = O_Main.map_size; //20000
 }
+else if(instance_exists(O_Tutorial_Main))
+{
+    width = O_Tutorial_Main.map_size;
+    height = O_Tutorial_Main.map_size;
+}
 else
 {
     width = 20000;

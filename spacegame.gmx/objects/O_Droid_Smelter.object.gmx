@@ -125,16 +125,28 @@ mine_time = 0;
           <argument>
             <kind>1</kind>
             <string>// Set the object to chase
-if (locked_on == false &amp;&amp; instance_exists(O_Target))
+if (locked_on == false &amp;&amp; collected_num &lt; 10 &amp;&amp; instance_exists(O_Asteroid))
 {
-    target = instance_nearest(x, y, O_Target);
-    droid = self;
-    with (target)
+    target = noone;
+    // Search for closest untargeted asteroid
+    with (O_Asteroid)
     {
-        other.target = droid_target;
-        instance_destroy();
+        if (targeted == false)
+        {
+            other.current_dist = distance_to_object(other);
+            if (other.target == noone || other.current_dist &lt; other.nearest_dist)
+            {
+                other.target = id;
+                other.nearest_dist = other.current_dist;
+            }
+        }
     }
-    locked_on = true;
+    
+    if (target != noone)
+    {
+        target.targeted = true;
+        locked_on = true;
+    }
 }
 // Step towards Target Object
 if (target != noone &amp;&amp; instance_exists(target))

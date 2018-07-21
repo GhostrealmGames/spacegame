@@ -40,8 +40,7 @@ else
     mass = 1500;
     max_damage = 15;
 }
-target = instance_create(x, y, O_Target);
-target.droid_target = id;
+targeted = false;
 event_inherited();
 </string>
           </argument>

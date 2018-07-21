@@ -256,7 +256,7 @@ num_flashes = num_flash_initial;
 {
     deactivate = true;
 }
-else
+else if (room == R_Tutorial)
 {
     deactivate = false;
 }

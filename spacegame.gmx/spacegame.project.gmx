@@ -344,8 +344,6 @@
       <object>objects\O_Droid_Collector</object>
       <object>objects\O_Droid_Miner</object>
       <object>objects\O_Droid_Smelter</object>
-      <object>objects\O_Target</object>
-      <object>objects\O_Particle_Target</object>
     </objects>
     <objects name="Enemies">
       <object>objects\O_EnemyBlueSimple</object>
