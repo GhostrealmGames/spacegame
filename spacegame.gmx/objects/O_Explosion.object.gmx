@@ -119,6 +119,10 @@ alarm[11] = 10;
             speed = 0;
             gravityon = false;
         }
+        with(O_Parallax)
+        {
+            speed = 0;
+        }
     }
     // Play Explosion Sound
     sound_play(A_Explosion);

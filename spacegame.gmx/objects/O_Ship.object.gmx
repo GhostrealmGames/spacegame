@@ -183,20 +183,8 @@ if (instance_exists(O_Ship) &amp;&amp; instance_exists(O_Planet_Parent))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (other.Type == -1)
-{
-    if (other.collided == false)
-    {
-        event_inherited();
-        global.ship_health -= 1 * other.speed;
-        sound_play(A_Collision_Asteroid);
-        other.collided = true;
-        other.set_alarm = true;
-    }
-}
-///Needs some adjustment
-// Bounce off of asteroid
-/*with(other)
+            <string>// Bounce off of asteroid
+with(other)
 {
     dist_x = self.x - other.x;
     dist_y = self.y - other.y;
@@ -207,50 +195,53 @@ if (instance_exists(O_Ship) &amp;&amp; instance_exists(O_Planet_Parent))
     acceleration2 = point_distance(0, 0, acceleration_x, acceleration_y);
     pdir2 = point_direction(0, 0, acceleration_x, acceleration_y);
 }
+
+dist_x = self.x - other.x;
+dist_y = self.y - other.y;
+dist2 = sqr(dist_x * dist_x + dist_y * dist_y);
+
+acceleration_x = dist_x / dist2;
+acceleration_y = dist_y / dist2;
+acceleration = point_distance(0, 0, acceleration_x, acceleration_y);
+pdir = point_direction(0, 0, acceleration_x, acceleration_y);
+
+force = other.mass * other.acceleration2;
+
+// Apply force to objects
 with(O_Gravity)
 {
-    if(instance_exists(O_Ship))
-    {
-        //pdir = point_direction(other.x, other.y, x, y);
-        dist_x = O_Ship.x - x;
-        dist_y = O_Ship.y - y;
-        dist2 = sqr(dist_x * dist_x + dist_y * dist_y);
-    
-        acceleration_x = dist_x / dist2;
-        acceleration_y = dist_y / dist2;
-        acceleration = point_distance(0, 0, acceleration_x, acceleration_y);
-        pdir = point_direction(0, 0, acceleration_x, acceleration_y);
-    
-        force = mass * acceleration;
-        motion_add(pdir, force*100);//other.speed/other.mass*200);
-    }
+    motion_add(other.pdir + 180, other.force*80);
 }
 with(O_Planet_Parent)
 {
-    if(instance_exists(O_Ship))
-    {
-        //pdir = point_direction(other.x, other.y, x, y);
-        dist_x = O_Ship.x - x;
-        dist_y = O_Ship.y - y;
-        dist2 = sqr(dist_x * dist_x + dist_y * dist_y);
-    
-        acceleration_x = dist_x / dist2;
-        acceleration_y = dist_y / dist2;
-        acceleration = point_distance(0, 0, acceleration_x, acceleration_y);
-        pdir = point_direction(0, 0, acceleration_x, acceleration_y);
-    
-        force = mass * acceleration;
-        motion_add(pdir, force*100);
-    }
+    motion_add(other.pdir + 180, other.force*80);
+}
+with(O_Particle_Parent)
+{
+    motion_add(other.pdir + 180, other.force*80);
+}
+with(O_Parallax)
+{
+    motion_add(other.pdir + 180, other.force*80);
 }
 with(other)
 {
-    if(instance_exists(O_Ship))
+    force = other.mass * acceleration2;
+    motion_add(pdir2, force*80);
+}
+
+// Other collision effects
+if (other.Type == -1)
+{
+    if (other.collided == false)
     {
-        force = O_Ship.mass * acceleration2;
-        motion_add(pdir2, force*100);
+        event_inherited();
+        global.ship_health -= 4000 * force;
+        sound_play(A_Collision_Asteroid);
+        other.collided = true;
+        other.set_alarm = true;
     }
-}*/
+}
 </string>
           </argument>
         </arguments>
