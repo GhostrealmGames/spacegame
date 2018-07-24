@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control)
+if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control &amp;&amp; !O_Title_Achievements.achievements)
 {
     room = R_NewTutorial;
 }

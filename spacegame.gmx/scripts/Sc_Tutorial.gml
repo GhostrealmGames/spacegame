@@ -100,6 +100,10 @@ draw_text(_x + _w/2, _y + _h/2, tutorial_hint);
 
 if (tutorial_complete)
 {
+    if (!gms_achievement_isreached("complete_tutorial"))
+    {
+        gms_achievement_reach("complete_tutorial");
+    }
     global.newtutorial = true;
     room_goto(R_Title);
 }

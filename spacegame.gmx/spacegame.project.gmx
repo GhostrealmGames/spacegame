@@ -235,6 +235,7 @@
     <script>scripts\Sc_Render.gml</script>
     <script>scripts\Sc_Restart.gml</script>
     <script>scripts\ExecuteShell.gml</script>
+    <script>scripts\Sc_show_achievements.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>

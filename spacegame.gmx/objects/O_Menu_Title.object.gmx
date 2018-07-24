@@ -167,7 +167,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (O_Title_Credits.credit == 0 &amp;&amp; O_Title_Controls.control == 0)
+            <string>if (O_Title_Credits.credit == 0 &amp;&amp; O_Title_Controls.control == 0 &amp;&amp; O_Title_Achievements.achievements == 0)
 {
     game_end();
 }

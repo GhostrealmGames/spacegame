@@ -584,7 +584,15 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(R_Title);
+            <string>if(!gms_ini_player_exists("Achievements", "asteroids_destroyed"))
+{
+    gms_ini_player_write("Achievements", "asteroids_destroyed", 0);
+}
+if(!gms_ini_player_exists("Achievements", "resources_collected"))
+{
+    gms_ini_player_write("Achievements", "resources_collected", 0);
+}
+room_goto(R_Title);
 </string>
           </argument>
         </arguments>

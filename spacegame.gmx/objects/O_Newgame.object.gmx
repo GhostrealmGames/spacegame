@@ -53,10 +53,10 @@ if (room == R_NewTutorial)
 }
 else
 {
-    /*if (!gms_achievement_isreached("Start your first game."))
+    if (!gms_achievement_isreached("first_game"))
     {
-        gms_achievement_reach("Start your first game.");
-    }*/
+        gms_achievement_reach("first_game");
+    }
     room_goto(R_Main);
 }
 </string>
