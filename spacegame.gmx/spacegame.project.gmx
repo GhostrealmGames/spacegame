@@ -241,6 +241,7 @@
     <font>fonts\fnt_highscore</font>
     <font>fonts\fnt_update</font>
     <font>fonts\fnt_command</font>
+    <font>fonts\fnt_achievements</font>
   </fonts>
   <objects name="objects">
     <object>objects\O_Border</object>
