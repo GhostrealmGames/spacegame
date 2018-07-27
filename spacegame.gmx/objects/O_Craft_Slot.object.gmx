@@ -114,7 +114,8 @@ depth = -1;
     {
         controller = O_Tutorial;
     }
-    if (!controller.inv_full[2*total_resource_types + craft_type])
+    free_space = Sc_Inventory_space(2*total_resource_types + craft_type);
+    if (free_space &gt;= 2*total_resource_types + craft_num)//(!controller.inv_full[2*total_resource_types + craft_type])
     {
         for (i = 0; i &lt; total_resource_types + craftable_items-1; i += 1)
         {

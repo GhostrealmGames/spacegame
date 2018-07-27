@@ -236,6 +236,7 @@
     <script>scripts\Sc_Restart.gml</script>
     <script>scripts\ExecuteShell.gml</script>
     <script>scripts\Sc_show_achievements.gml</script>
+    <script>scripts\Sc_Inventory_space.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
@@ -245,13 +246,16 @@
   </fonts>
   <objects name="objects">
     <object>objects\O_Border</object>
-    <object>objects\O_Controller</object>
-    <object>objects\O_Newgame</object>
-    <object>objects\O_Gravity</object>
-    <object>objects\O_Ship</object>
-    <object>objects\O_Explosion</object>
     <object>objects\O_center</object>
     <object>objects\O_Trail</object>
+    <objects name="Main">
+      <object>objects\O_Newgame</object>
+      <object>objects\O_Controller</object>
+      <object>objects\O_Ship</object>
+      <object>objects\O_Explosion</object>
+      <object>objects\O_Gravity</object>
+      <object>objects\O_Parallax</object>
+    </objects>
     <objects name="Tutorial">
       <object>objects\O_Tutorial</object>
       <object>objects\O_Tutorial_Main</object>
@@ -359,7 +363,6 @@
         <object>objects\O_BossBottom</object>
       </objects>
     </objects>
-    <object>objects\O_Parallax</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\R_init</room>

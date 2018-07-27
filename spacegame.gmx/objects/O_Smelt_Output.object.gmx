@@ -25,10 +25,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.smelt_type] == false)
+            <string>free_space = Sc_Inventory_space(O_Controller.smelt_type);
+if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
 {
-    global.Inventory[O_Controller.smelt_type] += round(O_Controller.smelt_num/2 + 0.1);
-    O_Controller.smelt_num -= round(O_Controller.smelt_num/2 + 0.1);
+    if(round(O_Controller.input_num/2 + 0.1) &lt;= free_space)
+    {
+        global.Inventory[O_Controller.smelt_type] += round(O_Controller.smelt_num/2 + 0.1);
+        O_Controller.smelt_num -= round(O_Controller.smelt_num/2 + 0.1);
+    }
+    else
+    {
+        global.Inventory[O_Controller.smelt_type] += free_space;
+        O_Controller.smelt_num -= free_space;
+    }
     Sc_Inventory_Assign();
 }
 else if (!keyboard_check(vk_shift) &amp;&amp; (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type)))
@@ -67,11 +76,20 @@ if (O_Controller.input_num == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.smelt_type] == false)
+            <string>free_space = Sc_Inventory_space(O_Controller.smelt_type);
+if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
 {
-    global.Inventory[O_Controller.smelt_type] += O_Controller.smelt_num;
-    O_Controller.smelt_num = 0;
-    O_Controller.smelt_type = -1;
+    if(O_Controller.smelt_num &lt;= free_space)
+    {
+        global.Inventory[O_Controller.smelt_type] += O_Controller.smelt_num;
+        O_Controller.smelt_num = 0;
+        O_Controller.smelt_type = -1;
+    }
+    else
+    {
+        global.Inventory[O_Controller.smelt_type] += free_space;
+        O_Controller.smelt_num -= free_space;
+    }
     Sc_Inventory_Assign();
 }
 else if (!keyboard_check(vk_shift) &amp;&amp; (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type)))

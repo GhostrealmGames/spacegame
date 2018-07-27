@@ -82,7 +82,7 @@ alarm[0] = 60 * room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>on_screen = room_height div (bar_height + spacing)
+            <string>on_screen = (room_height - bar_height + spacing) div (bar_height + spacing)
 if(achievements &amp;&amp; abs(scroll) &lt; ((num_achievements-on_screen)*bar_height + (num_achievements-on_screen)*spacing))
 {
     scroll -= scroll_speed;

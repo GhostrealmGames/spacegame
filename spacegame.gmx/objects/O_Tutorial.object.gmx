@@ -71,7 +71,7 @@ num_flashes = num_flash_initial;
             <kind>1</kind>
             <string>if(!deactivate)
 {
-    if (input_num &gt; 0)
+    if (input_num &gt; 0 &amp;&amp; global.fuel &gt; 0)
     {
         if (smelt_num &lt; 50)
         {  

@@ -42,13 +42,22 @@ else
 {
     if (O_Tutorial.in_type &gt;= 0)
     {
-        if (keyboard_check(vk_shift))
+        free_space = Sc_Inventory_space(O_Tutorial.in_type);
+        if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
         {
-            global.Inventory[O_Tutorial.in_type] += round(O_Tutorial.input_num/2 + 0.1);
-            O_Tutorial.input_num -= round(O_Tutorial.input_num/2 + 0.1);
+            if(round(O_Tutorial.input_num/2 + 0.1) &lt;= free_space)
+            {
+                global.Inventory[O_Tutorial.in_type] += round(O_Tutorial.input_num/2 + 0.1);
+                O_Tutorial.input_num -= round(O_Tutorial.input_num/2 + 0.1);
+            }
+            else
+            {
+                global.Inventory[O_Tutorial.in_type] += free_space;
+                O_Tutorial.input_num -= free_space;
+            }
             Sc_Inventory_Assign();
         }
-        else
+        else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Tutorial.in_type == global.mouse_type))
         {
             if (O_Tutorial.input_num &gt;= 50)
             {
@@ -99,14 +108,23 @@ else
 }
 else
 {
-    if (O_Tutorial.in_type &gt;= 0 &amp;&amp; keyboard_check(vk_shift))
+    free_space = Sc_Inventory_space(O_Tutorial.in_type);
+    if (keyboard_check(vk_shift) &amp;&amp; O_Tutorial.in_type &gt;= 0 &amp;&amp; free_space != 0)
     {
-        global.Inventory[O_Tutorial.in_type] += O_Tutorial.input_num;
-        O_Tutorial.input_num = 0;
-        O_Tutorial.in_type = -1;
+        if(O_Tutorial.input_num &lt;= free_space)
+        {
+            global.Inventory[O_Tutorial.in_type] += O_Tutorial.input_num;
+            O_Tutorial.input_num = 0;
+            O_Tutorial.in_type = -1;
+        }
+        else
+        {
+            global.Inventory[O_Tutorial.in_type] += free_space;
+            O_Tutorial.input_num -= free_space;
+        }
         Sc_Inventory_Assign();
     }
-    else
+    else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Tutorial.in_type == global.mouse_type))
     {
         if (O_Tutorial.input_num &gt;= 50)
         {

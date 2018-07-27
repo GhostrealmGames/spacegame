@@ -42,10 +42,19 @@ else
 {
     if (O_Controller.in_type &gt;= 0)
     {
-        if (keyboard_check(vk_shift) &amp;&amp; O_Controller.inv_full[O_Controller.in_type] == false)
+        free_space = Sc_Inventory_space(O_Controller.in_type);
+        if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
         {
-            global.Inventory[O_Controller.in_type] += round(O_Controller.input_num/2 + 0.1);
-            O_Controller.input_num -= round(O_Controller.input_num/2 + 0.1);
+            if(round(O_Controller.input_num/2 + 0.1) &lt;= free_space)
+            {
+                global.Inventory[O_Controller.in_type] += round(O_Controller.input_num/2 + 0.1);
+                O_Controller.input_num -= round(O_Controller.input_num/2 + 0.1);
+            }
+            else
+            {
+                global.Inventory[O_Controller.in_type] += free_space;
+                O_Controller.input_num -= free_space;
+            }
             Sc_Inventory_Assign();
         }
         else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Controller.in_type == global.mouse_type))
@@ -99,11 +108,20 @@ else
 }
 else
 {
-    if (keyboard_check(vk_shift) &amp;&amp; O_Controller.in_type &gt;= 0 &amp;&amp; O_Controller.inv_full[O_Controller.in_type] == false)
+    free_space = Sc_Inventory_space(O_Controller.in_type);
+    if (keyboard_check(vk_shift) &amp;&amp; O_Controller.in_type &gt;= 0 &amp;&amp; free_space != 0)
     {
-        global.Inventory[O_Controller.in_type] += O_Controller.input_num;
-        O_Controller.input_num = 0;
-        O_Controller.in_type = -1;
+        if(O_Controller.input_num &lt;= free_space)
+        {
+            global.Inventory[O_Controller.in_type] += O_Controller.input_num;
+            O_Controller.input_num = 0;
+            O_Controller.in_type = -1;
+        }
+        else
+        {
+            global.Inventory[O_Controller.in_type] += free_space;
+            O_Controller.input_num -= free_space;
+        }
         Sc_Inventory_Assign();
     }
     else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Controller.in_type == global.mouse_type))
