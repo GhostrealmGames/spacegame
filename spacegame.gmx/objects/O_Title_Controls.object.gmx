@@ -50,7 +50,7 @@ event_inherited()
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-if (!O_Title_Credits.credit &amp;&amp; !O_Title_Achievements.achievements)
+if (!O_Title_Credits.credit &amp;&amp; !O_Title_Achievements.achievements &amp;&amp; !O_Title_Highscores.highscore)
 {
     control = true;
     depth = -1;

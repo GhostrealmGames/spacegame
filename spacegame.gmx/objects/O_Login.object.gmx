@@ -531,6 +531,10 @@ if (gms_update_check())
 }
 else
 {
+    if(global.Config == 3 || global.Config == 4)
+    {
+        gms_show_toggle_keyboard(true);
+    }
     gms_show_login();
 }
 </string>

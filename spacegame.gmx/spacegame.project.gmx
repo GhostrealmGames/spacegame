@@ -223,6 +223,7 @@
     <script>scripts\Sc_Inventory_Create.gml</script>
     <script>scripts\Sc_Inventory_Assign.gml</script>
     <script>scripts\Sc_Inventory_Draw.gml</script>
+    <script>scripts\Sc_Inventory_space.gml</script>
     <script>scripts\Sc_Smelt_Create.gml</script>
     <script>scripts\Sc_Craft_Create.gml</script>
     <script>scripts\Sc_Craft_Assign.gml</script>
@@ -236,7 +237,7 @@
     <script>scripts\Sc_Restart.gml</script>
     <script>scripts\ExecuteShell.gml</script>
     <script>scripts\Sc_show_achievements.gml</script>
-    <script>scripts\Sc_Inventory_space.gml</script>
+    <script>scripts\Sc_show_highscores.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>

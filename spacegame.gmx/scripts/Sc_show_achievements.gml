@@ -32,13 +32,13 @@ for(i = 0; i < num_achievements; i += 1)
 {
     name = gms_achievement_find(i);
     
-    // Draw background box
     // Set Background Completion color
     if(gms_achievement_isreached(name)) {
         draw_set_color(c_green);
     } else {
         draw_set_color(c_gray);
     }
+    // Draw background box
     draw_rectangle(_x - padding, _y + (i*bar_height) + (i*spacing) + scroll, _x + bar_width + padding, _y + ((i+1)*bar_height + i*spacing) + scroll, false);
     
     // Set Text Completion color
