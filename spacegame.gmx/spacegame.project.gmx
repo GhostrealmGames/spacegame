@@ -84,6 +84,7 @@
     <sound>sound\A_Collision_Asteroid</sound>
   </sounds>
   <sprites name="sprites">
+    <sprite>sprites\Sp_Icon</sprite>
     <sprite>sprites\Sp_Target</sprite>
     <sprite>sprites\Sp_Trail</sprite>
     <sprite>sprites\Sp_Cursor</sprite>
@@ -183,7 +184,6 @@
     </sprites>
     <sprites name="Planets">
       <sprite>sprites\Sp_Planet_Water</sprite>
-      <sprite>sprites\Sp_Star_Sun</sprite>
     </sprites>
     <sprites name="Crafting">
       <sprite>sprites\Sp_Repair_Pack</sprite>
@@ -357,8 +357,8 @@
       <object>objects\O_EnemyBlueSimple</object>
       <objects name="Boss">
         <object>objects\O_Boss</object>
-        <object>objects\O_BossMissle</object>
-        <object>objects\O_Explosion_Missle</object>
+        <object>objects\O_BossMissile</object>
+        <object>objects\O_Explosion_Missile</object>
         <object>objects\O_BossTop</object>
         <object>objects\O_BossBottom</object>
       </objects>

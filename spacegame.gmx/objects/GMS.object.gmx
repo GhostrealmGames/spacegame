@@ -28,6 +28,24 @@
             <string>gms_init(GMS)
 global.newgame = false;
 global.newtutorial = false;
+switch(os_type)
+{
+    case os_windows:
+        global.Config = 0;
+        break;
+    case os_macosx:
+        global.Config = 1;
+        break;
+    case os_linux:
+        global.Config = 2;
+        break;
+    case os_android:
+        global.Config = 3;
+        break;
+    case os_ios:
+        global.Config = 4;
+        break;
+}
 </string>
           </argument>
         </arguments>

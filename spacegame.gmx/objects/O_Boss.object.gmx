@@ -213,7 +213,7 @@ TurnDone = false
         if Image = 9{
             if Missile1Shot = 0{
                 //sound_play(A_BossShoot)
-                Missile1 = instance_create(x,y,O_BossMissile)
+                Missile1 = instance_create(x,y, O_BossMissile)
                 Missile1.direction = direction+90
                 Missile1.speed = 8
                 Missile1.Angle = Angle+90

@@ -394,7 +394,7 @@ switch (resource_type)
         item_name = "Nickel Ore";
         break;
     case 3:
-        draw_sprite(Sp_Particle_Stone1, 0, x, y);
+        draw_sprite(Sp_Particle_Stone, 0, x, y);
         item_name = "Stone";
         break;
     case 4:
