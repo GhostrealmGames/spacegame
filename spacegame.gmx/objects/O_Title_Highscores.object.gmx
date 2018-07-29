@@ -183,7 +183,7 @@ if(highscore &amp;&amp; abs(scroll) &lt; ((num_highscores-on_screen)*bar_height 
 if(highscore)
 {
     //Sc_show_highscores(x, y, width of boxes, height of boxes, padding, spacing);
-    Sc_show_highscores(room_width/2, 0, bar_width, bar_height, padding, spacing);
+    Sc_show_highscores(room_width/2, 0, bar_width, bar_height, padding, spacing, self.id);
 }
 </string>
           </argument>

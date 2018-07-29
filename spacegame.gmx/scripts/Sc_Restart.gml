@@ -1,21 +1,18 @@
-game_over = false;
 room_persistent = false;
-if(room == R_Menu_Pause)
-{
-    gms_highscore_add(1528, score);
-    score = 0;
-    gms_show_highscore(1528);
-    global.newgame = true;
-}
-else if(room == R_Tutorial_Pause)
+
+if(room == R_Tutorial_Pause)
 {
     global.newtutorial = true;
 }
 else
 {
-    gms_highscore_add(1528, score);
+    if(gms_highscore_list_count() > 0)
+    {
+        list_id = gms_highscore_list_id(0);
+        gms_highscore_add(list_id, score);
+    }
     score = 0;
-    gms_show_highscore(1528);
+    instance_create(0, 0, O_Highscores);
     global.newgame = true;
 }
 alarm[11] = 10;

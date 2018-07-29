@@ -1,17 +1,40 @@
 var i, name, num_achievements;
-bar_height = argument3;
 bar_width = argument2;
+bar_height = argument3;
 padding = argument4;
 spacing = argument5;
+object_id = argument6;
+header_height = 100;
 _x = argument0 - bar_width/2 + padding;
 _hy = argument1 + spacing;
-_y = _hy + O_Title_Achievements.bar_height + spacing;
+_y = _hy + header_height + spacing;
 
-if(instance_exists(O_Title_Highscores))
+/*if(instance_exists(O_Title_Highscores))
 {
-    scroll = O_Title_Highscores.scroll;
     num_highscores = O_Title_Highscores.num_highscores;
-    list_id = O_Title_Highscores.list_id;
+    if(num_highscores > 0)
+    {
+        scroll = O_Title_Highscores.scroll;
+        list_id = O_Title_Highscores.list_id;
+    }
+}
+else if(instance_exists(O_Explosion))
+{
+    num_highscores = O_Explosion.num_highscores;
+    if(num_highscores > 0)
+    {
+        scroll = O_Explosion.scroll;
+        list_id = O_Explosion.list_id;
+    }
+}*/
+if(instance_exists(object_id))
+{
+    num_highscores = object_id.num_highscores;
+    if(num_highscores > 0)
+    {
+        scroll = object_id.scroll;
+        list_id = object_id.list_id;
+    }
 }
 else
 {
@@ -78,18 +101,18 @@ else
     // Set Background color
     draw_set_color(c_gray);
     // Draw background box
-    draw_rectangle(_x - padding, _y + (i*bar_height) + (i*spacing) + scroll, _x + bar_width + padding, _y + ((i+1)*bar_height + i*spacing) + scroll, false);
+    draw_rectangle(_x - padding, _y /*+ (i*bar_height) + (i*spacing)*/ + scroll, _x + bar_width + padding, _y + bar_height + scroll, false);
     
     // Set Player Name Text color
     draw_set_color(c_black);
     // Draw Player Name and position in list
-    draw_text(_x, _y + (i*bar_height) + (i*spacing) + bar_height/2 + scroll, "No Highscores");
+    draw_text(_x, _y /*+ (i*bar_height) + (i*spacing)*/ + bar_height/2 + scroll, "No Highscores");
 }
 // Draw List Header
 draw_set_halign(fa_middle);
 draw_set_valign(fa_center);
 draw_set_font(fnt_update);
 draw_set_color(c_gray);
-draw_rectangle(_x - padding, _hy, _x + bar_width + padding, _hy + O_Title_Achievements.bar_height, false);
+draw_rectangle(_x - padding, _hy, _x + bar_width + padding, _hy + header_height, false);
 draw_set_color(c_black);
-draw_text(_x + bar_width/2, _hy + O_Title_Achievements.bar_height/2, "Highscore List");
+draw_text(_x + bar_width/2, _hy + header_height/2, "Highscore List");

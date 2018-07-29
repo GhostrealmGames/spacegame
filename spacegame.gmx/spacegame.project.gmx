@@ -273,6 +273,7 @@
       <object>objects\GMS</object>
       <object>objects\O_Login</object>
       <object>objects\O_Update</object>
+      <object>objects\O_Highscores</object>
     </objects>
     <objects name="Menu">
       <object>objects\O_Main</object>

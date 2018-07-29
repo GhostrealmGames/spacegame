@@ -1,8 +1,8 @@
 var _x, _y, _s, _w, _h;
 if(instance_exists(O_Main))
 {
-    width = O_Main.map_size; //20000
-    height = O_Main.map_size; //20000
+    width = O_Main.map_size;
+    height = O_Main.map_size;
 }
 else if(instance_exists(O_Tutorial_Main))
 {
@@ -62,10 +62,6 @@ else
         _y = _y - 1080/2 / _s + height/2/_s;
     }
 }
-
-// Center on player
-//_x = _x - O_Ship.x / _s + width/2/_s;
-//_y = _y - O_Ship.y / _s + height/2/_s;
 
 draw_set_alpha(.8);
 // Tutorial Objects
