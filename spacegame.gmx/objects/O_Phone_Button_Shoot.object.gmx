@@ -25,16 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>_x = view_xview[0] + 15;
-_y = view_yview[0] + 15;
-_w = sprite_get_width(Sp_Phone_Button_Pause);
-_h = sprite_get_height(Sp_Phone_Button_Pause);
+            <string>_x = view_xview[0];
+_y = view_yview[0];
+_w = view_wview[0]/2;
+_h = view_hview[0];
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="56">
+    <event eventtype="2" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,31 +51,16 @@ _h = sprite_get_height(Sp_Phone_Button_Pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
+            <string>if(instance_exists(O_Ship))
 {
-    if (room == R_Main)
-    {
-        screen_save("Pause.png");
-        global.B_Pause = background_add("Pause.png", false, true)
-        room_set_background(R_Menu_Pause, 2, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
-        cursor_sprite = Sp_Cursor;
-        room_goto(R_Menu_Pause);
-    }
-    else if(room == R_Tutorial)
-    {
-        screen_save("Pause.png");
-        global.B_Pause = background_add("Pause.png", false, true)
-        room_set_background(R_Tutorial_Pause, 1, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
-        cursor_sprite = Sp_Cursor;
-        room_goto(R_Tutorial_Pause);
-    }
+    O_Ship.shooting = false;
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="53">
+    <event eventtype="6" enumb="50">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -92,9 +77,11 @@ _h = sprite_get_height(Sp_Phone_Button_Pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
+            <string>if(instance_exists(O_Ship) &amp;&amp; O_Ship.shooting == false &amp;&amp; mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
 {
-    cursor_sprite = Sp_Empty;
+    O_Self = collision_point(room_width/2, room_height/2, O_Ship, false, false);
+    Sc_Shoot(O_Laser, O_Self);
+    audio_play_sound(A_Shoot, 10, false);
 }
 </string>
           </argument>
@@ -118,14 +105,7 @@ _h = sprite_get_height(Sp_Phone_Button_Pause);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(0.5);
-draw_sprite(Sp_Phone_Button_Pause, 0,_x, _y);
-//draw_set_color(make_color_rgb(220, 220, 220));
-//draw_rectangle(_x, _y, _x + _w, _y + _h, false);
-//draw_set_color(make_color_rgb(192,192,192));
-//draw_rectangle(_x + _w - _w/4 + 5, _y + _h/5, _x + _w - _w /3, _y + 4*_h/5, false);
-//draw_rectangle(_x + _w/4 - 5, _y + _h/5, _x + _w /3, _y + 4*_h/5, false);
-if(global.debug)
+            <string>if(global.debug)
 {
     draw_set_alpha(1);
     draw_set_color(c_red);

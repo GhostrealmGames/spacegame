@@ -373,6 +373,7 @@
       <object>objects\O_Phone_Button_Map</object>
       <object>objects\O_Phone_Button_Inv</object>
       <object>objects\O_Phone_Button_Pause</object>
+      <object>objects\O_Phone_Button_Shoot</object>
     </objects>
   </objects>
   <rooms name="rooms">
