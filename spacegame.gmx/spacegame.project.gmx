@@ -368,6 +368,7 @@
     <objects name="Phone">
       <object>objects\O_Phone_Button_Parent</object>
       <object>objects\O_Phone_Button_Map</object>
+      <object>objects\O_Phone_Button_Inv</object>
     </objects>
   </objects>
   <rooms name="rooms">

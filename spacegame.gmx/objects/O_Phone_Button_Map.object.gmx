@@ -26,17 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>// Postion should be the same as the minimap
-/*_s = room_width/view_wview[0]*5;
-_x = argument0 + view_wview[0] - 1 - room_width/_s;  // top right
-_y = argument1;
-_w = room_width/_s;
-_h = room_height/_s;*/
-width = 10000;
-height = 10000;
 _y = view_yview[0];
-_s = width/view_wview[0] * 5// * 5;
-_w = 400//room_width/_s;
-_h = 400//room_height/_s;
+_w = 400;
+_h = 400;
 _x = view_xview[0] + view_wview[0] - 1 - _w;  // top right
 if(room == R_Main)
 {
