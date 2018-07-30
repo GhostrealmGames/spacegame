@@ -113,6 +113,9 @@
         <sprite>sprites\Sp_Button_Exit</sprite>
         <sprite>sprites\Sp_Button_Load</sprite>
         <sprite>sprites\Sp_Button_Restart</sprite>
+        <sprites name="Phone">
+          <sprite>sprites\Sp_Phone_Button_Pause</sprite>
+        </sprites>
       </sprites>
       <sprites name="Inventory">
         <sprite>sprites\Sp_Inv_Slot</sprite>
@@ -369,6 +372,7 @@
       <object>objects\O_Phone_Button_Parent</object>
       <object>objects\O_Phone_Button_Map</object>
       <object>objects\O_Phone_Button_Inv</object>
+      <object>objects\O_Phone_Button_Pause</object>
     </objects>
   </objects>
   <rooms name="rooms">
