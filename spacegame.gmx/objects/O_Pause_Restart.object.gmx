@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>complete = false;
+            <string>event_inherited();
+complete = false;
 </string>
           </argument>
         </arguments>

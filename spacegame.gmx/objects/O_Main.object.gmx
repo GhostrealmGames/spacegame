@@ -31,6 +31,9 @@ zoom_rate = 1000;
 zout_max = 500000;
 zin_min = 10000;
 
+// Create phone buttons if on a phone
+Sc_Phone_Button_Create();
+
 // Create Border
 rnum = 0;
 // Top and Bottom

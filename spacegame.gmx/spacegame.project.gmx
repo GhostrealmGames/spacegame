@@ -117,7 +117,6 @@
       <sprites name="Inventory">
         <sprite>sprites\Sp_Inv_Slot</sprite>
         <sprite>sprites\Sp_Inv_Trashcan</sprite>
-        <sprite>sprites\Sp_Inv_Background</sprite>
       </sprites>
     </sprites>
     <sprites name="Projectiles">
@@ -238,6 +237,7 @@
     <script>scripts\ExecuteShell.gml</script>
     <script>scripts\Sc_show_achievements.gml</script>
     <script>scripts\Sc_show_highscores.gml</script>
+    <script>scripts\Sc_Phone_Button_Create.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_highscore</font>
@@ -252,6 +252,7 @@
     <objects name="Main">
       <object>objects\O_Newgame</object>
       <object>objects\O_Controller</object>
+      <object>objects\O_Main</object>
       <object>objects\O_Ship</object>
       <object>objects\O_Explosion</object>
       <object>objects\O_Gravity</object>
@@ -276,7 +277,6 @@
       <object>objects\O_Highscores</object>
     </objects>
     <objects name="Menu">
-      <object>objects\O_Main</object>
       <object>objects\O_Menu_Title</object>
       <object>objects\O_Menu_Pause</object>
       <object>objects\O_Menu_Inventory</object>
@@ -364,6 +364,10 @@
         <object>objects\O_BossTop</object>
         <object>objects\O_BossBottom</object>
       </objects>
+    </objects>
+    <objects name="Phone">
+      <object>objects\O_Phone_Button_Parent</object>
+      <object>objects\O_Phone_Button_Map</object>
     </objects>
   </objects>
   <rooms name="rooms">

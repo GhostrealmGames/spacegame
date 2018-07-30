@@ -1,18 +1,27 @@
 // argument0 is the controller
-draw_sprite(Sp_Inv_Background,0,
-    room_width/2,
-    room_height/2);
+background_w = 1312;
+background_h = 704;
+slot_w = sprite_get_width(Sp_Inv_Slot);
+slot_h = sprite_get_height(Sp_Inv_Slot);
+
+// Draw Background
+draw_set_alpha(0.5);
+draw_set_color(make_color_rgb(192, 192, 192));
+draw_rectangle(room_width/2 - 656, room_height/2 - 352, room_width/2 + 656, room_height/2 + 352, false);
+draw_set_alpha(1);
+
+// Draw Dividing Line
 draw_set_color(c_black);
 draw_line_width(
     O_Menu_Inventory.final_x,
-    room_height/2 - (sprite_get_height(Sp_Inv_Background)/2),
+    room_height/2 - (background_h/2),
     O_Menu_Inventory.final_x,
-    room_height/2 + sprite_get_height(Sp_Inv_Background)/2,
+    room_height/2 + background_h/2,
     2);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_color(c_yellow);
-draw_text(O_Menu_Inventory.smelt_center, room_height/2 + sprite_get_height(Sp_Inv_Background)/2 - 16, string(O_Menu_Inventory.craft_page) + "/" + string(O_Menu_Inventory.craft_total));
+draw_text(O_Menu_Inventory.smelt_center, room_height/2 + background_h/2 - 16, string(O_Menu_Inventory.craft_page) + "/" + string(O_Menu_Inventory.craft_total));
 // Bars
 _x = 88;
 _y = room_height;
