@@ -26,15 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>_x = view_xview[0];
-_y = view_yview[0];
+_y = view_yview[0] + 100;
 _w = view_wview[0]/2;
-_h = view_hview[0];
+_h = view_hview[0] - 280;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="2" enumb="1">
+    <event eventtype="6" enumb="56">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,16 +51,13 @@ _h = view_hview[0];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(O_Ship))
-{
-    O_Ship.shooting = false;
-}
+            <string>keyboard_key_release(vk_space);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="50">
+    <event eventtype="6" enumb="53">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -77,11 +74,9 @@ _h = view_hview[0];
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(O_Ship) &amp;&amp; O_Ship.shooting == false &amp;&amp; mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
+            <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
 {
-    O_Self = collision_point(room_width/2, room_height/2, O_Ship, false, false);
-    Sc_Shoot(O_Laser, O_Self);
-    audio_play_sound(A_Shoot, 10, false);
+    keyboard_key_press(vk_space);
 }
 </string>
           </argument>

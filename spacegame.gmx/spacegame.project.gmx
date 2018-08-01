@@ -115,6 +115,7 @@
         <sprite>sprites\Sp_Button_Restart</sprite>
         <sprites name="Phone">
           <sprite>sprites\Sp_Phone_Button_Pause</sprite>
+          <sprite>sprites\Sp_Phone_Button_Arrows</sprite>
         </sprites>
       </sprites>
       <sprites name="Inventory">
@@ -374,6 +375,9 @@
       <object>objects\O_Phone_Button_Inv</object>
       <object>objects\O_Phone_Button_Pause</object>
       <object>objects\O_Phone_Button_Shoot</object>
+      <object>objects\O_Phone_Button_Right</object>
+      <object>objects\O_Phone_Button_Up</object>
+      <object>objects\O_Phone_Button_Left</object>
     </objects>
   </objects>
   <rooms name="rooms">

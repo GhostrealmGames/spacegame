@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1001</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>O_Phone_Button_Parent</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,18 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(view_visible[0])
-{
-    _x = view_xview[0];
-    _y = view_yview[0] + view_hview[0];
-}
-else
-{
-    _x = 0;
-    _y = 0 + room_height;
-}
-_w = 400;
-_h = 180;
+            <string>_w = sprite_get_width(Sp_Phone_Button_Arrows);
+_h = sprite_get_height(Sp_Phone_Button_Arrows);
+_x = view_xview[0] + view_wview[0] - 2*_w - 2*15;
+_y = view_yview[0] + view_hview[0] - _h - 15;
 </string>
           </argument>
         </arguments>
@@ -59,7 +51,7 @@ _h = 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyboard_key_release(ord('E'));
+            <string>keyboard_key_release(ord('W'));
 </string>
           </argument>
         </arguments>
@@ -82,9 +74,9 @@ _h = 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &lt; _y &amp;&amp; mouse_y &gt; _y - _h)
+            <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
 {
-    keyboard_key_press(ord('E'));
+    keyboard_key_press(ord('W'));
 }
 </string>
           </argument>
@@ -108,12 +100,14 @@ _h = 180;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(global.debug)
+            <string>draw_set_alpha(0.5);
+draw_sprite(Sp_Phone_Button_Arrows, 1, _x, _y);
+if(global.debug)
 {
     draw_set_alpha(1);
     draw_set_color(c_red);
     // Top
-    if(mouse_y &gt; _y - _h)
+    if(mouse_y &gt; _y)
     {
         draw_set_color(c_lime);
     }
@@ -121,7 +115,7 @@ _h = 180;
     {
         draw_set_color(c_red);
     }
-    draw_line(_x, _y - _h, _x + _w, _y - _h);
+    draw_line(_x, _y, _x + _w, _y);
     // Left
     if(mouse_x &gt; _x)
     {
@@ -131,7 +125,7 @@ _h = 180;
     {
         draw_set_color(c_red);
     }
-    draw_line(_x, _y - _h, _x, _y);
+    draw_line(_x, _y, _x, _y + _h);
     // Right
     if(mouse_x &lt; _x + _w)
     {
@@ -141,9 +135,9 @@ _h = 180;
     {
         draw_set_color(c_red);
     }
-    draw_line(_x + _w, _y - _h, _x + _w, _y);
+    draw_line(_x + _w, _y, _x + _w, _y + _h);
     // Bottom
-    if(mouse_y &lt; _y)
+    if(mouse_y &lt; _y + _h)
     {
         draw_set_color(c_lime);
     }
@@ -151,7 +145,7 @@ _h = 180;
     {
         draw_set_color(c_red);
     }
-    draw_line(_x, _y-1, _x + _w, _y-1);
+    draw_line(_x, _y + _h, _x + _w, _y + _h);
 }
 </string>
           </argument>

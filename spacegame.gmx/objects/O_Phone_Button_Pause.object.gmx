@@ -53,22 +53,11 @@ _h = sprite_get_height(Sp_Phone_Button_Pause);
             <kind>1</kind>
             <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
 {
-    if (room == R_Main)
-    {
-        screen_save("Pause.png");
-        global.B_Pause = background_add("Pause.png", false, true)
-        room_set_background(R_Menu_Pause, 2, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
-        cursor_sprite = Sp_Cursor;
-        room_goto(R_Menu_Pause);
-    }
-    else if(room == R_Tutorial)
-    {
-        screen_save("Pause.png");
-        global.B_Pause = background_add("Pause.png", false, true)
-        room_set_background(R_Tutorial_Pause, 1, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
-        cursor_sprite = Sp_Cursor;
-        room_goto(R_Tutorial_Pause);
-    }
+    keyboard_key_release(vk_escape);
+}
+else
+{
+    cursor_sprite = Sp_Cursor;
 }
 </string>
           </argument>
@@ -94,7 +83,7 @@ _h = sprite_get_height(Sp_Phone_Button_Pause);
             <kind>1</kind>
             <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
 {
-    cursor_sprite = Sp_Empty;
+    keyboard_key_press(vk_escape);
 }
 </string>
           </argument>
@@ -120,11 +109,6 @@ _h = sprite_get_height(Sp_Phone_Button_Pause);
             <kind>1</kind>
             <string>draw_set_alpha(0.5);
 draw_sprite(Sp_Phone_Button_Pause, 0,_x, _y);
-//draw_set_color(make_color_rgb(220, 220, 220));
-//draw_rectangle(_x, _y, _x + _w, _y + _h, false);
-//draw_set_color(make_color_rgb(192,192,192));
-//draw_rectangle(_x + _w - _w/4 + 5, _y + _h/5, _x + _w - _w /3, _y + 4*_h/5, false);
-//draw_rectangle(_x + _w/4 - 5, _y + _h/5, _x + _w /3, _y + 4*_h/5, false);
 if(global.debug)
 {
     draw_set_alpha(1);
