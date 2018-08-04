@@ -596,6 +596,7 @@ if(!gms_ini_player_exists("Achievements", "resources_collected"))
 {
     gms_ini_player_write("Achievements", "resources_collected", 0);
 }
+global.__xkb_open = false;
 room_goto(R_Title);
 </string>
           </argument>
