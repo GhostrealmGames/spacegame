@@ -45,7 +45,6 @@ event_inherited();
 num_asteroids = round(random_range(min_create, max_create));
 for (i = 0; i &lt; num_asteroids; i += 1)
 {
-    //alarm[0] = 0.1*room_speed;
     dist = sprite_width/2 + random_range(inner_radius, outer_radius);
     dir = random(360);
     // Repeat until there is no overlap when the Asteroid is created
@@ -75,20 +74,18 @@ for (i=0; i &lt; num_comets; i += 1)
 
 // Setup Player orbital velocity
 angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
-//for (i = 0; i &lt; num_asteroids; i += 1)
-//{
-    with(O_Asteroid)
-    {
-        motion_add(other.angle_object + 90, other.ship_orbitalV);
-    }
-//}
-//for (i = 0; i &lt; num_comets; i += 1)
-//{
-    with(O_Comet)
-    {
-        motion_add(other.angle_object + 90, other.ship_orbitalV);
-    }
-//}
+with(O_Asteroid)
+{
+    motion_add(other.angle_object + 90, other.ship_orbitalV);
+}
+with(O_Comet)
+{
+    motion_add(other.angle_object + 90, other.ship_orbitalV);
+}
+with(O_Parallax)
+{
+    motion_add(other.angle_object + 90, other.ship_orbitalV);
+}
 </string>
           </argument>
         </arguments>
@@ -120,14 +117,10 @@ if(instance_exists(O_Ship))
     {
         motion_add(other.angle_object, other.ship_gravity);
     }
-    /*with(O_Asteroid)
+    with(O_Parallax)
     {
         motion_add(other.angle_object, other.ship_gravity);
     }
-    with(O_Comet)
-    {
-        motion_add(other.angle_object, other.ship_gravity);
-    }*/
 }
 </string>
           </argument>
