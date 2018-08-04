@@ -31,6 +31,8 @@ craft_num = 0;
 image_index = 0;
 image_speed = 0;
 req_draw = false;
+_x = x;
+_y = y;
 </string>
           </argument>
         </arguments>
@@ -270,98 +272,311 @@ switch (craft_type)
 }
 if (craft_type &gt;= 0 &amp;&amp; req_draw)
 {
-    string_req = "";
+    complete = true;
+    for (i = 0; i &lt; total_resource_types + craftable_items-1; i += 1)
+    {
+        if (!(global.Inventory[i + total_resource_types] &gt;= global.Craft[craft_type, i]))
+        {
+            complete = false;
+        }
+    }
+    if (craft_type == shipV3)
+    {
+        if (global.ship_upgrade != 2)
+        {
+            complete = false;
+        }
+    }
+    if(complete)
+    {
+        draw_set_color(c_lime);
+    }
+    else
+    {
+        draw_set_color(c_yellow);
+    }
+    _x = mouse_x + 16;
+    _y = mouse_y + 16;
+    draw_text(_x, _y, string(item_name) + "#Required Items:");
+    _y += string_height(string(item_name) + "#Required Items:");
+    
     if (global.Craft[craft_type, copper] &gt; 0)
     {
-        string_req += "#Copper: " + string(global.Craft[craft_type, copper])
+        if(global.Craft[craft_type, copper] &lt;= global.Inventory[copper + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Copper: " + string(global.Craft[craft_type, copper]));
+        _y += string_height("Copper: " + string(global.Craft[craft_type, copper]));
     }
     if (global.Craft[craft_type, iron] &gt; 0)
     {
-        string_req += "#Iron: " + string(global.Craft[craft_type, iron])
+        if(global.Craft[craft_type, iron] &lt;= global.Inventory[iron + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Iron: " + string(global.Craft[craft_type, iron]));
+        _y += string_height("Iron: " + string(global.Craft[craft_type, iron]));
     }
     if (global.Craft[craft_type, nickel] &gt; 0)
     {
-        string_req += "#Nickel: " + string(global.Craft[craft_type, nickel])
+        if(global.Craft[craft_type, nickel] &lt;= global.Inventory[nickel + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Nickel: " + string(global.Craft[craft_type, nickel]));
+        _y += string_height("Nickel: " + string(global.Craft[craft_type, nickel]));
     }
     if (global.Craft[craft_type, stone] &gt; 0)
     {
-        string_req += "#Refined Stone: " + string(global.Craft[craft_type, stone])
+        if(global.Craft[craft_type, stone] &lt;= global.Inventory[stone + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Refined Stone: " + string(global.Craft[craft_type, stone]));
+        _y += string_height("Refined Stone: " + string(global.Craft[craft_type, stone]));
     }
     if (global.Craft[craft_type, ice] &gt; 0)
     {
-        string_req += "#Water: " + string(global.Craft[craft_type, ice])
+        if(global.Craft[craft_type, ice] &lt;= global.Inventory[ice + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Water: " + string(global.Craft[craft_type, ice]));
+        _y += string_height("Water: " + string(global.Craft[craft_type, ice]));
     }
     if (global.Craft[craft_type, gold] &gt; 0)
     {
-        string_req += "#Gold: " + string(global.Craft[craft_type, gold])
+        if(global.Craft[craft_type, gold] &lt;= global.Inventory[gold + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Gold: " + string(global.Craft[craft_type, gold]));
+        _y += string_height("Gold: " + string(global.Craft[craft_type, gold]));
     }
     if (global.Craft[craft_type, platinum] &gt; 0)
     {
-        string_req += "#Platinum: " + string(global.Craft[craft_type, platinum])
+        if(global.Craft[craft_type, platinum] &lt;= global.Inventory[platinum + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Platinum: " + string(global.Craft[craft_type, platinum]));
+        _y += string_height("Platinum: " + string(global.Craft[craft_type, platinum]));
     }
     if (global.Craft[craft_type, titanium] &gt; 0)
     {
-        string_req += "#Titanium: " + string(global.Craft[craft_type, titanium])
+        if(global.Craft[craft_type, titanium] &lt;= global.Inventory[titanium + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Titanium: " + string(global.Craft[craft_type, titanium]));
+        _y += string_height("Titanium: " + string(global.Craft[craft_type, titanium]));
     }
     if (global.Craft[craft_type, coal] &gt; 0)
     {
-        string_req += "#Coal: " + string(global.Craft[craft_type, coal])
+        if(global.Craft[craft_type, coal] &lt;= global.Inventory[coal + total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Coal: " + string(global.Craft[craft_type, coal]));
+        _y += string_height("Coal: " + string(global.Craft[craft_type, coal]));
     }
     if (global.Craft[craft_type, copper_wire + total_resource_types] &gt; 0)
     {
-        string_req += "#Copper Wire: " + string(global.Craft[craft_type, copper_wire + total_resource_types])
+        if(global.Craft[craft_type, copper_wire + total_resource_types] &lt;= global.Inventory[copper_wire + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Copper Wire: " + string(global.Craft[craft_type, copper_wire + total_resource_types]));
+        _y += string_height("Copper Wire: " + string(global.Craft[craft_type, copper_wire + total_resource_types]));
     }
     if (global.Craft[craft_type, gold_wire + total_resource_types] &gt; 0)
     {
-        string_req += "#Gold Wire: " + string(global.Craft[craft_type, gold_wire + total_resource_types])
+        if(global.Craft[craft_type, gold_wire + total_resource_types] &lt;= global.Inventory[gold_wire + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Gold Wire: " + string(global.Craft[craft_type, gold_wire + total_resource_types]));
+        _y += string_height("Gold Wire: " + string(global.Craft[craft_type, gold_wire + total_resource_types]));
     }
     if (global.Craft[craft_type, collector_claw + total_resource_types] &gt; 0)
     {
-        string_req += "#Collector Claw: " + string(global.Craft[craft_type, collector_claw + total_resource_types])
+        if(global.Craft[craft_type, collector_claw + total_resource_types] &lt;= global.Inventory[collector_claw + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Collector Claw: " + string(global.Craft[craft_type, collector_claw + total_resource_types]));
+        _y += string_height("Collector Claw: " + string(global.Craft[craft_type, collector_claw + total_resource_types]));
     }
     if (global.Craft[craft_type, mining_drill + total_resource_types] &gt; 0)
     {
-        string_req += "#Mining Drill: " + string(global.Craft[craft_type, mining_drill + total_resource_types])
+        if(global.Craft[craft_type, mining_drill + total_resource_types] &lt;= global.Inventory[mining_drill + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Mining Drill: " + string(global.Craft[craft_type, mining_drill + total_resource_types]));
+        _y += string_height("Mining Drill: " + string(global.Craft[craft_type, mining_drill + total_resource_types]));
     }
     if (global.Craft[craft_type, crucible + total_resource_types] &gt; 0)
     {
-        string_req += "#Crucible: " + string(global.Craft[craft_type, crucible + total_resource_types])
+        if(global.Craft[craft_type, crucible + total_resource_types] &lt;= global.Inventory[crucible + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Crucible: " + string(global.Craft[craft_type, crucible + total_resource_types]));
+        _y += string_height("Crucible: " + string(global.Craft[craft_type, crucible + total_resource_types]));
     }
     if (global.Craft[craft_type, coolant_cell + total_resource_types] &gt; 0)
     {
-        string_req += "#Coolant Cell: " + string(global.Craft[craft_type, coolant_cell + total_resource_types])
+        if(global.Craft[craft_type, coolant_cell + total_resource_types] &lt;= global.Inventory[coolant_cell + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "Coolant Cell: " + string(global.Craft[craft_type, coolant_cell + total_resource_types]));
+        _y += string_height("Coolant Cell: " + string(global.Craft[craft_type, coolant_cell + total_resource_types]));
     }
     if (global.Craft[craft_type, shipV2_wings + total_resource_types] &gt; 0)
     {
-        string_req += "#ShipV2 Wing: " + string(global.Craft[craft_type, shipV2_wings + total_resource_types])
+        if(global.Craft[craft_type, shipV2_wings + total_resource_types] &lt;= global.Inventory[shipV2_wings + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "ShipV2 Wing: " + string(global.Craft[craft_type, shipV2_wings + total_resource_types]));
+        _y += string_height("ShipV2 Wing: " + string(global.Craft[craft_type, shipV2_wings + total_resource_types]));
     }
     if (global.Craft[craft_type, shipV2_body + total_resource_types] &gt; 0)
     {
-        string_req += "#ShipV2 Body: " + string(global.Craft[craft_type, shipV2_body + total_resource_types])
+        if(global.Craft[craft_type, shipV2_body + total_resource_types] &lt;= global.Inventory[shipV2_body + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "ShipV2 Body: " + string(global.Craft[craft_type, shipV2_body + total_resource_types]));
+        _y += string_height("ShipV2 Body: " + string(global.Craft[craft_type, shipV2_body + total_resource_types]));
     }
     if (global.Craft[craft_type, shipV2_thruster + total_resource_types] &gt; 0)
     {
-        string_req += "#ShipV2 Thruster: " + string(global.Craft[craft_type, shipV2_thruster + total_resource_types])
+        if(global.Craft[craft_type, shipV2_thruster + total_resource_types] &lt;= global.Inventory[shipV2_thruster + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "ShipV2 Thruster: " + string(global.Craft[craft_type, shipV2_thruster + total_resource_types]));
+        _y += string_height("ShipV2 Thruster: " + string(global.Craft[craft_type, shipV2_thruster + total_resource_types]));
     }
     if (global.Craft[craft_type, shipV3_wings-1 + total_resource_types] &gt; 0)
     {
-        string_req += "#ShipV3 Wing: " + string(global.Craft[craft_type, shipV3_wings + total_resource_types])
+        if(global.Craft[craft_type, shipV3_wings-1 + total_resource_types] &lt;= global.Inventory[shipV3_wings-1 + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "ShipV3 Wing: " + string(global.Craft[craft_type, shipV3_wings + total_resource_types]));
+        _y += string_height("ShipV3 Wing: " + string(global.Craft[craft_type, shipV3_wings + total_resource_types]));
     }
     if (global.Craft[craft_type, shipV3_body-1 + total_resource_types] &gt; 0)
     {
-        string_req += "#ShipV3 Body: " + string(global.Craft[craft_type, shipV3_body + total_resource_types])
+        if(global.Craft[craft_type, shipV3_body-1 + total_resource_types] &lt;= global.Inventory[shipV3_body-1 + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "ShipV3 Body: " + string(global.Craft[craft_type, shipV3_body + total_resource_types]));
+        _y += string_height("ShipV3 Body: " + string(global.Craft[craft_type, shipV3_body + total_resource_types]));
     }
     if (global.Craft[craft_type, shipV3_thruster-1 + total_resource_types] &gt; 0)
     {
-        string_req += "#ShipV3 Thruster: " + string(global.Craft[craft_type, shipV3_thruster + total_resource_types])
+        if(global.Craft[craft_type, shipV3_thruster-1 + total_resource_types] &lt;= global.Inventory[shipV3_thruster-1 + 2*total_resource_types])
+        {
+            draw_set_color(c_lime);
+        }
+        else
+        {
+            draw_set_color(c_yellow);
+        }
+        draw_text(_x, _y, "ShipV3 Thruster: " + string(global.Craft[craft_type, shipV3_thruster + total_resource_types]));
+        _y += string_height("ShipV3 Thruster: " + string(global.Craft[craft_type, shipV3_thruster + total_resource_types]));
     }
-    draw_text(mouse_x + 16, mouse_y + 16,
-        string(item_name) +
-        "#Required Items:" +
-        string_req);
 }
 if (craft_num &gt; 0)
 {
+    draw_set_color(c_yellow);
     draw_text(x - 26, y - 26, craft_num);
 }
 if (global.debug)
