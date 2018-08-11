@@ -34,7 +34,7 @@ _y = view_yview[0] + view_hview[0] - _h - 15;
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="56">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,32 +51,26 @@ _y = view_yview[0] + view_hview[0] - _h - 15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyboard_key_release(ord('A'));
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="53">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if(mouse_x &gt; _x &amp;&amp; mouse_x &lt; _x + _w &amp;&amp; mouse_y &gt; _y &amp;&amp; mouse_y &lt; _y + _h)
-{
-    keyboard_key_press(ord('A'));
+            <string>/// Multitouch
+for (var i = 0; i &lt; 4;i++) { // 4 touch
+    if(device_mouse_check_button_pressed(i,mb_left)) {
+        var xx = device_mouse_x(i);
+        var yy = device_mouse_y(i);
+        // Left Pressed Code
+        if(xx &gt; _x &amp;&amp; xx &lt; _x + _w &amp;&amp; yy &gt; _y &amp;&amp; yy &lt; _y + _h)
+        {
+            keyboard_key_press(ord('A'));
+        }
+    }
+    else if(device_mouse_check_button_released(i,mb_left)) {
+        var xx = device_mouse_x(i);
+        var yy = device_mouse_y(i);
+        // Left Released Code
+        if(xx &gt; _x &amp;&amp; xx &lt; _x + _w &amp;&amp; yy &gt; _y &amp;&amp; yy &lt; _y + _h)
+        {
+            keyboard_key_release(ord('A'));
+        }
+    }
 }
 </string>
           </argument>
