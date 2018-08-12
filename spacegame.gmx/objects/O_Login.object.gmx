@@ -525,7 +525,11 @@ global.Craft[shipV3,shipV3_thruster+total_resource_types] = 1;
 check_for_updates = false;
 //room_goto(R_Title);
 // Uses GMS plugin
-if (gms_update_check())
+if(!gms_info_isconnected())
+{
+    room_goto(R_Title);
+}
+else if (gms_update_check())
 {
     room_goto(R_update);
 }
@@ -561,7 +565,7 @@ else
             <kind>1</kind>
             <string>if (check_for_updates)
 {
-    if (gms_update_check())
+    if (gms_info_isconnected() &amp;&amp; gms_update_check())
     {
         room_goto(R_update);
     }
@@ -650,31 +654,34 @@ draw_set_valign(fa_middle);
 if (check_for_updates)
 {
     draw_sprite(Sp_Logo, 0, room_width/2, room_height/2);
-    if (round(dots) == 0)
+    if(gms_info_isconnected())
     {
-        draw_text(update_x, update_y, "Checking for Updates   ");
+        if (round(dots) == 0)
+        {
+            draw_text(update_x, update_y, "Checking for Updates   ");
+        }
+        else if (round(dots) == 1)
+        {
+            draw_text(update_x, update_y, "Checking for Updates.  ");
+        }
+        else if (round(dots) == 2)
+        {
+            draw_text(update_x, update_y, "Checking for Updates.. ");
+        }
+        else if (round(dots) == 3)
+        {
+            draw_text(update_x, update_y, "Checking for Updates...");
+        }
+        else
+        {
+            draw_text(update_x, update_y, "Checking for Updates...");
+        }
+        if (dots &gt;= 4)
+        {
+            dots = 0;
+        }
+        dots += .1;
     }
-    else if (round(dots) == 1)
-    {
-        draw_text(update_x, update_y, "Checking for Updates.  ");
-    }
-    else if (round(dots) == 2)
-    {
-        draw_text(update_x, update_y, "Checking for Updates.. ");
-    }
-    else if (round(dots) == 3)
-    {
-        draw_text(update_x, update_y, "Checking for Updates...");
-    }
-    else
-    {
-        draw_text(update_x, update_y, "Checking for Updates...");
-    }
-    if (dots &gt;= 4)
-    {
-        dots = 0;
-    }
-    dots += .1;
 }
 </string>
           </argument>
