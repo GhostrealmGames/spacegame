@@ -523,10 +523,11 @@ global.Craft[shipV3,shipV3_thruster+total_resource_types] = 1;
             <kind>1</kind>
             <string>cursor_sprite = Sp_Cursor;
 check_for_updates = false;
-//room_goto(R_Title);
+global.offline_mode = false;
 // Uses GMS plugin
 if(!gms_info_isconnected())
 {
+    global.offline_mode = true;
     room_goto(R_Title);
 }
 else if (gms_update_check())
@@ -565,7 +566,7 @@ else
             <kind>1</kind>
             <string>if (check_for_updates)
 {
-    if (gms_info_isconnected() &amp;&amp; gms_update_check())
+    if (gms_update_check())
     {
         room_goto(R_update);
     }

@@ -100,7 +100,6 @@
     </sprites>
     <sprites name="Menu">
       <sprite>sprites\Sp_Logo</sprite>
-      <sprite>sprites\Sp_Title</sprite>
       <sprite>sprites\Sp_Game_Over</sprite>
       <sprites name="Buttons">
         <sprite>sprites\Sp_Button_Template</sprite>
@@ -248,6 +247,7 @@
     <font>fonts\fnt_update</font>
     <font>fonts\fnt_command</font>
     <font>fonts\fnt_achievements</font>
+    <font>fonts\fnt_title</font>
   </fonts>
   <objects name="objects">
     <object>objects\O_Border</object>

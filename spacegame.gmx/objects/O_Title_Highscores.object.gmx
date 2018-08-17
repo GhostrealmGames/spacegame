@@ -182,8 +182,11 @@ if(highscore &amp;&amp; abs(scroll) &lt; ((num_highscores-on_screen)*bar_height 
             <string>if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control &amp;&amp; !O_Title_Achievements.achievements)
 {
     event_inherited();
-    highscore = true;
-    depth = -1;
+    if(!global.offline_mode)
+    {
+        highscore = true;
+        depth = -1;
+    }
 }
 </string>
           </argument>

@@ -25,13 +25,22 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>instance_create(room_width/2, room_height/2 - sprite_get_height(Sp_Button_Play)/2 - 1*(sprite_get_height(Sp_Button_Play)), O_Title_Play);
+            <string>// Set Debug Info x and y
+_x = 10;
+_y = 10;
+// Create Menu Buttons
+instance_create(room_width/2, room_height/2 - sprite_get_height(Sp_Button_Play)/2 - 1*(sprite_get_height(Sp_Button_Play)), O_Title_Play);
 instance_create(room_width/2, room_height/2 - sprite_get_height(Sp_Button_Play)/2, O_Title_Tutorial);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2, O_Title_Highscores);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 1*(sprite_get_height(Sp_Button_Play)), O_Title_Achievements);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 2*sprite_get_height(Sp_Button_Play), O_Title_Controls);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 3*sprite_get_height(Sp_Button_Play), O_Title_Credits);
 instance_create(room_width/2, room_height/2 + sprite_get_height(Sp_Button_Play)/2 + 4*sprite_get_height(Sp_Button_Play), O_Title_Exit);
+if(global.offline_mode)
+{
+    O_Title_Highscores.image_index = 2;
+    O_Title_Achievements.image_index = 2;
+}
 </string>
           </argument>
         </arguments>
@@ -79,17 +88,34 @@ highscore_add("HighScore", -1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(Sp_Title, 0, room_width/2, room_height/4);
+            <string>// Draw Title
+draw_set_font(fnt_title);
+draw_set_color(c_white);
+draw_set_halign(fa_middle);
+draw_set_valign(fa_center);
+draw_text(room_width/2, room_height/4 - 100, "Earth's Last");
+draw_text(room_width/2, room_height/4 + 50, "Hope");
+
+draw_set_font(-1);
 draw_set_color(c_red);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+if (global.offline_mode)
+{
+    draw_text(_x, _y, "Offline Mode Enabled");
+    _y += string_height("Offline Mode Enabled");
+}
 if (global.debug)
 {
-    draw_text(10, 10, "version " + string(version_string) +
+    draw_text(_x, _y, "version " + string(version_string) +
         "#major: " + string(GMS.major) +
         "#minor: " + string(GMS.minor) +
         "#patch: " + string(GMS.patch) +
-        "#Version: " + string_format(GMS.version, 2, 4));
+        "#Version: " + string_format(GMS.version/10000, 2, 4));
+}
+if(global.offline_mode)
+{
+    _y -= string_height("Offline Mode Enabled");
 }
 </string>
           </argument>

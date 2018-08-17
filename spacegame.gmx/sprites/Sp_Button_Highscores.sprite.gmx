@@ -22,5 +22,7 @@
   <frames>
     <frame index="0">images\Sp_Button_Highscores_0.png</frame>
     <frame index="1">images\Sp_Button_Highscores_1.png</frame>
+    <frame index="2">images\Sp_Button_Highscores_2.png</frame>
+    <frame index="3">images\Sp_Button_Highscores_3.png</frame>
   </frames>
 </sprite>
