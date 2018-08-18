@@ -231,6 +231,41 @@ with(other)
             <kind>1</kind>
             <string>if (O_Controller.inv_full[Type] == false)
 {
+    if(!global.offline_mode)
+    {
+        // Increment Achievement
+        gms_ini_player_write("Achievements", "resources_collected", gms_ini_player_read("Achievements", "resources_collected") + 1);
+        // Check to see if achievement is reached
+        asteroids_destroyed = gms_ini_player_read("Achievements", "resources_collected");
+        if(!gms_achievement_isreached("resource_100"))
+        {
+            if(asteroids_destroyed &gt;= 100)
+            {
+                gms_achievement_reach("resource_100");
+            }
+        }
+        else if(!gms_achievement_isreached("resource_1000"))
+        {
+            if(asteroids_destroyed &gt;= 1000)
+            {
+                gms_achievement_reach("resource_1000");
+            }
+        }
+        else if(!gms_achievement_isreached("resource_10000"))
+        {
+            if(asteroids_destroyed &gt;= 10000)
+            {
+                gms_achievement_reach("resource_10000");
+            }
+        }
+        else if(!gms_achievement_isreached("resource_100000"))
+        {
+            if(asteroids_destroyed &gt;= 100000)
+            {
+                gms_achievement_reach("resource_100000");
+            }
+        }
+    }
     global.Inventory[Type] += 1;
     if (Type == 3 || Type == 4 || Type == 8)
     {
