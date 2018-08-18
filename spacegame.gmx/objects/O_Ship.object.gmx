@@ -107,19 +107,19 @@ highest_dist = 0;
     shootspeed = ship_shootspeedV2;
     shootdamage = ship_shootdamageV2;
     ship_accel = ship_accelV2;
-    if(!gms_achievement_isreached("upgrade_v2"))
+    if(!global.offline_mode &amp;&amp; !gms_achievement_isreached("upgrade_v2"))
     {
         gms_achievement_reach("upgrade_v2");
     }
 }
-if (global.ship_upgrade == 3)
+else if (global.ship_upgrade == 3)
 {
     upgrade = 3;
     sprite_index = Sp_ShipV3;
     shootspeed = ship_shootspeedV3;
     shootdamage = ship_shootdamageV3;
     ship_accel = ship_accelV3;
-    if(!gms_achievement_isreached("upgrade_v3"))
+    if(!global.offline_mode &amp;&amp; !gms_achievement_isreached("upgrade_v3"))
     {
         gms_achievement_reach("upgrade_v3");
     }

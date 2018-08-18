@@ -90,36 +90,39 @@ event_inherited();
             <string>if(damage &gt;= max_damage)
 {
     instance_destroy();
-    // Increment Achievement
-    gms_ini_player_write("Achievements", "asteroids_destroyed", gms_ini_player_read("Achievements", "asteroids_destroyed") + 1);
-    // Check to see if achievement is reached
-    asteroids_destroyed = gms_ini_player_read("Achievements", "asteroids_destroyed");
-    if(!gms_achievement_isreached("asteroids_10"))
+    if(!global.offline_mode)
     {
-        if(asteroids_destroyed &gt;= 10)
+        // Increment Achievement
+        gms_ini_player_write("Achievements", "asteroids_destroyed", gms_ini_player_read("Achievements", "asteroids_destroyed") + 1);
+        // Check to see if achievement is reached
+        asteroids_destroyed = gms_ini_player_read("Achievements", "asteroids_destroyed");
+        if(!gms_achievement_isreached("asteroids_10"))
         {
-            gms_achievement_reach("asteroids_10");
+            if(asteroids_destroyed &gt;= 10)
+            {
+                gms_achievement_reach("asteroids_10");
+            }
         }
-    }
-    else if(!gms_achievement_isreached("asteroids_100"))
-    {
-        if(asteroids_destroyed &gt;= 100)
+        else if(!gms_achievement_isreached("asteroids_100"))
         {
-            gms_achievement_reach("asteroids_100");
+            if(asteroids_destroyed &gt;= 100)
+            {
+                gms_achievement_reach("asteroids_100");
+            }
         }
-    }
-    else if(!gms_achievement_isreached("asteroids_1000"))
-    {
-        if(asteroids_destroyed &gt;= 1000)
+        else if(!gms_achievement_isreached("asteroids_1000"))
         {
-            gms_achievement_reach("asteroids_1000");
+            if(asteroids_destroyed &gt;= 1000)
+            {
+                gms_achievement_reach("asteroids_1000");
+            }
         }
-    }
-    else if(!gms_achievement_isreached("asteroids_10000"))
-    {
-        if(asteroids_destroyed &gt;= 10000)
+        else if(!gms_achievement_isreached("asteroids_10000"))
         {
-            gms_achievement_reach("asteroids_10000");
+            if(asteroids_destroyed &gt;= 10000)
+            {
+                gms_achievement_reach("asteroids_10000");
+            }
         }
     }
     
