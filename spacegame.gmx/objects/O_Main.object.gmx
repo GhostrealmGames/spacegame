@@ -26,45 +26,52 @@
           <argument>
             <kind>1</kind>
             <string>draw_fps = false;
+fps_slow = fps_real;
 map_size = 20000;
 zoom_rate = 1000;
 zout_max = 500000;
 zin_min = 10000;
+alarm[0] = 0.25 * room_speed;
 
 // Create phone buttons if on a phone
 Sc_Phone_Button_Create();
 
 // Create Border
 rnum = 0;
-// Top and Bottom
-/*for (row = 0; row &lt; room_width; row += O_Border.sprite_width)
-{
-    instance_create(row,0,O_Border);
-    instance_create(row,room_width,O_Border);
-}
-// Left and Right
-for (col = 0; col &lt; room_height; col += O_Border.sprite_height)
-{
-    instance_create(0,col,O_Border);
-    instance_create(room_height,col,O_Border);
-}*/
-//instance_deactivate_object(O_Border);
 // Create Ship
 instance_create(1920/2, 1080/2, O_Ship); // creates a ship in the center of the screen
 // Create Planets
-instance_create(3000, 3000, O_Planet_Water); //room_height/2
+inner_radius = 2000;
+outer_radius = 7000;
+dist = sprite_get_width(O_Planet_Water)/2 + random_range(inner_radius, outer_radius);
+dir = random(360);
+instance_create(1920/2+lengthdir_x(dist, dir), 1080/2+lengthdir_y(dist, dir), O_Planet_Water); //room_height/2
 // Create Star
 //instance_create(10000, 10000, O_Star_Sun);
-/*
-with (O_Ship)
-{
-    //instance_deactivate_region(view_xview[0], view_yview[0], view_xview[0] + view_wview[0], view_yview[0] + view_hview[0], false, true);
-}
-with (O_Asteroid_Parent)
-{
-    instance_activate_region(x - sprite_width, y - sprite_height, x + sprite_width, y + sprite_height, true);
-}
-*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>fps_slow = floor(fps_real);
+alarm[0] = 0.25 * room_speed;
 </string>
           </argument>
         </arguments>
@@ -231,7 +238,7 @@ draw_set_valign(fa_top);
 if (draw_fps)
 {
     draw_text(view_xview[0] + view_wview[0] - 10, view_yview[0], 
-        "FPS: " + string(fps) + 
+        "FPS: " + string(fps_slow) + 
         "#Score: " + string(score) +
         "#Spawn Rate: " + string(((-1/100)*score+initial_spawn_rate))
         );
