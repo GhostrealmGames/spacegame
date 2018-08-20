@@ -3,9 +3,9 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-1000</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>O_Planet_Parent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,30 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_fps = false;
-fps_slow = floor(fps_real);
-draw_welcome = true;
-map_size = 10000;
-zoom_rate = 1000;
-zout_max = 50000;
-zin_min = 10000;
-inner_radius = 1500;
-outer_radius = 3000;
-alarm[0] = 0.25 * room_speed;
-
-// Create Ship
-instance_create(1920/2, 1080/2, O_Ship); //2500
-// Create Target
-// random distance and direction
-dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
-dir = random(360);
-instance_create(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), O_Tutorial_Target);
+            <string>/// Initialize Variables
+orbitalV = 0;
+G_force = 0;
+gravityon = true;
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -65,14 +49,16 @@ instance_create(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), O_Tutori
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>fps_slow = floor(fps_real);
-alarm[0] = 0.25 * room_speed;
+            <string>/// Setup Player Oribal Velocity
+nearest = instance_nearest(x, y, O_Ship);
+if (instance_exists(O_Ship))
+{
+    ship_orbitalV = Sc_ShipOrbitalVelocity(self, nearest);
+}
 </string>
           </argument>
         </arguments>
       </action>
-    </event>
-    <event eventtype="6" enumb="61">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -89,20 +75,19 @@ alarm[0] = 0.25 * room_speed;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(map_size &gt; zin_min)
+            <string>/// Star Orbital Velocity
+nearest = instance_nearest(x, y, O_Star_Parent);
+if(instance_exists(nearest))
 {
-    map_size -= zoom_rate;
-}
-else
-{
-    map_size = zin_min;
+    angle_object = point_direction(x, y, nearest.x, nearest.y);
+    orbitalV = Sc_OrbitalVelocity(self, nearest);
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="6" enumb="60">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -119,64 +104,21 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(map_size &lt; zout_max)
+            <string>/// Player Gravity
+if (instance_exists(self))
 {
-    map_size += zoom_rate;
-}
-else
-{
-    map_size = zout_max;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="6" enumb="53">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (global.mouse_slot &gt; 0)
-{
-    switch(global.mouse_type)
+    nearest = instance_nearest(x, y, O_Ship);
+    if (instance_exists(nearest))
     {
-        case collector_droid + 2*total_resource_types:
-            instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Collector);
-            global.mouse_slot -= 1;
-            break;
-        case miner_droid + 2*total_resource_types:
-            instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Miner);
-            global.mouse_slot -= 1;
-            break;
-        case smelter_droid + 2*total_resource_types:
-            instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Smelter);
-            global.mouse_slot -= 1;
-            break;
+        ship_gravity = Sc_ShipGravity(self, nearest);
     }
 }
-if (global.mouse_slot &lt;= 0)
-{
-    global.mouse_type = -1;
-}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -193,19 +135,74 @@ if (global.mouse_slot &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.newtutorial)
+            <string>/// Star Gravity
+if (instance_exists(self))
 {
-    O_Tutorial.num_completed = 0;
-    O_Tutorial.total = 0;
-    O_Tutorial.tutorial_text = 0;
-    global.newtutorial = false;
-    room_persistent = false;
-    room_restart();
-    room_goto(R_NewTutorial);
+    nearest = instance_nearest(x, y, O_Star_Parent);
+    if (instance_exists(nearest))
+    {
+        angle_object = point_direction(x, y, nearest.x, nearest.y);
+        G_force = Sc_Gravity(self, nearest);
+    }
 }
-else
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="O_Gravity">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Destroy collided object
+explosion = instance_create(other.x, other.y, O_Explosion);
+explosion.direction = Sc_Angle(explosion, self);
+with (other)
 {
-    room_persistent = true;
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="87">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Simulate Player movement
+if(instance_exists(O_Ship))
+{
+    if (global.fuel &gt; 0) // Check to see if the ship has fuel
+    {
+        motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
+    }
 }
 </string>
           </argument>
@@ -229,91 +226,11 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>Sc_HUD(view_xview[0], view_yview[0], O_Tutorial);
-draw_set_font(fnt_update);
-draw_set_color(c_red);
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-// Draw initial text for the tutorial
-/*if (draw_welcome)
+            <string>/// Draw sprite if in view
+if (x &gt; view_xview[0] - sprite_width &amp;&amp; x &lt; view_xview[0] + view_wview[0] + sprite_width &amp;&amp; y &gt; view_yview[0] - sprite_width &amp;&amp; y &lt; view_yview[0] + view_hview[0] + sprite_width)
 {
-    draw_text(view_xview[0] + view_wview[0]/2, view_yview[0] + view_hview[0]/2,
-        "Use A &amp; D to turn and W to move forward#Hover over the targets to move on");
-}*/
-
-draw_set_font(-1);
-draw_set_color(c_red);
-draw_set_halign(fa_right);
-draw_set_valign(fa_top);
-// Draw the fps counter
-if (draw_fps)
-{
-    draw_text(view_xview[0] + view_wview[0] - 10, view_yview[0], 
-        "FPS: " + string(fps_slow) + 
-        "#Score: " + string(score) +
-        "#Spawn Rate: " + string(((-1/100)*score+initial_spawn_rate))
-        );
+    draw_sprite(sprite_index, image_index, x, y);
 }
-
-// Draw the debug variables for the mouse
-if (global.debug)
-{
-    draw_set_color(c_red);
-    draw_text(mouse_x - 32, mouse_y - 32, string(global.mouse_type));
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="70">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (draw_fps)
-{
-    draw_fps = false;
-}
-else
-{
-    draw_fps = true;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_welcome = false;
 </string>
           </argument>
         </arguments>

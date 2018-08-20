@@ -35,6 +35,10 @@ switch (O_Tutorial.tutorial_text)
         total = 5;
         break;
     case 2:
+        tutorial_hint = "#Hover over the targets to move on.";
+        total = 3;
+        break;
+    case 3:
         tutorial_hint = "Tutroial Complete.";
         total = 0;
         break;
@@ -56,13 +60,49 @@ if (total != 0)
         O_Tutorial.num_flashes = O_Tutorial.num_flash_initial;
         if (tutorial_text == 1)
         {
+            with(O_Tutorial_Target)
+            {
+                instance_destroy();
+            }
             for (i = 0; i < 10; i+=1)
             {
                 do {
                     dist = sprite_get_width(Sp_ShipV1)/2 + random_range(O_Tutorial_Main.inner_radius, O_Tutorial_Main.outer_radius);
                     dir = random(360);
-                } until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone && collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Tutorial_Asteroid, true, true) == noone)
+                } until (collision_circle(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone && collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Tutorial_Asteroid, true, true) == noone)
                 instance_create(960 + lengthdir_x(dist, dir), 640 + lengthdir_y(dist, dir), O_Tutorial_Asteroid);
+            }
+        }
+        else if (tutorial_text == 2)
+        {
+            with(O_Tutorial_Asteroid)
+            {
+                instance_destroy();
+            }
+            do {
+                dist = sprite_get_width(Sp_ShipV1)/2 + random_range(O_Tutorial_Main.inner_radius, O_Tutorial_Main.outer_radius);
+                dir = random(360);
+            } until (collision_circle(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
+            instance_create(960 + lengthdir_x(dist, dir), 640 + lengthdir_y(dist, dir), O_Tutorial_Planet_Water);
+            with(O_Tutorial_Planet_Water)
+            {
+                do {
+                    dist = sprite_get_width(Sp_Planet_Water)/2 + random_range(inner_radius, outer_radius);
+                    dir = random(360);
+                } until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
+                instance_create(x + lengthdir_x(dist, dir), y + lengthdir_y(dist, dir), O_Tutorial_Target);
+            }
+            angle_object = point_direction(O_Tutorial_Planet_Water.x, O_Tutorial_Planet_Water.y, O_Ship.x, O_Ship.y);
+            with(O_Tutorial_Target)
+            {
+                motion_add(other.angle_object + 90, O_Tutorial_Planet_Water.ship_orbitalV);
+            }
+        }
+        else if (tutorial_text == 3)
+        {
+            with(O_Tutorial_Asteroid)
+            {
+                motion_add(O_Tutorial_Planet_Water.angle_object + 90, O_Tutorial_Planet_Water.ship_orbitalV);
             }
         }
     }
@@ -80,7 +120,7 @@ if (O_Tutorial.flash_timer < .1 && O_Tutorial.num_flashes > 0)
     O_Tutorial.flash_timer = O_Tutorial.falsh_timer_initial;
     O_Tutorial.num_flashes -= 1;
 }
-if (O_Tutorial.tutorial_text >= 2 && O_Tutorial.flash_timer <= 0)
+if (O_Tutorial.tutorial_text >= 3 && O_Tutorial.flash_timer <= 0)
 {
     tutorial_complete = true;
 }
@@ -100,11 +140,13 @@ draw_text(_x + _w/2, _y + _h/2, tutorial_hint);
 
 if (tutorial_complete)
 {
-    if (!gms_achievement_isreached("complete_tutorial"))
+    if (global.offline_mode && !gms_achievement_isreached("complete_tutorial"))
     {
         gms_achievement_reach("complete_tutorial");
     }
     global.newtutorial = true;
+    tutorial_text = 0;
+    tutorial_complete = false;
     room_goto(R_Title);
 }
 

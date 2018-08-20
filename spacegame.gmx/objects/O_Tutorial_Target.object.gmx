@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>O_Gravity</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,28 +25,44 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>mass = 1000; // Set to ships mass
+image_speed = 0;
 wait_time = 5;
 time = wait_time;
 destroy_timer = 1;
 inner_radius = O_Tutorial_Main.inner_radius;
 outer_radius = O_Tutorial_Main.outer_radius;
-
-do {
-    dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
-    dir = random(360);
-} until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
-x = 960 + lengthdir_x(dist, dir);
-y = 640 + lengthdir_y(dist, dir);
-/*
-do
+if(!instance_exists(O_Tutorial_Planet_Water))
 {
-    rand_x = random_range(sprite_get_width(Sp_Tutorial_Target_lg), room_width - sprite_get_width(Sp_Tutorial_Target_lg));
-    rand_y = random_range(sprite_get_height(Sp_Tutorial_Target_lg), room_height - sprite_get_height(Sp_Tutorial_Target_lg));
-} until (!collision_circle(rand_x, rand_y, sprite_width/2 - O_Ship.sprite_width/2, O_Ship, true, false));
-x = rand_x;
-y = rand_y;
-*/
+    do {
+        dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
+        dir = random(360);
+    } until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
+    x = 960 + lengthdir_x(dist, dir);
+    y = 640 + lengthdir_y(dist, dir);
+}
+
+// Gravity Object Create Event
+spawn_delay = 2 * room_speed;
+gravityon = true;
+rVel = 0;
+rDir = 0;
+rVel_x = 0;
+rVel_y = 0;
+collided = false;
+// restitution = e
+// e = 0 inelastic collision - no energy is converted to motion
+// 0 &lt; e &lt; 1 inelastic collision - some energy is converted to motion
+// e = 1 elastic collision - all energy is converted to motion
+restitution = 1;
+
+if (instance_exists(O_Planet_Parent))
+{
+    nearest = instance_nearest(x, y, O_Planet_Parent);
+    orbitalV = Sc_OrbitalVelocity(self, nearest, false);
+}
+lowest_dist = 100000;
+highest_dist = 0;
 </string>
           </argument>
         </arguments>
@@ -86,19 +102,26 @@ if (time &lt;= 0)
 }
 if (destroy_timer &lt; 0)
 {
-    do {
-        dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
-        dir = random(360);
-    } until (collision_circle(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
-    x = 960 + lengthdir_x(dist, dir);
-    y = 640 + lengthdir_y(dist, dir);
-    /*do
+    if(!instance_exists(O_Tutorial_Planet_Water))
     {
-        rand_x = random_range(sprite_get_width(Sp_Tutorial_Target_lg), room_width - sprite_get_width(Sp_Tutorial_Target_lg));
-        rand_y = random_range(sprite_get_height(Sp_Tutorial_Target_lg), room_height - sprite_get_height(Sp_Tutorial_Target_lg));
-    } until (!collision_circle(rand_x, rand_y, sprite_width/2 - O_Ship.sprite_width/2, O_Ship, true, true));
-    x = rand_x;
-    y = rand_y;*/
+        do {
+            dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
+            dir = random(360);
+        } until (collision_circle(960+lengthdir_x(dist, dir), 640+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
+        x = 960 + lengthdir_x(dist, dir);
+        y = 640 + lengthdir_y(dist, dir);
+    }
+    else
+    {
+        planet_x = O_Tutorial_Planet_Water.x;
+        planet_y = O_Tutorial_Planet_Water.y;
+        do {
+            dist = sprite_get_width(Sp_Planet_Water)/2 + random_range(O_Tutorial_Planet_Water.inner_radius, O_Tutorial_Planet_Water.outer_radius);
+            dir = random(360);
+        } until (collision_circle(planet_x+lengthdir_x(dist, dir), planet_y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
+        x = planet_x + lengthdir_x(dist, dir);
+        y = planet_y + lengthdir_y(dist, dir);
+    }
     time = wait_time;
     destroy_timer = 1;
     O_Tutorial.num_completed += 1;
@@ -115,6 +138,7 @@ if (destroy_timer &lt; 0)
         instance_destroy();
     }
 }
+event_inherited();
 </string>
           </argument>
         </arguments>
@@ -137,13 +161,14 @@ if (destroy_timer &lt; 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(O_Ship))
+            <string>/*if(instance_exists(O_Ship))
 {
     if (global.fuel &gt; 0) // Check to see if the ship has fuel
     {
         motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
     }
-}
+}*/
+event_inherited();
 </string>
           </argument>
         </arguments>

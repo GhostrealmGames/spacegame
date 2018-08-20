@@ -268,6 +268,8 @@
       <object>objects\O_Tutorial_Target</object>
       <object>objects\O_Tutorial_Asteroid_Parent</object>
       <object>objects\O_Tutorial_Asteroid</object>
+      <object>objects\O_Tutorial_Planet_Parent</object>
+      <object>objects\O_Tutorial_Planet_Water</object>
       <objects name="Inventory">
         <object>objects\O_Tutorial_Slot</object>
         <object>objects\O_Tutorial_Input</object>

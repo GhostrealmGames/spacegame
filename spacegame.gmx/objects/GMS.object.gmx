@@ -26,8 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>gms_init(GMS)
-global.newgame = false;
-global.newtutorial = false;
+global.newgame = true;
+global.newtutorial = true;
 switch(os_type)
 {
     case os_windows:

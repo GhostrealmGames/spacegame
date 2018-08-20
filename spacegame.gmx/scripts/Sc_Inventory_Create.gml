@@ -48,9 +48,9 @@ if (room == R_Menu_Inventory)
         }
         prev_y = global.Slots[slot_num-1].y;
     }
-    }
-    else
-    {
+}
+else
+{
     for(row = 0; row < height; row += 1)
     {
         for(col = 0; col < width; col += 1)
