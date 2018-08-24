@@ -204,7 +204,7 @@
     <option_androidtv_use_test_ads>false</option_androidtv_use_test_ads>
     <option_argumenterrors>True</option_argumenterrors>
     <option_audioGroupCount>1</option_audioGroupCount>
-    <option_author></option_author>
+    <option_author>GhostRealm Games</option_author>
     <option_backimage>nil</option_backimage>
     <option_borderless>False</option_borderless>
     <option_changed>false</option_changed>
@@ -221,7 +221,7 @@
     <option_freeze>false</option_freeze>
     <option_frequency>0</option_frequency>
     <option_frontimage>nil</option_frontimage>
-    <option_fullscreen>False</option_fullscreen>
+    <option_fullscreen>True</option_fullscreen>
     <option_gameguid>{8642595F-6B61-49F9-895F-B7C8A94D7BFF}</option_gameguid>
     <option_gameid>520706346</option_gameid>
     <option_hasloadimage>false</option_hasloadimage>
@@ -258,7 +258,7 @@
     <option_html5_texture_page>2048</option_html5_texture_page>
     <option_html5_use_test_ads>0</option_html5_use_test_ads>
     <option_html5_usebuiltinparticles>True</option_html5_usebuiltinparticles>
-    <option_html5_usesplash>False</option_html5_usesplash>
+    <option_html5_usesplash>True</option_html5_usesplash>
     <option_icon>nil</option_icon>
     <option_in_app_purchase_sandbox_mode>0</option_in_app_purchase_sandbox_mode>
     <option_information></option_information>
@@ -374,7 +374,7 @@
     <option_mac_display_name>Earth's Last Hope</option_mac_display_name>
     <option_mac_enable_retina>0</option_mac_enable_retina>
     <option_mac_enable_steam>0</option_mac_enable_steam>
-    <option_mac_fullscreen>0</option_mac_fullscreen>
+    <option_mac_fullscreen>-1</option_mac_fullscreen>
     <option_mac_icon_png>Configs\Default\mac\icon512.png</option_mac_icon_png>
     <option_mac_interpolate>-1</option_mac_interpolate>
     <option_mac_major_version>0</option_mac_major_version>
@@ -488,9 +488,9 @@
     <option_use_fast_collision>False</option_use_fast_collision>
     <option_use_new_audio>True</option_use_new_audio>
     <option_variableerrors>False</option_variableerrors>
-    <option_version>100</option_version>
+    <option_version>0.10.3</option_version>
     <option_version_build>0</option_version_build>
-    <option_version_company>Ghost Realm Games</option_version_company>
+    <option_version_company>GhostRealm Games</option_version_company>
     <option_version_copyright></option_version_copyright>
     <option_version_description></option_version_description>
     <option_version_major>0</option_version_major>
@@ -523,7 +523,7 @@
     <option_win8_package_name>com</option_win8_package_name>
     <option_win8_portrait_allowed>0</option_win8_portrait_allowed>
     <option_win8_portrait_flipped_allowed>0</option_win8_portrait_flipped_allowed>
-    <option_win8_publisher_display_name>GhostrealmGames</option_win8_publisher_display_name>
+    <option_win8_publisher_display_name>GhostRealm-Games</option_win8_publisher_display_name>
     <option_win8_publisher_name>CN=YoyoGames</option_win8_publisher_name>
     <option_win8_revision_version>0</option_win8_revision_version>
     <option_win8_scaling_stretch>false</option_win8_scaling_stretch>
@@ -539,7 +539,7 @@
     <option_winUAP_certificate_location>WinUWPRunner_TemporaryKey.pfx</option_winUAP_certificate_location>
     <option_winUAP_display_name>Earth's Last Hope</option_winUAP_display_name>
     <option_winUAP_fullscreen>0</option_winUAP_fullscreen>
-    <option_winUAP_internet_capable>0</option_winUAP_internet_capable>
+    <option_winUAP_internet_capable>-1</option_winUAP_internet_capable>
     <option_winUAP_interpolate>-1</option_winUAP_interpolate>
     <option_winUAP_landscape_allowed>-1</option_winUAP_landscape_allowed>
     <option_winUAP_landscape_flipped_allowed>-1</option_winUAP_landscape_flipped_allowed>
@@ -555,7 +555,7 @@
     <option_winUAP_package_name>com</option_winUAP_package_name>
     <option_winUAP_portrait_allowed>0</option_winUAP_portrait_allowed>
     <option_winUAP_portrait_flipped_allowed>0</option_winUAP_portrait_flipped_allowed>
-    <option_winUAP_publisher_display_name>GhostrealmGames</option_winUAP_publisher_display_name>
+    <option_winUAP_publisher_display_name>GhostRealm-Games</option_winUAP_publisher_display_name>
     <option_winUAP_publisher_name>CN=Sandbox</option_winUAP_publisher_name>
     <option_winUAP_revision_version>0</option_winUAP_revision_version>
     <option_winUAP_scaling_stretch>false</option_winUAP_scaling_stretch>
@@ -570,7 +570,7 @@
     <option_windowcolor>clBlack</option_windowcolor>
     <option_windows_alternate_sync_method>False</option_windows_alternate_sync_method>
     <option_windows_build_version>0</option_windows_build_version>
-    <option_windows_company_info>Ghost Realm Games</option_windows_company_info>
+    <option_windows_company_info>GhostRealm Games</option_windows_company_info>
     <option_windows_copyright_info></option_windows_copyright_info>
     <option_windows_create_textures_on_demand>False</option_windows_create_textures_on_demand>
     <option_windows_description_info></option_windows_description_info>
