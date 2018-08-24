@@ -25,32 +25,33 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>free_space = Sc_Inventory_space(O_Controller.smelt_type);
+            <string>controller = global.controller;
+free_space = Sc_Inventory_space(controller.smelt_type);
 if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
 {
-    if(round(O_Controller.input_num/2 + 0.1) &lt;= free_space)
+    if(round(controller.input_num/2 + 0.1) &lt;= free_space)
     {
-        global.Inventory[O_Controller.smelt_type] += round(O_Controller.smelt_num/2 + 0.1);
-        O_Controller.smelt_num -= round(O_Controller.smelt_num/2 + 0.1);
+        controller.Inventory[controller.smelt_type] += round(controller.smelt_num/2 + 0.1);
+        controller.smelt_num -= round(controller.smelt_num/2 + 0.1);
     }
     else
     {
-        global.Inventory[O_Controller.smelt_type] += free_space;
-        O_Controller.smelt_num -= free_space;
+        controller.Inventory[controller.smelt_type] += free_space;
+        controller.smelt_num -= free_space;
     }
     Sc_Inventory_Assign();
 }
-else if (!keyboard_check(vk_shift) &amp;&amp; (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type)))
+else if (!keyboard_check(vk_shift) &amp;&amp; (controller.smelt_type &gt;= 0 &amp;&amp; (controller.mouse_type == -1 || controller.mouse_type == controller.smelt_type)))
 {
-    global.mouse_slot += round(O_Controller.smelt_num/2 + 0.1);
-    global.mouse_type = O_Controller.smelt_type;
-    O_Controller.smelt_num -= round(O_Controller.smelt_num/2 + 0.1);
+    controller.mouse_slot += round(controller.smelt_num/2 + 0.1);
+    controller.mouse_type = controller.smelt_type;
+    controller.smelt_num -= round(controller.smelt_num/2 + 0.1);
 }
-if (O_Controller.smelt_num == 0)
+if (controller.smelt_num == 0)
 {
-    O_Controller.smelt_type = -1;
+    controller.smelt_type = -1;
 }
-if (O_Controller.input_num == 0)
+if (controller.input_num == 0)
 {
     smelt_type = -1;
 }
@@ -76,30 +77,31 @@ if (O_Controller.input_num == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>free_space = Sc_Inventory_space(O_Controller.smelt_type);
+            <string>controller = global.controller;
+free_space = Sc_Inventory_space(controller.smelt_type);
 if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
 {
-    if(O_Controller.smelt_num &lt;= free_space)
+    if(controller.smelt_num &lt;= free_space)
     {
-        global.Inventory[O_Controller.smelt_type] += O_Controller.smelt_num;
-        O_Controller.smelt_num = 0;
-        O_Controller.smelt_type = -1;
+        controller.Inventory[controller.smelt_type] += controller.smelt_num;
+        controller.smelt_num = 0;
+        controller.smelt_type = -1;
     }
     else
     {
-        global.Inventory[O_Controller.smelt_type] += free_space;
-        O_Controller.smelt_num -= free_space;
+        controller.Inventory[controller.smelt_type] += free_space;
+        controller.smelt_num -= free_space;
     }
     Sc_Inventory_Assign();
 }
-else if (!keyboard_check(vk_shift) &amp;&amp; (O_Controller.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Controller.smelt_type)))
+else if (!keyboard_check(vk_shift) &amp;&amp; (controller.smelt_type &gt;= 0 &amp;&amp; (controller.mouse_type == -1 || controller.mouse_type == controller.smelt_type)))
 {
-    global.mouse_slot += O_Controller.smelt_num;
-    global.mouse_type = O_Controller.smelt_type;
-    O_Controller.smelt_num = 0;
-    O_Controller.smelt_type = -1;
+    controller.mouse_slot += controller.smelt_num;
+    controller.mouse_type = controller.smelt_type;
+    controller.smelt_num = 0;
+    controller.smelt_type = -1;
 }
-if (O_Controller.input_num == 0)
+if (controller.input_num == 0)
 {
     smelt_type = -1;
 }
@@ -125,13 +127,14 @@ if (O_Controller.input_num == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(Sp_Inv_Slot, image_index, x, y);
+            <string>controller = global.controller;
+draw_sprite(Sp_Inv_Slot, image_index, x, y);
 dist = O_Smelt_Output.x - O_Smelt_Input.x;
 width = 100;
-if (O_Controller.smelting)
+if (controller.smelting)
 {
     draw_set_color(c_red);
-    percent_complete = ((O_Controller.processed_time/room_speed)/(global.smelt_time[O_Controller.in_type]))*100;
+    percent_complete = ((controller.processed_time/room_speed)/(global.smelt_time[controller.in_type]))*100;
     draw_rectangle(x - dist/2 - width/2, y - 5, x - dist/2 - width/2 + percent_complete, y + 5, false);
 }
 else
@@ -140,12 +143,12 @@ else
 }
 draw_set_color(c_black);
 draw_rectangle(x - dist/2 - width/2, y - 5, x - dist/2 + width/2, y + 5, true);
-if (O_Controller.smelt_num &gt; 0)
+if (controller.smelt_num &gt; 0)
 {
     draw_set_color(inventory_text_color);
-    draw_text(x - 26, y - 26, O_Controller.smelt_num);
+    draw_text(x - 26, y - 26, controller.smelt_num);
 }
-switch (O_Controller.smelt_type)
+switch (controller.smelt_type)
 {
     case -1:
         break;
@@ -182,7 +185,7 @@ switch (O_Controller.smelt_type)
         item_name = "Refined Titanium";
         break;
 }
-if (O_Controller.smelt_type &gt;= 0 &amp;&amp; draw_item_name)
+if (controller.smelt_type &gt;= 0 &amp;&amp; draw_item_name)
 {
     draw_text(mouse_x + 16, mouse_y + 16, string(item_name));
 }
@@ -191,8 +194,8 @@ if (global.debug)
     draw_set_color(c_red);
     draw_text(x - 26, y - 26, 
         "S: " + "Output" +
-        "#T: " + string(O_Controller.smelt_type) +
-        "#N: " + string(O_Controller.smelt_num));
+        "#T: " + string(controller.smelt_type) +
+        "#N: " + string(controller.smelt_num));
     draw_set_color(c_black);
 }
 </string>

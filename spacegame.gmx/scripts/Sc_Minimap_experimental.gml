@@ -3,9 +3,9 @@ var _x, _y, _s, _w, _h, _x1, _y1;
 width = 10000;
 height = 10000;
 _y1 = argument1;
-_s = width/view_wview[0] * 5// * 5;
-_w = 400//room_width/_s;
-_h = 400//room_height/_s;
+_s = width/view_wview[0] * 5;
+_w = 400
+_h = 400
 _x1 = argument0 + view_wview[0] - 1 - _w;  // top right
 
 draw_set_color(c_gray);
@@ -143,13 +143,13 @@ if (global.debug)
     draw_set_valign(fa_left);
     //draw_text(_x+room_width/_s+10,_y+10, 
     draw_text(view_xview[0],view_yview[0], 
-        //"Smelting: " + string(O_Controller.smelting) +
-        //"#Time: " + string(O_Controller.processed_time/60) +
+        //"Smelting: " + string(controller.smelting) +
+        //"#Time: " + string(controller.processed_time/60) +
         "#Mouse X: " + string(mouse_x) + 
         "#Mouse Y: " + string(mouse_y) +
         "#FPS: " + string(fps) +
         "#Score: " + string(score) +
-        "#Upgrade: " + string(global.ship_upgrade) +
+        "#Upgrade: " + string(controller.ship_upgrade) +
         "#_x1: " + string(_x1)
         );
 }

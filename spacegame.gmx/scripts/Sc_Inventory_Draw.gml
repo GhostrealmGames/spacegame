@@ -3,6 +3,7 @@ background_w = 1312;
 background_h = 704;
 slot_w = sprite_get_width(Sp_Inv_Slot);
 slot_h = sprite_get_height(Sp_Inv_Slot);
+controller = global.controller;
 
 // Draw Background
 draw_set_alpha(0.5);
@@ -27,33 +28,22 @@ _x = 88;
 _y = room_height;
 // Healthbar
 draw_set_color(c_health);
-if (global.ship_health > 0)
+if (controller.ship_health > 0)
 {
-    draw_rectangle(_x, _y - 157, _x + 280/100*global.ship_health, _y - 124, false);
+    draw_rectangle(_x, _y - 157, _x + 280/100*controller.ship_health, _y - 124, false);
 }
 // Fuel
 draw_set_color(c_fuel);
-if (global.fuel > 0)
+if (controller.fuel > 0)
 {
-    draw_rectangle(_x, _y - 107, _x + 280/100*global.fuel, _y - 70, false);
+    draw_rectangle(_x, _y - 107, _x + 280/100*controller.fuel, _y - 70, false);
 }
 // Furnace
 draw_set_color(c_furnace);
-if (room == R_Menu_Inventory)
+if (controller.processed_time > 0)
 {
-    if (O_Controller.processed_time > 0)
-    {
-        percent_complete = ((O_Controller.processed_time/room_speed)/(global.smelt_time[O_Controller.in_type]))*100;
-        draw_rectangle(_x, _y - 54, _x + 280/100*percent_complete, _y - 18, false);
-    }
-}
-else
-{
-    if (O_Tutorial.processed_time > 0)
-    {
-        percent_complete = ((O_Tutorial.processed_time/room_speed)/(global.smelt_time[O_Tutorial.in_type]))*100;
-        draw_rectangle(_x, _y - 54, _x + 280/100*percent_complete, _y - 18, false);
-    }
+    percent_complete = ((controller.processed_time/room_speed)/(global.smelt_time[controller.in_type]))*100;
+    draw_rectangle(_x, _y - 54, _x + 280/100*percent_complete, _y - 18, false);
 }
 // Draw HUD Sprite
 draw_sprite(Sp_HUD, 0, 0, _y);

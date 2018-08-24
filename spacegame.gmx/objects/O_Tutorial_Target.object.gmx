@@ -32,7 +32,9 @@ time = wait_time;
 destroy_timer = 1;
 inner_radius = O_Tutorial_Main.inner_radius;
 outer_radius = O_Tutorial_Main.outer_radius;
-if(!instance_exists(O_Tutorial_Planet_Water))
+
+nearest = instance_nearest(x, y, O_Planet_Parent);
+if(!instance_exists(nearest))
 {
     do {
         dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
@@ -56,9 +58,8 @@ collided = false;
 // e = 1 elastic collision - all energy is converted to motion
 restitution = 1;
 
-if (instance_exists(O_Planet_Parent))
+if (instance_exists(nearest))
 {
-    nearest = instance_nearest(x, y, O_Planet_Parent);
     orbitalV = Sc_OrbitalVelocity(self, nearest, false);
 }
 lowest_dist = 100000;
@@ -173,7 +174,7 @@ if (destroy_timer &lt; 0)
             <kind>1</kind>
             <string>if(instance_exists(O_Ship))
 {
-    if (global.fuel &gt; 0) // Check to see if the ship has fuel
+    if (O_Tutorial.fuel &gt; 0) // Check to see if the ship has fuel
     {
         motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
     }

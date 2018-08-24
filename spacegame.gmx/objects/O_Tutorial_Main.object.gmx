@@ -149,27 +149,27 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.mouse_slot &gt; 0)
+            <string>if (O_Tutorial.mouse_slot &gt; 0)
 {
-    switch(global.mouse_type)
+    switch(O_Tutorial.mouse_type)
     {
         case collector_droid + 2*total_resource_types:
             instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Collector);
-            global.mouse_slot -= 1;
+            O_Tutorial.mouse_slot -= 1;
             break;
         case miner_droid + 2*total_resource_types:
             instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Miner);
-            global.mouse_slot -= 1;
+            O_Tutorial.mouse_slot -= 1;
             break;
         case smelter_droid + 2*total_resource_types:
             instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Smelter);
-            global.mouse_slot -= 1;
+            O_Tutorial.mouse_slot -= 1;
             break;
     }
 }
-if (global.mouse_slot &lt;= 0)
+if (O_Tutorial.mouse_slot &lt;= 0)
 {
-    global.mouse_type = -1;
+    O_Tutorial.mouse_type = -1;
 }
 </string>
           </argument>
@@ -195,9 +195,34 @@ if (global.mouse_slot &lt;= 0)
             <kind>1</kind>
             <string>if (global.newtutorial)
 {
+    // Tutorial
     O_Tutorial.num_completed = 0;
     O_Tutorial.total = 0;
     O_Tutorial.tutorial_text = 0;
+    // Ship
+    O_Tutorial.fuel = 100;
+    O_Tutorial.ship_health = 100;
+    O_Tutorial.ship_upgrade = 1;
+    // Mouse
+    O_Tutorial.mouse_slot = 0;
+    O_Tutorial.mouse_type = -1;
+    O_Tutorial.mouse_pickup = false;
+    // Inventory
+    O_Tutorial.Slots[0] = 0;
+    O_Tutorial.Inventory[2*total_resource_types + craftable_items] = 0;
+    O_Tutorial.Inv_Draw[2*total_resource_types + craftable_items] = 0;
+    for(i = 0; i &lt; 2*total_resource_types + craftable_items - 1; i+=1)
+    {
+        O_Tutorial.Inventory[i] = 0;
+        O_Tutorial.Inv_Draw[i] = 0;
+    }
+    // Smelting
+    controller.smelt_num = 0;
+    controller.smelt_type = -1;
+    controller.smelting = false;
+    controller.input_num = 0;
+    controller.in_type = -1;
+    controller.processed_time = 0;
     global.newtutorial = false;
     room_persistent = false;
     room_restart();
@@ -259,7 +284,7 @@ if (draw_fps)
 if (global.debug)
 {
     draw_set_color(c_red);
-    draw_text(mouse_x - 32, mouse_y - 32, string(global.mouse_type));
+    draw_text(mouse_x - 32, mouse_y - 32, string(O_Tutorial.mouse_type));
 }
 </string>
           </argument>

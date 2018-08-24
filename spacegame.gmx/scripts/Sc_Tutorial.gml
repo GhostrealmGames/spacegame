@@ -2,8 +2,8 @@ var _x, _y, _s, _w, _h, _x1, _y1;
 _x = argument0; // top left
 _y = argument1;
 _s = 5;
-_w = 400//room_width/_s;
-_h = 200//room_height/_s;
+_w = 400;
+_h = 200;
 //_x1 = argument0 + view_wview[0] - 1 - _w;  // top right
 tutoiral_hint = "";
 

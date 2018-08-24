@@ -62,7 +62,7 @@ draw_map = false;
             <kind>1</kind>
             <string>if(!deactivate)
 {
-    if (input_num &gt; 0 &amp;&amp; global.fuel &gt; 0)
+    if (input_num &gt; 0 &amp;&amp; fuel &gt; 0)
     {
         if (smelt_num &lt; 50)
         {  
@@ -100,20 +100,20 @@ draw_map = false;
         in_type = -1;
         processed_time = 0;
     }
-    if (global.fuel &lt;= 0)
+    if (fuel &lt;= 0)
     {
         smelting = false;
     }
     // If smelting use fuel
     if (smelting)
     {
-        global.fuel -= .0025;
+        fuel -= .0025;
     }
     // if mouse slot is less than 0 reset type
-    if (global.mouse_slot &lt;= 0)
+    if (mouse_slot &lt;= 0)
     {
-        global.mouse_slot = 0;
-        global.mouse_type = -1;
+        mouse_slot = 0;
+        mouse_type = -1;
     }
     // Debug mode key combination: control + alt + numpad 0
     if (keyboard_check(vk_control) &amp;&amp; keyboard_check(vk_alt) &amp;&amp; keyboard_check(vk_numpad0))
@@ -140,81 +140,81 @@ draw_map = false;
             // Copper
             if (keyboard_check(ord("1")))
             {
-                if (O_Controller.inv_full[0] == false)
+                if (inv_full[0] == false)
                 {
-                    global.Inventory[0] += 1;
+                    Inventory[0] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Iron
             if (keyboard_check(ord("2")))
             {
-                if (O_Controller.inv_full[1] == false)
+                if (inv_full[1] == false)
                 {
-                    global.Inventory[1] += 1;
+                    Inventory[1] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Nickel
             if (keyboard_check(ord("3")))
             {
-                if (O_Controller.inv_full[2] == false)
+                if (inv_full[2] == false)
                 {
-                    global.Inventory[2] += 1;
+                    Inventory[2] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Stone
             if (keyboard_check(ord("4")))
             {
-                if (O_Controller.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[3] += 1;
+                    Inventory[3] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Ice
             if (keyboard_check(ord("5")))
             {
-                if (O_Controller.inv_full[4] == false)
+                if (inv_full[4] == false)
                 {
-                    global.Inventory[4] += 1;
+                    Inventory[4] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Gold
             if (keyboard_check(ord("6")))
             {
-                if (O_Controller.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[5] += 1;
+                    Inventory[5] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Platinum
             if (keyboard_check(ord("7")))
             {
-                if (O_Controller.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[6] += 1;
+                    Inventory[6] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Titanium
             if (keyboard_check(ord("8")))
             {
-                if (O_Controller.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[7] += 1;
+                    Inventory[7] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Coal
             if (keyboard_check(ord("9")))
             {
-                if (O_Controller.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[8] += 1;
+                    Inventory[8] += 1;
                     Sc_Inventory_Assign();
                 }
             }
@@ -279,11 +279,11 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_center);
 if (room == R_Main || room == R_Menu_Inventory)
 {
-    if (global.mouse_type &gt;= 0)
+    if (mouse_type &gt;= 0)
     {
-        draw_text(mouse_x - 8, mouse_y - 8, global.mouse_slot);
+        draw_text(mouse_x - 8, mouse_y - 8, mouse_slot);
     }
-    switch(global.mouse_type)
+    switch(mouse_type)
     {
         case copper:
             draw_sprite(Sp_Particle_Copper, 0, mouse_x + 16, mouse_y + 16);
@@ -398,7 +398,7 @@ if (room != R_Main &amp;&amp; global.debug)
         "#Filled Slots: " + string(filled_slots) +
         "#Inventory Full: " + string(inv_slots_full) +
         "#FPS: " + string(fps));
-    draw_text(mouse_x - 16, mouse_y - 16, string(global.mouse_type));
+    draw_text(mouse_x - 16, mouse_y - 16, string(mouse_type));
 }
 </string>
           </argument>
@@ -546,30 +546,33 @@ if (room != R_Main &amp;&amp; global.debug)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room != R_Title)
+            <string>if(!deactivate)
 {
-    if (room == R_Main)
+    if (room != R_Title)
     {
-        screen_save("Pause.png");
-        global.B_Pause = background_add("Pause.png", false, true)
-        room_set_background(R_Menu_Pause, 2, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
-        cursor_sprite = Sp_Cursor;
-        room = R_Menu_Pause;
-    }
-    else if (room == R_Menu_Pause)
-    {
-        cursor_sprite = Sp_Cursor;
-        room = R_Main;
-    }
-    else if (room == R_Command)
-    {
-        cursor_sprite = Sp_Cursor;
-        room = R_Menu_Pause;
-    }
-    else
-    {
-        cursor_sprite = Sp_Cursor;
-        room = R_Menu_Pause;
+        if (room == R_Main)
+        {
+            screen_save("Pause.png");
+            global.B_Pause = background_add("Pause.png", false, true)
+            room_set_background(R_Menu_Pause, 2, true, false, global.B_Pause, 0, 0, false, false, 0, 0, 1);
+            cursor_sprite = Sp_Cursor;
+            room = R_Menu_Pause;
+        }
+        else if (room == R_Menu_Pause)
+        {
+            cursor_sprite = Sp_Cursor;
+            room = R_Main;
+        }
+        else if (room == R_Command)
+        {
+            cursor_sprite = Sp_Cursor;
+            room = R_Menu_Pause;
+        }
+        else
+        {
+            cursor_sprite = Sp_Cursor;
+            room = R_Menu_Pause;
+        }
     }
 }
 </string>

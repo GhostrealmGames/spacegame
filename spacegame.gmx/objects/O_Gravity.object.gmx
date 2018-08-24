@@ -227,7 +227,7 @@ with(other)
             <kind>1</kind>
             <string>if(instance_exists(O_Ship))
 {
-    if (global.fuel &gt; 0) // Check to see if the ship has fuel
+    if (global.controller.fuel &gt; 0) // Check to see if the ship has fuel
     {
         motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
     }

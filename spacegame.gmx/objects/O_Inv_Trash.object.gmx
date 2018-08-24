@@ -100,12 +100,13 @@ depth = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.mouse_type &gt;= 0)
+            <string>controller = global.controller;
+if (controller.mouse_type &gt;= 0)
 {
-    global.mouse_slot -= 1;
-    if (global.mouse_slot == 0)
+    controller.mouse_slot -= 1;
+    if (controller.mouse_slot == 0)
     {
-        global.mouse_type = -1;
+        controller.mouse_type = -1;
     }
 }
 </string>
@@ -130,10 +131,11 @@ depth = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.mouse_type &gt;= 0)
+            <string>controller = global.controller;
+if (controller.mouse_type &gt;= 0)
 {
-    global.mouse_slot = 0;
-    global.mouse_type = -1;
+    controller.mouse_slot = 0;
+    controller.mouse_type = -1;
 }
 </string>
           </argument>

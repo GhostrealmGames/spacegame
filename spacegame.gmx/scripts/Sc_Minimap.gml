@@ -4,14 +4,12 @@ _y = argument1;
 _s = room_width/view_wview[0]*5;
 _x = argument0 + view_wview[0] - 1 - room_width/_s;  // top right
 
-draw_set_color(c_gray); //c_black
+draw_set_color(c_gray);
 draw_set_alpha(0.9);
 draw_rectangle(_x,_y,_x+room_width/_s,_y+room_height/_s,false);
-//draw_rectangle(_x1-room_width/_s,_y,_x1,_y+room_height/_s,0);
 draw_set_alpha(0.9);
 draw_set_color(c_white);
 draw_rectangle(_x,_y,_x+room_width/_s,_y+room_height/_s,true);
-//draw_rectangle(_x1-room_width/_s,_y,_x1,_y+room_height/_s,1);
 draw_set_alpha(0.9);
 
 draw_set_alpha(1);
@@ -79,12 +77,12 @@ if (global.debug)
     draw_set_valign(fa_left);
     //draw_text(_x+room_width/_s+10,_y+10, 
     draw_text(view_xview[0],view_yview[0], 
-        "Smelting: " + string(O_Controller.smelting) +
-        "#Time: " + string(O_Controller.processed_time/60) +
+        "Smelting: " + string(controller.smelting) +
+        "#Time: " + string(controller.processed_time/60) +
         "#Mouse X: " + string(mouse_x) + 
         "#Mouse Y: " + string(mouse_y) +
         "#FPS: " + string(fps) +
         "#Score: " + string(score) +
-        "#Upgrade: " + string(global.ship_upgrade)
+        "#Upgrade: " + string(controller.ship_upgrade)
         );
 }

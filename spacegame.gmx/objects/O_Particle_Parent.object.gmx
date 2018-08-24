@@ -229,7 +229,8 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (O_Controller.inv_full[Type] == false)
+            <string>controller = global.controller;
+if (controller.inv_full[Type] == false)
 {
     if(!global.offline_mode)
     {
@@ -266,7 +267,7 @@ with(other)
             }
         }
     }
-    global.Inventory[Type] += 1;
+    controller.Inventory[Type] += 1;
     if (Type == 3 || Type == 4 || Type == 8)
     {
         score += stone_points;
@@ -316,9 +317,10 @@ with(other)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(instance_exists(O_Ship))
+            <string>controller = global.controller;
+if(instance_exists(O_Ship))
 {
-    if (global.fuel &gt; 0) // Check to see if the ship has fuel
+    if (controller.fuel &gt; 0) // Check to see if the ship has fuel
     {
         motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
     }

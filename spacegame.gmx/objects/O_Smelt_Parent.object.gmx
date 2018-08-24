@@ -100,105 +100,55 @@ draw_item_name = true;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(Sp_Inv_Slot, image_index, x, y);
+            <string>controller = global.controller;
+draw_sprite(Sp_Inv_Slot, image_index, x, y);
 draw_set_color(inventory_text_color);
 draw_set_halign(fa_left);
 draw_set_valign(fa_left);
-if (room == R_Menu_Inventory)
+if (controller.input_num &gt; 0)
 {
-    if (O_Controller.input_num &gt; 0)
-    {
-        draw_text(x - 26, y - 26, O_Controller.input_num);
-    }
-    switch (O_Controller.in_type)
-    {
-        case -1:
-            break;
-        case 0:
-            draw_sprite(Sp_Particle_Copper, 0, x, y);
-            item_name = "Copper Ore";
-            break;
-        case 1:
-            draw_sprite(Sp_Particle_Iron, 0, x, y);
-            item_name = "Iron Ore";
-            break;
-        case 2:
-            draw_sprite(Sp_Particle_Nickel, 0, x, y);
-            item_name = "Nickel Ore";
-            break;
-        case 3:
-            draw_sprite(Sp_Particle_Stone, 0, x, y);
-            item_name = "Stone Ore";
-            break;
-        case 4:
-            draw_sprite(Sp_Particle_Ice, 0, x, y);
-            item_name = "Ice";
-            break;
-        case 5:
-            draw_sprite(Sp_Particle_Gold, 0, x, y);
-            item_name = "Gold Ore";
-            break;
-        case 6:
-            draw_sprite(Sp_Particle_Platinum, 0, x, y);
-            item_name = "Platinum Ore";
-            break;
-        case 7:
-            draw_sprite(Sp_Particle_Titanium, 0, x, y);
-            item_name = "Titanium Ore";
-            break;
-    }
-    if (O_Controller.in_type &gt;= 0 &amp;&amp; draw_item_name)
-    {
-        draw_text(mouse_x + 16, mouse_y + 16, string(item_name));
-    }
+    draw_text(x - 26, y - 26, controller.input_num);
 }
-else
+switch (controller.in_type)
 {
-    if (O_Tutorial.input_num &gt; 0)
-    {
-        draw_text(x - 26, y - 26, O_Tutorial.input_num);
-    }
-    switch (O_Tutorial.in_type)
-    {
-        case -1:
-            break;
-        case 0:
-            draw_sprite(Sp_Particle_Copper, 0, x, y);
-            item_name = "Copper Ore";
-            break;
-        case 1:
-            draw_sprite(Sp_Particle_Iron, 0, x, y);
-            item_name = "Iron Ore";
-            break;
-        case 2:
-            draw_sprite(Sp_Particle_Nickel, 0, x, y);
-            item_name = "Nickel Ore";
-            break;
-        case 3:
-            draw_sprite(Sp_Particle_Stone, 0, x, y);
-            item_name = "Stone Ore";
-            break;
-        case 4:
-            draw_sprite(Sp_Particle_Ice, 0, x, y);
-            item_name = "Ice";
-            break;
-        case 5:
-            draw_sprite(Sp_Particle_Gold, 0, x, y);
-            item_name = "Gold Ore";
-            break;
-        case 6:
-            draw_sprite(Sp_Particle_Platinum, 0, x, y);
-            item_name = "Platinum Ore";
-            break;
-        case 7:
-            draw_sprite(Sp_Particle_Titanium, 0, x, y);
-            item_name = "Titanium Ore";
-            break;
-    }
-    if (O_Tutorial.in_type &gt;= 0 &amp;&amp; draw_item_name)
-    {
-        draw_text(mouse_x + 16, mouse_y + 16, string(item_name));
-    }
+    case -1:
+        break;
+    case 0:
+        draw_sprite(Sp_Particle_Copper, 0, x, y);
+        item_name = "Copper Ore";
+        break;
+    case 1:
+        draw_sprite(Sp_Particle_Iron, 0, x, y);
+        item_name = "Iron Ore";
+        break;
+    case 2:
+        draw_sprite(Sp_Particle_Nickel, 0, x, y);
+        item_name = "Nickel Ore";
+        break;
+    case 3:
+        draw_sprite(Sp_Particle_Stone, 0, x, y);
+        item_name = "Stone Ore";
+        break;
+    case 4:
+        draw_sprite(Sp_Particle_Ice, 0, x, y);
+        item_name = "Ice";
+        break;
+    case 5:
+        draw_sprite(Sp_Particle_Gold, 0, x, y);
+        item_name = "Gold Ore";
+        break;
+    case 6:
+        draw_sprite(Sp_Particle_Platinum, 0, x, y);
+        item_name = "Platinum Ore";
+        break;
+    case 7:
+        draw_sprite(Sp_Particle_Titanium, 0, x, y);
+        item_name = "Titanium Ore";
+        break;
+}
+if (controller.in_type &gt;= 0 &amp;&amp; draw_item_name)
+{
+    draw_text(mouse_x + 16, mouse_y + 16, string(item_name));
 }
 </string>
           </argument>

@@ -28,6 +28,7 @@
             <string>gms_init(GMS)
 global.newgame = true;
 global.newtutorial = true;
+global.controller = noone;
 switch(os_type)
 {
     case os_windows:

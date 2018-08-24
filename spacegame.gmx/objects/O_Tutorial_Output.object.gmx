@@ -30,20 +30,20 @@ if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
 {
     if(round(O_Tutorial.input_num/2 + 0.1) &lt;= free_space)
     {
-        global.Inventory[O_Tutorial.smelt_type] += round(O_Tutorial.smelt_num/2 + 0.1);
+        O_Tutorial.Inventory[O_Tutorial.smelt_type] += round(O_Tutorial.smelt_num/2 + 0.1);
         O_Tutorial.smelt_num -= round(O_Tutorial.smelt_num/2 + 0.1);
     }
     else
     {
-        global.Inventory[O_Tutorial.smelt_type] += free_space;
+        O_Tutorial.Inventory[O_Tutorial.smelt_type] += free_space;
         O_Tutorial.smelt_num -= free_space;
     }
     Sc_Inventory_Assign();
 }
-else if (!keyboard_check(vk_shift) &amp;&amp; (O_Tutorial.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Tutorial.smelt_type)))
+else if (!keyboard_check(vk_shift) &amp;&amp; (O_Tutorial.smelt_type &gt;= 0 &amp;&amp; (O_Tutorial.mouse_type == -1 || O_Tutorial.mouse_type == O_Tutorial.smelt_type)))
 {
-    global.mouse_slot += round(O_Tutorial.smelt_num/2 + 0.1);
-    global.mouse_type = O_Tutorial.smelt_type;
+    O_Tutorial.mouse_slot += round(O_Tutorial.smelt_num/2 + 0.1);
+    O_Tutorial.mouse_type = O_Tutorial.smelt_type;
     O_Tutorial.smelt_num -= round(O_Tutorial.smelt_num/2 + 0.1);
 }
 if (O_Tutorial.smelt_num == 0)
@@ -81,21 +81,21 @@ if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
 {
     if(O_Tutorial.smelt_num &lt;= free_space)
     {
-        global.Inventory[O_Tutorial.smelt_type] += O_Tutorial.smelt_num;
+        O_Tutorial.Inventory[O_Tutorial.smelt_type] += O_Tutorial.smelt_num;
         O_Tutorial.smelt_num = 0;
         O_Tutorial.smelt_type = -1;
     }
     else
     {
-        global.Inventory[O_Tutorial.smelt_type] += free_space;
+        O_Tutorial.Inventory[O_Tutorial.smelt_type] += free_space;
         O_Tutorial.smelt_num -= free_space;
     }
     Sc_Inventory_Assign();
 }
-else if (!keyboard_check(vk_shift) &amp;&amp; (O_Tutorial.smelt_type &gt;= 0 &amp;&amp; (global.mouse_type == -1 || global.mouse_type == O_Tutorial.smelt_type)))
+else if (!keyboard_check(vk_shift) &amp;&amp; (O_Tutorial.smelt_type &gt;= 0 &amp;&amp; (O_Tutorial.mouse_type == -1 || O_Tutorial.mouse_type == O_Tutorial.smelt_type)))
 {
-    global.mouse_slot += O_Tutorial.smelt_num;
-    global.mouse_type = O_Tutorial.smelt_type;
+    O_Tutorial.mouse_slot += O_Tutorial.smelt_num;
+    O_Tutorial.mouse_type = O_Tutorial.smelt_type;
     O_Tutorial.smelt_num = 0;
     O_Tutorial.smelt_type = -1;
 }

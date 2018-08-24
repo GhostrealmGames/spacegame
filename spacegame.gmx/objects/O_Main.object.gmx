@@ -45,7 +45,7 @@ inner_radius = 2000;
 outer_radius = 7000;
 dist = sprite_get_width(O_Planet_Water)/2 + random_range(inner_radius, outer_radius);
 dir = random(360);
-instance_create(1920/2+lengthdir_x(dist, dir), 1080/2+lengthdir_y(dist, dir), O_Planet_Water); //room_height/2
+instance_create(1920/2+lengthdir_x(dist, dir), 1080/2+lengthdir_y(dist, dir), O_Planet_Water);
 // Create Star
 //instance_create(10000, 10000, O_Star_Sun);
 </string>
@@ -154,27 +154,28 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.mouse_slot &gt; 0)
+            <string>controller = global.controller;
+if (controller.mouse_slot &gt; 0)
 {
-    switch(global.mouse_type)
+    switch(controller.mouse_type)
     {
         case collector_droid + 2*total_resource_types:
             instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Collector);
-            global.mouse_slot -= 1;
+            controller.mouse_slot -= 1;
             break;
         case miner_droid + 2*total_resource_types:
             instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Miner);
-            global.mouse_slot -= 1;
+            controller.mouse_slot -= 1;
             break;
         case smelter_droid + 2*total_resource_types:
             instance_create(mouse_x + 16, mouse_y + 16, O_Droid_Smelter);
-            global.mouse_slot -= 1;
+            controller.mouse_slot -= 1;
             break;
     }
 }
-if (global.mouse_slot &lt;= 0)
+if (controller.mouse_slot &lt;= 0)
 {
-    global.mouse_type = -1;
+    controller.mouse_type = -1;
 }
 </string>
           </argument>
@@ -198,8 +199,33 @@ if (global.mouse_slot &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.newgame)
+            <string>controller = global.controller;
+if (global.newgame)
 {
+    // Ship
+    controller.fuel = 100;
+    controller.ship_health = 100;
+    controller.ship_upgrade = 1;
+    // Mouse
+    controller.mouse_slot = 0;
+    controller.mouse_type = -1;
+    controller.mouse_pickup = false;
+    // Inventory
+    controller.Slots[0] = 0;
+    controller.Inventory[2*total_resource_types + craftable_items] = 0;
+    controller.Inv_Draw[2*total_resource_types + craftable_items] = 0;
+    for(i = 0; i &lt; 2*total_resource_types + craftable_items - 1; i+=1)
+    {
+        controller.Inventory[i] = 0;
+        controller.Inv_Draw[i] = 0;
+    }
+    // Smelting
+    controller.smelt_num = 0;
+    controller.smelt_type = -1;
+    controller.smelting = false;
+    controller.input_num = 0;
+    controller.in_type = -1;
+    controller.processed_time = 0;
     global.newgame = false;
     room_persistent = false;
     room_restart();
@@ -246,7 +272,7 @@ if (draw_fps)
 if (global.debug)
 {
     draw_set_color(c_red);
-    draw_text(mouse_x - 32, mouse_y - 32, string(global.mouse_type));
+    draw_text(mouse_x - 32, mouse_y - 32, string(controller.mouse_type));
 }
 </string>
           </argument>

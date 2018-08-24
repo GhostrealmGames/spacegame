@@ -25,51 +25,52 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.mouse_type &gt;= 0 &amp;&amp; global.mouse_type &lt; total_resource_types &amp;&amp; (O_Controller.in_type == global.mouse_type || O_Controller.in_type == -1))
+            <string>controller = global.controller;
+if (controller.mouse_type &gt;= 0 &amp;&amp; controller.mouse_type &lt; total_resource_types &amp;&amp; (controller.in_type == controller.mouse_type || controller.in_type == -1))
 {
-    if (global.mouse_type == (O_Controller.smelt_type - total_resource_types) || O_Controller.smelt_type == -1)
+    if (controller.mouse_type == (controller.smelt_type - total_resource_types) || controller.smelt_type == -1)
     {
-        O_Controller.input_num += 1;
-        O_Controller.in_type = global.mouse_type;
-        global.mouse_slot -= 1;
-        if (global.mouse_slot == 0)
+        controller.input_num += 1;
+        controller.in_type = controller.mouse_type;
+        controller.mouse_slot -= 1;
+        if (controller.mouse_slot == 0)
         {
-            global.mouse_type = -1;
+            controller.mouse_type = -1;
         }
     }
 }
 else
 {
-    if (O_Controller.in_type &gt;= 0)
+    if (controller.in_type &gt;= 0)
     {
-        free_space = Sc_Inventory_space(O_Controller.in_type);
+        free_space = Sc_Inventory_space(controller.in_type);
         if (keyboard_check(vk_shift) &amp;&amp; free_space != 0)
         {
-            if(round(O_Controller.input_num/2 + 0.1) &lt;= free_space)
+            if(round(controller.input_num/2 + 0.1) &lt;= free_space)
             {
-                global.Inventory[O_Controller.in_type] += round(O_Controller.input_num/2 + 0.1);
-                O_Controller.input_num -= round(O_Controller.input_num/2 + 0.1);
+                controller.Inventory[controller.in_type] += round(controller.input_num/2 + 0.1);
+                controller.input_num -= round(controller.input_num/2 + 0.1);
             }
             else
             {
-                global.Inventory[O_Controller.in_type] += free_space;
-                O_Controller.input_num -= free_space;
+                controller.Inventory[controller.in_type] += free_space;
+                controller.input_num -= free_space;
             }
             Sc_Inventory_Assign();
         }
-        else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Controller.in_type == global.mouse_type))
+        else if (!keyboard_check(vk_shift) &amp;&amp; (controller.mouse_type == -1 || controller.in_type == controller.mouse_type))
         {
-            if (O_Controller.input_num &gt;= 50)
+            if (controller.input_num &gt;= 50)
             {
-                global.mouse_slot = 25 + global.mouse_slot;
-                global.mouse_type = O_Controller.in_type;
-                O_Controller.input_num -= 25;
+                controller.mouse_slot = 25 + controller.mouse_slot;
+                controller.mouse_type = controller.in_type;
+                controller.input_num -= 25;
             }
             else
             {
-                global.mouse_slot = round(O_Controller.input_num/2 + 0.1);
-                global.mouse_type = O_Controller.in_type;
-                O_Controller.input_num -= round(O_Controller.input_num/2 + 0.1);
+                controller.mouse_slot = round(controller.input_num/2 + 0.1);
+                controller.mouse_type = controller.in_type;
+                controller.input_num -= round(controller.input_num/2 + 0.1);
             }
         }
     }
@@ -96,48 +97,49 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.mouse_type &gt;= 0 &amp;&amp; global.mouse_type &lt; total_resource_types &amp;&amp; (O_Controller.in_type == -1 || O_Controller.in_type == global.mouse_type))
+            <string>controller = global.controller;
+if (controller.mouse_type &gt;= 0 &amp;&amp; controller.mouse_type &lt; total_resource_types &amp;&amp; (controller.in_type == -1 || controller.in_type == controller.mouse_type))
 {
-    if ((global.mouse_type == (O_Controller.smelt_type - total_resource_types) &amp;&amp; global.mouse_type == O_Controller.in_type) || (O_Controller.smelt_type == -1 &amp;&amp; global.mouse_type == O_Controller.in_type) || (O_Controller.smelt_type == -1 &amp;&amp; O_Controller.in_type == -1))
+    if ((controller.mouse_type == (controller.smelt_type - total_resource_types) &amp;&amp; controller.mouse_type == controller.in_type) || (controller.smelt_type == -1 &amp;&amp; controller.mouse_type == controller.in_type) || (controller.smelt_type == -1 &amp;&amp; controller.in_type == -1))
     {
-        O_Controller.input_num += global.mouse_slot;
-        O_Controller.in_type = global.mouse_type;
-        global.mouse_slot = 0;
-        global.mouse_type = -1;
+        controller.input_num += controller.mouse_slot;
+        controller.in_type = controller.mouse_type;
+        controller.mouse_slot = 0;
+        controller.mouse_type = -1;
     }
 }
 else
 {
-    free_space = Sc_Inventory_space(O_Controller.in_type);
-    if (keyboard_check(vk_shift) &amp;&amp; O_Controller.in_type &gt;= 0 &amp;&amp; free_space != 0)
+    free_space = Sc_Inventory_space(controller.in_type);
+    if (keyboard_check(vk_shift) &amp;&amp; controller.in_type &gt;= 0 &amp;&amp; free_space != 0)
     {
-        if(O_Controller.input_num &lt;= free_space)
+        if(controller.input_num &lt;= free_space)
         {
-            global.Inventory[O_Controller.in_type] += O_Controller.input_num;
-            O_Controller.input_num = 0;
-            O_Controller.in_type = -1;
+            controller.Inventory[controller.in_type] += controller.input_num;
+            controller.input_num = 0;
+            controller.in_type = -1;
         }
         else
         {
-            global.Inventory[O_Controller.in_type] += free_space;
-            O_Controller.input_num -= free_space;
+            controller.Inventory[controller.in_type] += free_space;
+            controller.input_num -= free_space;
         }
         Sc_Inventory_Assign();
     }
-    else if (!keyboard_check(vk_shift) &amp;&amp; (global.mouse_type == -1 || O_Controller.in_type == global.mouse_type))
+    else if (!keyboard_check(vk_shift) &amp;&amp; (controller.mouse_type == -1 || controller.in_type == controller.mouse_type))
     {
-        if (O_Controller.input_num &gt;= 50)
+        if (controller.input_num &gt;= 50)
         {
-            global.mouse_slot = 50 + global.mouse_slot;
-            global.mouse_type = O_Controller.in_type;
-            O_Controller.input_num -= 50;
+            controller.mouse_slot = 50 + controller.mouse_slot;
+            controller.mouse_type = controller.in_type;
+            controller.input_num -= 50;
         }
         else
         {
-            global.mouse_slot = O_Controller.input_num + global.mouse_slot;
-            global.mouse_type = O_Controller.in_type;
-            O_Controller.input_num = 0;
-            O_Controller.in_type = -1;
+            controller.mouse_slot = controller.input_num + controller.mouse_slot;
+            controller.mouse_type = controller.in_type;
+            controller.input_num = 0;
+            controller.in_type = -1;
         }
     }
 }
@@ -164,13 +166,14 @@ else
           <argument>
             <kind>1</kind>
             <string>event_inherited();
+controller = global.controller;
 if (global.debug)
 {
     draw_set_color(c_red);
     draw_text(x - 26, y - 26, 
         "S: " + "Input" +
-        "#T: " + string(O_Controller.in_type) +
-        "#N: " + string(O_Controller.input_num));
+        "#T: " + string(controller.in_type) +
+        "#N: " + string(controller.input_num));
     draw_set_color(c_black);
 }
 </string>

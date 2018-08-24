@@ -105,30 +105,23 @@ depth = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (craft_type != -1)
+            <string>controller = global.controller;
+if (craft_type != -1)
 {
     complete = true;
-    if (room == R_Menu_Inventory)
-    {
-        controller = O_Controller;
-    }
-    else
-    {
-        controller = O_Tutorial;
-    }
     free_space = Sc_Inventory_space(2*total_resource_types + craft_type);
     if (free_space &gt;= 2*total_resource_types + craft_num)//(!controller.inv_full[2*total_resource_types + craft_type])
     {
         for (i = 0; i &lt; total_resource_types + craftable_items-1; i += 1)
         {
-            if (!(global.Inventory[i + total_resource_types] &gt;= global.Craft[craft_type, i]))
+            if (!(controller.Inventory[i + total_resource_types] &gt;= global.Craft[craft_type, i]))
             {
                 complete = false;
             }
         }
         if (craft_type == shipV3)
         {
-            if (global.ship_upgrade != 2)
+            if (controller.ship_upgrade != 2)
             {
                 complete = false;
             }
@@ -137,12 +130,12 @@ depth = -1;
         {
             for (i = 0; i &lt; total_resource_types + craftable_items-1; i += 1)
             {
-                global.Inventory[i + total_resource_types] -= global.Craft[craft_type, i];
+                controller.Inventory[i + total_resource_types] -= global.Craft[craft_type, i];
             }
             // Upgrade ship if crafted ship upgrade
             if (craft_type == shipV2)
             {
-                global.ship_upgrade = 2;
+                controller.ship_upgrade = 2;
                 score += shipV2_upgrade_points;
                 if (!gms_achievement_reach("Upgrade to shipV2."))
                 {
@@ -151,7 +144,7 @@ depth = -1;
             }
             else if (craft_type == shipV3)
             {
-                global.ship_upgrade = 3;
+                controller.ship_upgrade = 3;
                 score += shipV3_upgrade_points;
                 if (!gms_achievement_reach("Upgrade to shipV3."))
                 {
@@ -160,7 +153,7 @@ depth = -1;
             }
             else
             {
-                global.Inventory[2*total_resource_types + craft_type] += craft_num;
+                controller.Inventory[2*total_resource_types + craft_type] += craft_num;
             }
             score += craft_points;
         }
@@ -189,7 +182,8 @@ depth = -1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(Sp_Inv_Slot, image_index, x, y);
+            <string>controller = global.controller;
+draw_sprite(Sp_Inv_Slot, image_index, x, y);
 draw_set_color(inventory_text_color);
 draw_set_halign(fa_left);
 draw_set_valign(fa_left);
@@ -275,14 +269,14 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     complete = true;
     for (i = 0; i &lt; total_resource_types + craftable_items-1; i += 1)
     {
-        if (!(global.Inventory[i + total_resource_types] &gt;= global.Craft[craft_type, i]))
+        if (!(controller.Inventory[i + total_resource_types] &gt;= global.Craft[craft_type, i]))
         {
             complete = false;
         }
     }
     if (craft_type == shipV3)
     {
-        if (global.ship_upgrade != 2)
+        if (controller.ship_upgrade != 2)
         {
             complete = false;
         }
@@ -302,7 +296,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     
     if (global.Craft[craft_type, copper] &gt; 0)
     {
-        if(global.Craft[craft_type, copper] &lt;= global.Inventory[copper + total_resource_types])
+        if(global.Craft[craft_type, copper] &lt;= controller.Inventory[copper + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -315,7 +309,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, iron] &gt; 0)
     {
-        if(global.Craft[craft_type, iron] &lt;= global.Inventory[iron + total_resource_types])
+        if(global.Craft[craft_type, iron] &lt;= controller.Inventory[iron + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -328,7 +322,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, nickel] &gt; 0)
     {
-        if(global.Craft[craft_type, nickel] &lt;= global.Inventory[nickel + total_resource_types])
+        if(global.Craft[craft_type, nickel] &lt;= controller.Inventory[nickel + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -341,7 +335,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, stone] &gt; 0)
     {
-        if(global.Craft[craft_type, stone] &lt;= global.Inventory[stone + total_resource_types])
+        if(global.Craft[craft_type, stone] &lt;= controller.Inventory[stone + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -354,7 +348,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, ice] &gt; 0)
     {
-        if(global.Craft[craft_type, ice] &lt;= global.Inventory[ice + total_resource_types])
+        if(global.Craft[craft_type, ice] &lt;= controller.Inventory[ice + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -367,7 +361,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, gold] &gt; 0)
     {
-        if(global.Craft[craft_type, gold] &lt;= global.Inventory[gold + total_resource_types])
+        if(global.Craft[craft_type, gold] &lt;= controller.Inventory[gold + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -380,7 +374,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, platinum] &gt; 0)
     {
-        if(global.Craft[craft_type, platinum] &lt;= global.Inventory[platinum + total_resource_types])
+        if(global.Craft[craft_type, platinum] &lt;= controller.Inventory[platinum + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -393,7 +387,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, titanium] &gt; 0)
     {
-        if(global.Craft[craft_type, titanium] &lt;= global.Inventory[titanium + total_resource_types])
+        if(global.Craft[craft_type, titanium] &lt;= controller.Inventory[titanium + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -406,7 +400,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, coal] &gt; 0)
     {
-        if(global.Craft[craft_type, coal] &lt;= global.Inventory[coal + total_resource_types])
+        if(global.Craft[craft_type, coal] &lt;= controller.Inventory[coal + total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -419,7 +413,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, copper_wire + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, copper_wire + total_resource_types] &lt;= global.Inventory[copper_wire + 2*total_resource_types])
+        if(global.Craft[craft_type, copper_wire + total_resource_types] &lt;= controller.Inventory[copper_wire + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -432,7 +426,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, gold_wire + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, gold_wire + total_resource_types] &lt;= global.Inventory[gold_wire + 2*total_resource_types])
+        if(global.Craft[craft_type, gold_wire + total_resource_types] &lt;= controller.Inventory[gold_wire + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -445,7 +439,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, collector_claw + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, collector_claw + total_resource_types] &lt;= global.Inventory[collector_claw + 2*total_resource_types])
+        if(global.Craft[craft_type, collector_claw + total_resource_types] &lt;= controller.Inventory[collector_claw + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -458,7 +452,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, mining_drill + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, mining_drill + total_resource_types] &lt;= global.Inventory[mining_drill + 2*total_resource_types])
+        if(global.Craft[craft_type, mining_drill + total_resource_types] &lt;= controller.Inventory[mining_drill + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -471,7 +465,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, crucible + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, crucible + total_resource_types] &lt;= global.Inventory[crucible + 2*total_resource_types])
+        if(global.Craft[craft_type, crucible + total_resource_types] &lt;= controller.Inventory[crucible + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -484,7 +478,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, coolant_cell + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, coolant_cell + total_resource_types] &lt;= global.Inventory[coolant_cell + 2*total_resource_types])
+        if(global.Craft[craft_type, coolant_cell + total_resource_types] &lt;= controller.Inventory[coolant_cell + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -497,7 +491,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, shipV2_wings + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, shipV2_wings + total_resource_types] &lt;= global.Inventory[shipV2_wings + 2*total_resource_types])
+        if(global.Craft[craft_type, shipV2_wings + total_resource_types] &lt;= controller.Inventory[shipV2_wings + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -510,7 +504,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, shipV2_body + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, shipV2_body + total_resource_types] &lt;= global.Inventory[shipV2_body + 2*total_resource_types])
+        if(global.Craft[craft_type, shipV2_body + total_resource_types] &lt;= controller.Inventory[shipV2_body + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -523,7 +517,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, shipV2_thruster + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, shipV2_thruster + total_resource_types] &lt;= global.Inventory[shipV2_thruster + 2*total_resource_types])
+        if(global.Craft[craft_type, shipV2_thruster + total_resource_types] &lt;= controller.Inventory[shipV2_thruster + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -536,7 +530,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, shipV3_wings-1 + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, shipV3_wings-1 + total_resource_types] &lt;= global.Inventory[shipV3_wings-1 + 2*total_resource_types])
+        if(global.Craft[craft_type, shipV3_wings-1 + total_resource_types] &lt;= controller.Inventory[shipV3_wings-1 + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -549,7 +543,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, shipV3_body-1 + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, shipV3_body-1 + total_resource_types] &lt;= global.Inventory[shipV3_body-1 + 2*total_resource_types])
+        if(global.Craft[craft_type, shipV3_body-1 + total_resource_types] &lt;= controller.Inventory[shipV3_body-1 + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }
@@ -562,7 +556,7 @@ if (craft_type &gt;= 0 &amp;&amp; req_draw)
     }
     if (global.Craft[craft_type, shipV3_thruster-1 + total_resource_types] &gt; 0)
     {
-        if(global.Craft[craft_type, shipV3_thruster-1 + total_resource_types] &lt;= global.Inventory[shipV3_thruster-1 + 2*total_resource_types])
+        if(global.Craft[craft_type, shipV3_thruster-1 + total_resource_types] &lt;= controller.Inventory[shipV3_thruster-1 + 2*total_resource_types])
         {
             draw_set_color(c_lime);
         }

@@ -26,6 +26,28 @@
           <argument>
             <kind>1</kind>
             <string>deactivate = false;
+
+// Ship
+fuel = 100;
+ship_health = 100;
+ship_upgrade = 1;
+// Asteroids/Comets
+Asteroids[0] = 0;
+Comets[0] = 0;
+// Mouse
+mouse_slot = 0;
+mouse_type = -1;
+mouse_pickup = false;
+// Inventory
+Slots[0] = 0;
+Inventory[2*total_resource_types + craftable_items] = 0;
+Inv_Draw[2*total_resource_types + craftable_items] = 0;
+for(i = 0; i &lt; 2*total_resource_types + craftable_items - 1; i+=1)
+{
+    Inventory[i] = 0;
+    Inv_Draw[i] = 0;
+}
+
 // Inventory
 inv_slots_full = false;
 inv_full[2*total_resource_types + craftable_items] = false;
@@ -71,7 +93,7 @@ num_flashes = num_flash_initial;
             <kind>1</kind>
             <string>if(!deactivate)
 {
-    if (input_num &gt; 0 &amp;&amp; global.fuel &gt; 0)
+    if (input_num &gt; 0 &amp;&amp; fuel &gt; 0)
     {
         if (smelt_num &lt; 50)
         {  
@@ -109,20 +131,20 @@ num_flashes = num_flash_initial;
         in_type = -1;
         processed_time = 0;
     }
-    if (global.fuel &lt;= 0)
+    if (fuel &lt;= 0)
     {
         smelting = false;
     }
     // If smelting use fuel
     if (smelting)
     {
-        global.fuel -= .0025;
+        fuel -= .0025;
     }
     // if mouse slot is less than 0 reset type
-    if (global.mouse_slot &lt;= 0)
+    if (mouse_slot &lt;= 0)
     {
-        global.mouse_slot = 0;
-        global.mouse_type = -1;
+        mouse_slot = 0;
+        mouse_type = -1;
     }
     // Debug mode key combination: control + alt + numpad 0
     if (keyboard_check(vk_control) &amp;&amp; keyboard_check(vk_alt) &amp;&amp; keyboard_check(vk_numpad0))
@@ -149,81 +171,81 @@ num_flashes = num_flash_initial;
             // Copper
             if (keyboard_check(ord("1")))
             {
-                if (O_Tutorial.inv_full[0] == false)
+                if (inv_full[0] == false)
                 {
-                    global.Inventory[0] += 1;
+                    Inventory[0] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Iron
             if (keyboard_check(ord("2")))
             {
-                if (O_Tutorial.inv_full[1] == false)
+                if (inv_full[1] == false)
                 {
-                    global.Inventory[1] += 1;
+                    Inventory[1] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Nickel
             if (keyboard_check(ord("3")))
             {
-                if (O_Tutorial.inv_full[2] == false)
+                if (inv_full[2] == false)
                 {
-                    global.Inventory[2] += 1;
+                    Inventory[2] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Stone
             if (keyboard_check(ord("4")))
             {
-                if (O_Tutorial.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[3] += 1;
+                    Inventory[3] += 1;
                     filled_slots = Sc_Inventory_Assign();
                 }
             }
             // Ice
             if (keyboard_check(ord("5")))
             {
-                if (O_Tutorial.inv_full[4] == false)
+                if (inv_full[4] == false)
                 {
-                    global.Inventory[4] += 1;
+                    Inventory[4] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Gold
             if (keyboard_check(ord("6")))
             {
-                if (O_Tutorial.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[5] += 1;
+                    Inventory[5] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Platinum
             if (keyboard_check(ord("7")))
             {
-                if (O_Tutorial.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[6] += 1;
+                    Inventory[6] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Titanium
             if (keyboard_check(ord("8")))
             {
-                if (O_Tutorial.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[7] += 1;
+                    Inventory[7] += 1;
                     Sc_Inventory_Assign();
                 }
             }
             // Coal
             if (keyboard_check(ord("9")))
             {
-                if (O_Tutorial.inv_full[3] == false)
+                if (inv_full[3] == false)
                 {
-                    global.Inventory[8] += 1;
+                    Inventory[8] += 1;
                     Sc_Inventory_Assign();
                 }
             }
@@ -290,11 +312,11 @@ else if (room == R_Tutorial)
     draw_set_valign(fa_center);
     if (room == R_Tutorial || room == R_Tutorial_Inventory)
     {
-        if (global.mouse_type &gt;= 0)
+        if (mouse_type &gt;= 0)
         {
-            draw_text(mouse_x - 8, mouse_y - 8, global.mouse_slot);
+            draw_text(mouse_x - 8, mouse_y - 8, mouse_slot);
         }
-        switch(global.mouse_type)
+        switch(mouse_type)
         {
             case copper:
                 draw_sprite(Sp_Particle_Copper, 0, mouse_x + 16, mouse_y + 16);
@@ -409,7 +431,7 @@ else if (room == R_Tutorial)
             "#Filled Slots: " + string(filled_slots) +
             "#Inventory Full: " + string(inv_slots_full) +
             "#FPS: " + string(fps));
-        draw_text(mouse_x - 16, mouse_y - 16, string(global.mouse_type));
+        draw_text(mouse_x - 16, mouse_y - 16, string(mouse_type));
     }
 }
 </string>

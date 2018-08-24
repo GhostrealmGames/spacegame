@@ -100,7 +100,7 @@ highest_dist = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.ship_upgrade == 2)
+            <string>if (global.controller.ship_upgrade == 2)
 {
     upgrade = 2;
     sprite_index = Sp_ShipV2;
@@ -112,7 +112,7 @@ highest_dist = 0;
         gms_achievement_reach("upgrade_v2");
     }
 }
-else if (global.ship_upgrade == 3)
+else if (global.controller.ship_upgrade == 3)
 {
     upgrade = 3;
     sprite_index = Sp_ShipV3;
@@ -152,7 +152,7 @@ else if (global.ship_upgrade == 3)
     Sc_Shoot(O_Laser, O_Self);
     audio_play_sound(A_Shoot, 10, false);
 }
-if (global.ship_health &lt;= 0)
+if (global.controller.ship_health &lt;= 0)
 {
     instance_create(x, y, O_Explosion);
     instance_destroy();
@@ -244,7 +244,7 @@ if (other.Type == -1)
     if (other.collided == false)
     {
         event_inherited();
-        global.ship_health -= 4000 * force;
+        global.controller.ship_health -= 4000 * force;
         sound_play(A_Collision_Asteroid);
         other.collided = true;
         other.set_alarm = true;
@@ -272,11 +272,11 @@ if (other.Type == -1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.fuel &gt; 0) // Check to see if the ship has fuel
+            <string>if (global.controller.fuel &gt; 0) // Check to see if the ship has fuel
 {
     image_index = 1;
     accel = true;
-    global.fuel -= 0.01;
+    global.controller.fuel -= 0.01;
 }
 </string>
           </argument>
@@ -418,25 +418,25 @@ if (global.debug)
             <kind>1</kind>
             <string>if (global.debug)
 {
-    if (global.ship_upgrade == 3)
+    if (global.controller.ship_upgrade == 3)
     {
-        global.ship_upgrade = 1;
+        global.controller.ship_upgrade = 1;
         sprite_index = Sp_ShipV1;
         shootspeed = ship_shootspeedV1;
         shootdamage = ship_shootdamageV1;
         ship_accel = ship_accelV1;
     }
-    else if (global.ship_upgrade == 1)
+    else if (global.controller.ship_upgrade == 1)
     {
-        global.ship_upgrade = 2;
+        global.controller.ship_upgrade = 2;
         sprite_index = Sp_ShipV2;
         shootspeed = ship_shootspeedV2;
         shootdamage = ship_shootdamageV2;
         ship_accel = ship_accelV2;
     }
-    else if (global.ship_upgrade == 2)
+    else if (global.controller.ship_upgrade == 2)
     {
-        global.ship_upgrade = 3;
+        global.controller.ship_upgrade = 3;
         sprite_index = Sp_ShipV3;
         shootspeed = ship_shootspeedV3;
         shootdamage = ship_shootdamageV3;
