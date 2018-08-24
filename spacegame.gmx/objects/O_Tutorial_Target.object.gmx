@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>10</depth>
   <persistent>0</persistent>
-  <parentName>O_Gravity</parentName>
+  <parentName>self</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -87,6 +87,14 @@ highest_dist = 0;
             <kind>1</kind>
             <string>dist = Sc_Distance(O_Ship, self);
 image_index = 0;
+
+//Gravity
+nearest = instance_nearest(x, y, O_Planet_Parent);
+if (instance_exists(nearest) &amp;&amp; gravityon)
+{
+    Sc_Gravity(self, nearest);
+}
+
 if (collision_circle(x, y, sprite_width/2 - O_Ship.sprite_width/2, O_Ship, true, true))
 {
     image_index = 1;
@@ -102,7 +110,7 @@ if (time &lt;= 0)
 }
 if (destroy_timer &lt; 0)
 {
-    if(!instance_exists(O_Tutorial_Planet_Water))
+    if(!instance_exists(nearest))
     {
         do {
             dist = sprite_get_width(Sp_ShipV1)/2 + random_range(inner_radius, outer_radius);
@@ -113,14 +121,17 @@ if (destroy_timer &lt; 0)
     }
     else
     {
-        planet_x = O_Tutorial_Planet_Water.x;
-        planet_y = O_Tutorial_Planet_Water.y;
+        planet_x = nearest.x;
+        planet_y = nearest.y;
         do {
-            dist = sprite_get_width(Sp_Planet_Water)/2 + random_range(O_Tutorial_Planet_Water.inner_radius, O_Tutorial_Planet_Water.outer_radius);
+            dist = sprite_get_width(Sp_Planet_Water)/2 + random_range(nearest.inner_radius, nearest.outer_radius);
             dir = random(360);
         } until (collision_circle(planet_x+lengthdir_x(dist, dir), planet_y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone)
         x = planet_x + lengthdir_x(dist, dir);
         y = planet_y + lengthdir_y(dist, dir);
+        hspeed = nearest.hspeed;
+        vspeed = nearest.vspeed;
+        orbitalV = Sc_OrbitalVelocity(self, nearest, false);
     }
     time = wait_time;
     destroy_timer = 1;
@@ -138,7 +149,6 @@ if (destroy_timer &lt; 0)
         instance_destroy();
     }
 }
-event_inherited();
 </string>
           </argument>
         </arguments>
@@ -161,14 +171,13 @@ event_inherited();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if(instance_exists(O_Ship))
+            <string>if(instance_exists(O_Ship))
 {
     if (global.fuel &gt; 0) // Check to see if the ship has fuel
     {
         motion_add(O_Ship.spr_angle + 180, O_Ship.ship_accel);
     }
-}*/
-event_inherited();
+}
 </string>
           </argument>
         </arguments>

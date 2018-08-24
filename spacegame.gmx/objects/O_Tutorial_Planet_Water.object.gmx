@@ -39,6 +39,14 @@ event_inherited();
 
 // Setup Player orbital velocity
 angle_object = point_direction(x, y, O_Ship.x, O_Ship.y);
+with(O_Gravity)
+{
+    motion_add(other.angle_object + 90, other.ship_orbitalV);
+}
+with(O_Tutorial_Target)
+{
+    motion_add(other.angle_object + 90, other.ship_orbitalV);
+}
 with(O_Parallax)
 {
     motion_add(other.angle_object + 90, other.ship_orbitalV);
