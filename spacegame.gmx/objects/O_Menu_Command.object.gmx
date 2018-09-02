@@ -202,7 +202,8 @@ draw_set_color(c_black);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>command = txt;
+            <string>controller = global.controller;
+command = txt;
 temp = "";
 prev = "";
 txt = "";
@@ -234,7 +235,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[0] += real(command_number);
+            controller.Inventory[0] += real(command_number);
         }
         else
         {
@@ -245,7 +246,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[1] += real(command_number);
+            controller.Inventory[1] += real(command_number);
         }
         else
         {
@@ -256,7 +257,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[2] += real(command_number);
+            controller.Inventory[2] += real(command_number);
         }
         else
         {
@@ -267,7 +268,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[3] += real(command_number);
+            controller.Inventory[3] += real(command_number);
         }
         else
         {
@@ -278,7 +279,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[4] += real(command_number);
+            controller.Inventory[4] += real(command_number);
         }
         else
         {
@@ -289,7 +290,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[5] += real(command_number);
+            controller.Inventory[5] += real(command_number);
         }
         else
         {
@@ -300,7 +301,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[6] += real(command_number);
+            controller.Inventory[6] += real(command_number);
         }
         else
         {
@@ -311,7 +312,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[7] += real(command_number);
+            controller.Inventory[7] += real(command_number);
         }
         else
         {
@@ -322,7 +323,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number &lt;= max_give))
         {
-            global.Inventory[8] += real(command_number);
+            controller.Inventory[8] += real(command_number);
         }
         else
         {
@@ -333,7 +334,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[0+total_resource_types] += real(command_number);
+            controller.Inventory[0+total_resource_types] += real(command_number);
         }
         else
         {
@@ -344,7 +345,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[1+total_resource_types] += real(command_number);
+            controller.Inventory[1+total_resource_types] += real(command_number);
         }
         else
         {
@@ -355,7 +356,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[2+total_resource_types] += real(command_number);
+            controller.Inventory[2+total_resource_types] += real(command_number);
         }
         else
         {
@@ -366,7 +367,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[3+total_resource_types] += real(command_number);
+            controller.Inventory[3+total_resource_types] += real(command_number);
         }
         else
         {
@@ -377,7 +378,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[4+total_resource_types] += real(command_number);
+            controller.Inventory[4+total_resource_types] += real(command_number);
         }
         else
         {
@@ -388,7 +389,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[5+total_resource_types] += real(command_number);
+            controller.Inventory[5+total_resource_types] += real(command_number);
         }
         else
         {
@@ -399,7 +400,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[6+total_resource_types] += real(command_number);
+            controller.Inventory[6+total_resource_types] += real(command_number);
         }
         else
         {
@@ -410,7 +411,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[7+total_resource_types] += real(command_number);
+            controller.Inventory[7+total_resource_types] += real(command_number);
         }
         else
         {
@@ -421,9 +422,9 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= 100)
         {
-            if (global.fuel &lt;= 100 - real(command_number))
+            if (controller.fuel &lt;= 100 - real(command_number))
             {
-                global.fuel += real(command_number);
+                controller.fuel += real(command_number);
             }
             else
             {
@@ -439,7 +440,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[collector_droid+2*total_resource_types] += real(command_number);
+            controller.Inventory[collector_droid+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -450,7 +451,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[miner_droid+2*total_resource_types] += real(command_number);
+            controller.Inventory[miner_droid+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -461,7 +462,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[smelter_droid+2*total_resource_types] += real(command_number);
+            controller.Inventory[smelter_droid+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -472,7 +473,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV2_wings+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV2_wings+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -483,7 +484,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV2_body+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV2_body+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -494,7 +495,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV2_thruster+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV2_thruster+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -505,7 +506,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV2+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV2+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -516,7 +517,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV3_wings+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV3_wings+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -527,7 +528,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV3_body+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV3_body+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -538,7 +539,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV3_thruster+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV3_thruster+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -549,7 +550,7 @@ if (command_first == "/give")
     {
         if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
-            global.Inventory[shipV3+2*total_resource_types] += real(command_number);
+            controller.Inventory[shipV3+2*total_resource_types] += real(command_number);
         }
         else
         {
@@ -563,11 +564,11 @@ if (command_first == "/give")
 }
 else if (command_first == "/shipV2")
 {
-    global.ship_upgrade = 2;
+    controller.ship_upgrade = 2;
 }
 else if (command_first == "/shipV3")
 {
-    global.ship_upgrade = 3;
+    controller.ship_upgrade = 3;
 }
 else if (command_first == "/godmode")
 {
@@ -593,7 +594,7 @@ else if (command_first == "/sethealth")
     {
         if (real(command_number) &lt;= 100)
         {
-            global.ship_health = real(command_number)
+            controller.ship_health = real(command_number)
         }
         else
         {
@@ -609,13 +610,13 @@ else if (command_first == "/addhealth")
 {
     if (real(command_number) &gt; 0)
     {
-        if ((real(command_number)+global.ship_health) &lt;= 100)
+        if ((real(command_number)+controller.ship_health) &lt;= 100)
         {
-            global.ship_health += real(command_number)
+            controller.ship_health += real(command_number)
         }
         else
         {
-            old_commands[0] = "Health cannot exceed 100.  Current health: " + string(global.ship_health);
+            old_commands[0] = "Health cannot exceed 100.  Current health: " + string(controller.ship_health);
         }
     }
     else
