@@ -193,7 +193,8 @@ if (O_Tutorial.mouse_slot &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.newtutorial)
+            <string>controller = global.controller;
+if (global.newtutorial)
 {
     // Tutorial
     O_Tutorial.num_completed = 0;
