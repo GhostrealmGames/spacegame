@@ -1,9 +1,10 @@
 var Missile, Magnitude, Direction, O_fireing, delta_x, delta_y, angle, distance;//, obj_angle;
 obj_angle = argument1.spr_angle;
 angle_offset = 80;
+controller = global.controller;
 if (argument1 == O_Ship.id)
 {
-    if (global.ship_upgrade == 3)
+    if (controller.ship_upgrade == 3)
     {
         r = 63;
     }
