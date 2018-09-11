@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>_x = 500;
-_y = room_height/2;
+_y = room_height/1.25;
 download_path = "http://gamemakerserver.com/en/games/4365/download/";
 des = working_directory + "spacegame_setup.exe";
 file = http_get_file(download_path, des);
@@ -126,6 +126,7 @@ update_complete = false;
             <string>draw_set_color(c_red);
 draw_set_halign(fa_left);
 draw_set_valign(fa_bottom);
+draw_sprite(Sp_Logo, 0, room_width/2, room_height/2);
 draw_text(_x, _y - 10, "Update Download Progress"); 
 if(update_percent &gt; 0)
 {
@@ -137,7 +138,7 @@ draw_text(_x, _y + 10, str_update);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 draw_set_font(fnt_update);
-draw_text(room_width/2, room_height/4 + 10, "Installer will automatically launch#after download is finished.");
+draw_text(room_width/2, room_height/5, "Installer will automatically launch#after download is finished.");
 
 </string>
           </argument>
