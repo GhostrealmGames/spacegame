@@ -668,6 +668,34 @@ if (check_for_updates)
         }
         dots += .1;
     }
+    else
+    {
+        if (round(dots) == 0)
+        {
+            draw_text(update_x, update_y, "Checking Connection   ");
+        }
+        else if (round(dots) == 1)
+        {
+            draw_text(update_x, update_y, "Checking Connection.  ");
+        }
+        else if (round(dots) == 2)
+        {
+            draw_text(update_x, update_y, "Checking Connection.. ");
+        }
+        else if (round(dots) == 3)
+        {
+            draw_text(update_x, update_y, "Checking Connection...");
+        }
+        else
+        {
+            draw_text(update_x, update_y, "Checking Connection...");
+        }
+        if (dots &gt;= 4)
+        {
+            dots = 0;
+        }
+        dots += .1;
+    }
 }
 </string>
           </argument>
