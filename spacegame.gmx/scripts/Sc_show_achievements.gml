@@ -71,7 +71,14 @@ for(i = 0; i < num_achievements; i += 1)
         }
         else if(Sc_String_Decipher(1, '_', name) == "upgrade")
         {
-            progress = global.ship_upgrade / real(total);
+            if(instance_exists(O_Controller))
+            {
+                progress = O_Controller.ship_upgrade / real(total);
+            }
+            else
+            {
+                pregress = 0;
+            }
         }
         if(progress > 1)
         {

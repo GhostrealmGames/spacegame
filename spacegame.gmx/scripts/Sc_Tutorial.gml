@@ -39,6 +39,10 @@ switch (O_Tutorial.tutorial_text)
         total = 3;
         break;
     case 3:
+        tutorial_hint = "#Destroy the asteroids to move on.";
+        total = 5;
+        break;
+    case 4:
         tutorial_hint = "Tutroial Complete.";
         total = 0;
         break;
@@ -58,7 +62,7 @@ if (total != 0)
         num_completed = 0;
         O_Tutorial.flash_timer = O_Tutorial.falsh_timer_initial;
         O_Tutorial.num_flashes = O_Tutorial.num_flash_initial;
-        if (tutorial_text == 1)
+        if (tutorial_text == 1)     // Step 1
         {
             with(O_Tutorial_Target)
             {
@@ -73,7 +77,7 @@ if (total != 0)
                 instance_create(960 + lengthdir_x(dist, dir), 640 + lengthdir_y(dist, dir), O_Tutorial_Asteroid);
             }
         }
-        else if (tutorial_text == 2)
+        else if (tutorial_text == 2)    // Step 2
         {
             with(O_Tutorial_Asteroid)
             {
@@ -98,11 +102,34 @@ if (total != 0)
                 motion_add(other.angle_object + 90, O_Tutorial_Planet_Water.ship_orbitalV);
             }
         }
-        else if (tutorial_text == 3)
+        else if (tutorial_text == 3)    // Step 3
         {
+            with(O_Tutorial_Target)
+            {
+                instance_destroy();
+            }
+            with(O_Tutorial_Planet_Water)
+            {
+                for (i = 0; i < 30; i+=1)
+                {
+                    do {
+                        dist = sprite_get_width(Sp_Planet_Water)/2 + random_range(inner_radius, outer_radius);
+                        dir = random(360);
+                    } until (collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Ship, true, true) == noone && collision_circle(x+lengthdir_x(dist, dir), y+lengthdir_y(dist, dir), sprite_get_width(Sp_ShipV1), O_Tutorial_Asteroid, true, true) == noone)
+                    instance_create(x + lengthdir_x(dist, dir), y + lengthdir_y(dist, dir), O_Tutorial_Asteroid);
+                }
+            }
+            angle_object = point_direction(O_Tutorial_Planet_Water.x, O_Tutorial_Planet_Water.y, O_Ship.x, O_Ship.y);
             with(O_Tutorial_Asteroid)
             {
-                motion_add(O_Tutorial_Planet_Water.angle_object + 90, O_Tutorial_Planet_Water.ship_orbitalV);
+                motion_add(other.angle_object + 90, O_Tutorial_Planet_Water.ship_orbitalV);
+            }
+        }
+        else if (tutorial_text == 4)    // Tutorial Finished
+        {
+            with (O_Tutorial_Asteroid)
+            {
+                instance_destroy();
             }
         }
     }
@@ -120,7 +147,7 @@ if (O_Tutorial.flash_timer < .1 && O_Tutorial.num_flashes > 0)
     O_Tutorial.flash_timer = O_Tutorial.falsh_timer_initial;
     O_Tutorial.num_flashes -= 1;
 }
-if (O_Tutorial.tutorial_text >= 3 && O_Tutorial.flash_timer <= 0)
+if (O_Tutorial.tutorial_text >= 4 && O_Tutorial.flash_timer <= 0)
 {
     tutorial_complete = true;
 }
