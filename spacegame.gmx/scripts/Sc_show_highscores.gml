@@ -11,7 +11,7 @@ _y = _hy + header_height + spacing;
 
 if(instance_exists(object_id))
 {
-    num_highscores = object_id.num_highscores;
+    num_highscores = gms_highscore_count(list_id);//object_id.num_highscores;
     if(num_highscores > 0)
     {
         scroll = object_id.scroll;

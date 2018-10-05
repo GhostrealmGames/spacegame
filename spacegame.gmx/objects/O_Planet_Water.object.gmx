@@ -144,7 +144,8 @@ if(instance_exists(O_Ship))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.ship_health = 0;
+            <string>controller = global.controller;
+controller.ship_health = 0;
 </string>
           </argument>
         </arguments>
