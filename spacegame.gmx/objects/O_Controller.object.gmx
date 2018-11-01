@@ -38,6 +38,8 @@ input_num = 0;
 in_type = -1;
 processed_time = 0;
 draw_map = false;
+// Fuel
+fuel_add = 0;
 </string>
           </argument>
         </arguments>

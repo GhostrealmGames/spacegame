@@ -34,6 +34,12 @@ if (controller.ship_health > 0)
 }
 // Fuel
 draw_set_color(c_fuel);
+draw_set_alpha(0.5);
+if (controller.fuel_add > 0)
+{
+    draw_rectangle(_x, _y - 104, _x + 280/100*controller.fuel_add, _y - 70, false);
+}
+draw_set_alpha(1);
 if (controller.fuel > 0)
 {
     draw_rectangle(_x, _y - 107, _x + 280/100*controller.fuel, _y - 70, false);

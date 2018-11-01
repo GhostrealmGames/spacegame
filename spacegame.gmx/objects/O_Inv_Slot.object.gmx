@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>snum = 0;
+            <string>controller = global.controller;
+snum = 0;
 num_resources = 0;
 resource_type = -1;
 image_index = 0;

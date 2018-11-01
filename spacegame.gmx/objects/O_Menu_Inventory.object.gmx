@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Initialize inventory
+            <string>controller = global.controller;
+///Initialize inventory
 craft_page = 1;
 craft_total = 1;
 if(global.Config == 3 || global.Config == 4)
@@ -37,6 +38,51 @@ Sc_Smelt_Create();
 Sc_Craft_Create();
 Sc_Inventory_Assign();
 Sc_Craft_Assign();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>slot_id = instance_position(mouse_x, mouse_y, O_Inv_Slot)
+if(slot_id != noone)
+{
+    if(slot_id.resource_type == coal)
+    {
+        if(keyboard_check(vk_shift))
+        {
+            controller.fuel_add = controller.fuel;
+            for(i = 0; i &lt; slot_id.num_resources &amp;&amp; controller.fuel_add &lt;= 95; i++)
+            {
+                controller.fuel_add += 5;
+            }
+        }
+        else if(controller.fuel &lt;= 95)
+        {
+            controller.fuel_add = 5 + controller.fuel;
+        }
+    }
+}
+else
+{
+    controller.fuel_add = 0;
+}
 </string>
           </argument>
         </arguments>
