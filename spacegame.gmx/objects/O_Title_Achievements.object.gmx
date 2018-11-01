@@ -216,12 +216,6 @@ if(achievements &amp;&amp; abs(scroll) &lt; ((num_achievements-on_screen)*bar_he
     {
         achievements = true;
         depth = -1;
-        // Shift the list to show the current player at the top of the screen
-        pos = gms_highscore_find_pos(list_id, gms_self_name());
-        if(pos &gt;= 0)
-        {
-            scroll -= pos * (bar_height + spacing);
-        }
     }
 }
 </string>

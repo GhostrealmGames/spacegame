@@ -129,6 +129,10 @@ if(highscore &amp;&amp; abs(scroll) &lt; ((num_highscores-on_screen)*bar_height 
 {
     scroll += scroll_speed;
 }
+if(scroll &gt; 0)
+{
+    scroll = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -225,13 +229,19 @@ if(highscore &amp;&amp; abs(scroll) &lt; ((num_highscores-on_screen)*bar_height 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control &amp;&amp; !O_Title_Achievements.achievements)
+            <string>if (!O_Title_Credits.credit &amp;&amp; !O_Title_Controls.control &amp;&amp; !O_Title_Achievements.achievements &amp;&amp; !highscore)
 {
     event_inherited();
     if(!global.offline_mode)
     {
         highscore = true;
         depth = -1;
+        // Shift the list to show the current player at the top of the screen
+        pos = gms_highscore_find_pos(list_id, gms_self_name());
+        if(pos &gt;= 0)
+        {
+            scroll = - (pos * (bar_height + spacing));
+        }
     }
 }
 </string>
@@ -259,7 +269,7 @@ if(highscore &amp;&amp; abs(scroll) &lt; ((num_highscores-on_screen)*bar_height 
             <string>event_inherited();
 if(highscore)
 {
-    //Sc_show_highscores(x, y, width of boxes, height of boxes, padding, spacing);
+    //Sc_show_highscores(x, y, width of boxes, height of boxes, padding, spacing, object_id);
     Sc_show_highscores(room_width/2, 0, bar_width, bar_height, padding, spacing, self.id);
 }
 </string>
