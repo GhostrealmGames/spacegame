@@ -237,13 +237,13 @@ else
 {
     if (resource_type &gt;= 0)
     {
-        if (resource_type == 8)
+        if (resource_type == coal)
         {
             if (controller.fuel &lt;= 95)
             {
                 if (keyboard_check(vk_shift))
                 {
-                    while (controller.fuel &lt;= 95 &amp;&amp; controller.Inventory[resource_type] &gt;= 0)
+                    while (controller.fuel &lt;= 95 &amp;&amp; controller.Inventory[resource_type] &gt; 0)
                     {
                         controller.fuel += 5;
                         controller.Inventory[resource_type] -= 1;
@@ -262,7 +262,7 @@ else
             {
                 if (keyboard_check(vk_shift))
                 {
-                    while (controller.ship_health &lt;= 90 &amp;&amp; controller.Inventory[resource_type] &gt;= 0)
+                    while (controller.ship_health &lt;= 90 &amp;&amp; controller.Inventory[resource_type] &gt; 0)
                     {
                         controller.ship_health += 10;
                         controller.Inventory[resource_type] -= 1;

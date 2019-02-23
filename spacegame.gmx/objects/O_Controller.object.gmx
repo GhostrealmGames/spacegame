@@ -40,6 +40,8 @@ processed_time = 0;
 draw_map = false;
 // Fuel
 fuel_add = 0;
+// Health
+health_add = 0;
 </string>
           </argument>
         </arguments>

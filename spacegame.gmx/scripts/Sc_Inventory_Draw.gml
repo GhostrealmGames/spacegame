@@ -28,6 +28,12 @@ _x = 88;
 _y = room_height;
 // Healthbar
 draw_set_color(c_health);
+draw_set_alpha(0.5);
+if (controller.health_add > 0)
+{
+    draw_rectangle(_x, _y - 157, _x + 280/100*controller.health_add, _y - 124, false);
+}
+draw_set_alpha(1);
 if (controller.ship_health > 0)
 {
     draw_rectangle(_x, _y - 157, _x + 280/100*controller.ship_health, _y - 124, false);

@@ -321,7 +321,7 @@ if (command_first == "/give")
     }
     else if (command_second == "Coal")
     {
-        if (real(command_number) &gt; 0 &amp;&amp; real(command_number &lt;= max_give))
+        if (real(command_number) &gt; 0 &amp;&amp; real(command_number) &lt;= max_give)
         {
             controller.Inventory[8] += real(command_number);
         }
