@@ -41,7 +41,7 @@ else
     max_damage = 15;
 }
 targeted = false;
-hspeed = 2;
+hspeed = 3;
 vspeed = 2;
 event_inherited();
 </string>

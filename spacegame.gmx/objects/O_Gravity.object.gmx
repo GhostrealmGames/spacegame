@@ -31,6 +31,15 @@ rVel = 0;
 rDir = 0;
 rVel_x = 0;
 rVel_y = 0;
+fVel = 0;
+fDir = 0;
+fVel_x = 0;
+fVel_y = 0;
+iVel = 0;
+iDir = 0;
+iVel_x = 0;
+iVel_y = 0;
+contact_angle = 0;
 collided = false;
 // restitution = e
 // e = 0 inelastic collision - no energy is converted to motion
@@ -82,6 +91,7 @@ highest_dist = 0;
     instance_create(x, y, O_Trail);
     alarm[0] = spawn_delay;
 }*/
+collided = false;
 </string>
           </argument>
         </arguments>
@@ -144,7 +154,9 @@ if (instance_exists(nearest))
             <kind>1</kind>
             <string>/// Collision with O_Gravity
 
+// ========================================================================
 // Attempt #1
+// ========================================================================
 // works well on its own but not with player movement
 /*if(collided = false)
 {
@@ -174,7 +186,54 @@ if (instance_exists(nearest))
     vspeed = fVel_y;
 }*/
 
+// ========================================================================
+// Attempt #2
+// ========================================================================
+/*if (collided == false)
+{
+    collided = true;
+    alarm[0] = room_speed;
+    with(other)
+    {
+        collided = true;
+        alarm[0] = room_speed;
+        iVel_x = hspeed - O_Parallax.hspeed;
+        iVel_y = vspeed - O_Parallax.vspeed;
+        iVel = sqrt(sqr(iVel_x) + sqr(iVel_y));
+        iDir = pi - arctan(iVel_y/iVel_x);
+    }
+    iVel_x = hspeed - O_Parallax.hspeed;
+    iVel_y = vspeed - O_Parallax.vspeed;
+    iVel = sqrt(sqr(iVel_x) + sqr(iVel_y));
+    iDir = arctan(iVel_y/iVel_x);
+    
+    contact_angle = arctan2((y - other.y),(x - other.x));
+    
+    fVel_x = (iVel * cos(iDir - contact_angle) * (mass - other.mass) + 2 * other.mass * other.iVel * cos(other.iDir - contact_angle)) / (mass + other.mass) * cos(contact_angle) + iVel * sin(iDir - contact_angle) * cos(contact_angle + pi/2);
+    fVel_y = (iVel * cos(iDir - contact_angle) * (mass - other.mass) + 2 * other.mass * other.iVel * cos(other.iDir - contact_angle)) / (mass + other.mass) * sin(contact_angle) + iVel * sin(iDir - contact_angle) * sin(contact_angle + pi/2);
+    fVel_x += O_Parallax.hspeed;
+    fVel_y += O_Parallax.vspeed;
+    hspeed = fVel_x;
+    vspeed = fVel_y;
+
+    with(other)
+    {
+        //contact_angle = pi+arctan((y - other.y)/(x - other.x));
+        contact_angle = other.contact_angle;
+        
+        fVel_x = (iVel * cos(iDir - contact_angle) * (mass - other.mass) + 2 * other.mass * other.iVel * cos(other.iDir - contact_angle)) / (mass + other.mass) * cos(contact_angle) + iVel * sin(iDir - contact_angle) * cos(contact_angle + pi/2);
+        fVel_y = (iVel * cos(iDir - contact_angle) * (mass - other.mass) + 2 * other.mass * other.iVel * cos(other.iDir - contact_angle)) / (mass + other.mass) * sin(contact_angle) + iVel * sin(iDir - contact_angle) * sin(contact_angle + pi/2);
+        fVel_x += O_Parallax.hspeed;
+        fVel_y += O_Parallax.vspeed;
+        hspeed = fVel_x;
+        vspeed = fVel_y;
+    }
+    room_speed = 1;
+}*/
+
+// ========================================================================
 // Original
+// ========================================================================
 with(other)
 {
     dist_x = self.x - other.x;
@@ -264,9 +323,19 @@ with(other)
             {
                 draw_sprite(sprite_index, image_index, x, y);
                 draw_set_color(c_red);
-                if (rVel &gt; 0)
+                if (iVel != 0)
                 {
-                    draw_line_width(x, y, x + rVel_x*100, y + rVel_y*100, 2);
+                    draw_line_width(x, y, x + iVel_x*100, y + iVel_y*100, 2);
+                }
+                draw_set_color(c_blue);
+                if (fVel_x != 0 || fVel_y != 0)
+                {
+                    draw_line_width(x, y, x + fVel_x*100, y + fVel_y*100, 2);
+                }
+                draw_set_color(c_orange);
+                if (contact_angle != 0)
+                {
+                    draw_line_width(x, y, x + lengthdir_x(50, contact_angle * 90/pi), y + lengthdir_y(50, contact_angle * 90/pi), 2);
                 }
             }
         }
