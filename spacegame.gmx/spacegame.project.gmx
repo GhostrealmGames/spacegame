@@ -399,7 +399,7 @@
     <room>rooms\R_test</room>
   </rooms>
   <constants number="86">
-    <constant name="version_string">"0.10.3"</constant>
+    <constant name="version_string">"0.11.0"</constant>
     <constant name="Gravitational_Constant">0.0000000000667408</constant>
     <constant name="G">0.000000001</constant>
     <constant name="c_health">make_color_rgb(64,255,64)</constant>
